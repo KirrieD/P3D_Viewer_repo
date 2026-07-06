@@ -4045,10 +4045,17 @@ class App:
                     # Canvas not yet laid out — use parent width minus scrollbar
                     w = max(100, panel_outer.winfo_width() - 6)
                 self._side_canvas.itemconfig(self._side_win_id, width=w)
-                # v0.1.12: НЕ задаём height — иначе canvas window = canvas и scroll не работает
-                # scrollregion bbox('all') правильно отдаст реальную высоту контента
+                # v0.1.13: задаём высоту canvas window равной максимуму из
+                # canvas_height и bbox('all') высоты — иначе при scrollregion > canvas
+                # содержимое обрезается
+                ch = self._side_canvas.winfo_height()
+                bbox = self._side_canvas.bbox('all')
+                content_h = (bbox[3] - bbox[1]) if bbox else 0
+                win_h = max(ch, content_h)
+                if win_h > 2:
+                    self._side_canvas.itemconfig(self._side_win_id, height=win_h)
                 self._side_canvas.configure(
-                    scrollregion=self._side_canvas.bbox('all') or (0, 0, w, 400))
+                    scrollregion=self._side_canvas.bbox('all') or (0, 0, w, win_h))
             except Exception:
                 pass
         self._refresh_canvas = _refresh_canvas
@@ -4060,7 +4067,7 @@ class App:
                 except: pass
             self._configure_job = self.root.after(30, _refresh_canvas)
         self._side.bind('<Configure>', _on_side_configure)
-        # v0.1.12: bind на canvas чтобы обновить scrollregion при ресайзе (sash drag)
+        # v0.1.13: bind на canvas чтобы обновить scrollregion при ресайзе (sash drag)
         self._side_canvas.bind('<Configure>',
             lambda e: self.root.after(30, _refresh_canvas))
 
