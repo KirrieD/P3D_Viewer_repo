@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.19'
+VERSION    = 'v0.1.20'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -4058,13 +4058,16 @@ class App:
                     # Canvas not yet laid out — use parent width minus scrollbar
                     w = max(100, panel_outer.winfo_width() - 6)
                 self._side_canvas.itemconfig(self._side_win_id, width=w)
-                # v0.1.19: точно по высоте контента (НЕ max с canvas height),
-                # иначе sash находится ВНУТРИ scroll области и моды "заходят" за sash
+                # v0.1.20: canvas window height = max(ch, content_h) — иначе
+                # scrollframe невидим. Дополнительно scrollregion = content_h
+                # (НЕ ch), и sash на нижней границе контента.
                 bbox = self._side_canvas.bbox('all')
                 content_h = (bbox[3] - bbox[1]) if bbox else 0
                 ch = self._side_canvas.winfo_height()
-                # scrollregion = content_h (НЕ win_h = max(ch, content_h))
-                # sash будет на нижней границе content_h, не внутри
+                win_h = max(ch, content_h)
+                if win_h > 2:
+                    self._side_canvas.itemconfig(self._side_win_id, height=win_h)
+                # scrollregion по content_h — sash будет на нижней границе
                 self._side_canvas.configure(
                     scrollregion=self._side_canvas.bbox('all') or (0, 0, w, max(content_h, ch)))
             except Exception:
@@ -9262,6 +9265,10 @@ class App:
 
         for mod_name in active_mods:
             _add_mod_row(mod_name, scroll_frame)
+            # v0.1.20: spacer в конец списка модов, чтобы sash не наезжал
+            # на последний мод при перетягивании
+        spacer = tk.Frame(scroll_frame, bg=T['bg_side'], height=24)
+        spacer.pack(fill=tk.X)
 
         def _on_mods_search(*_):
             term = mods_search_var.get().lower().strip()
