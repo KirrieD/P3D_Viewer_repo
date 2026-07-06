@@ -3934,27 +3934,37 @@ class App:
         self._side_outer = side_outer
         self._tw_frames.append((side_outer, 'bg_side'))
 
-        self._sidebar_visible = True
+        self._icon_strip_visible = True
 
-        def _toggle_sidebar():
-            if self._sidebar_visible:
-                side_outer.pack_forget()
-                self._sidebar_visible = False
-                toggle_btn.config(text='▶ Панель')
+        def _toggle_icon_strip():
+            if self._icon_strip_visible:
+                icon_strip.pack_forget()
+                self._icon_strip_visible = False
+                icon_toggle_btn.config(text='▶')
             else:
-                side_outer.pack(side=tk.LEFT, fill=tk.Y, before=self._vp_frame)
-                self._sidebar_visible = True
-                toggle_btn.config(text='◀ Панель')
+                icon_strip.pack(side=tk.LEFT, fill=tk.Y, before=panel_outer)
+                self._icon_strip_visible = True
+                icon_toggle_btn.config(text='◀')
 
-        toggle_btn = tk.Button(toolbar_frame, text='◀ Панель', relief='flat',
-                               bg=T['bg_main'], fg=T['fg_label'],
-                               font=(T['font_fam'], T['font_sz'] - 1),
-                               padx=8, pady=0, bd=0,
-                               command=_toggle_sidebar)
-        toggle_btn.pack(side=tk.LEFT, padx=(6, 0), pady=0)
-        self._tw_frames.append((toolbar_frame, 'bg_main'))
-        self._tw_buttons.append((toggle_btn, 'normal'))
-        self._toggle_btn = toggle_btn
+        icon_toggle_btn = tk.Button(toolbar_frame, text='◀', relief='flat',
+                                    bg=T['bg_main'], fg=T['fg_label'],
+                                    font=(T['font_fam'], T['font_sz'] - 1),
+                                    padx=6, pady=0, bd=0,
+                                    command=_toggle_icon_strip)
+        icon_toggle_btn.pack(side=tk.LEFT, padx=(6, 0), pady=0)
+        self._tw_buttons.append((icon_toggle_btn, 'normal'))
+        self._icon_toggle_btn = icon_toggle_btn
+
+        # v0.1.2: toggle для right_panel (Загружено) — справа в toolbar
+        self._right_panel_visible = True
+        rp_toggle_btn = tk.Button(toolbar_frame, text='▶', relief='flat',
+                                  bg=T['bg_main'], fg=T['fg_label'],
+                                  font=(T['font_fam'], T['font_sz'] - 1),
+                                  padx=6, pady=0, bd=0,
+                                  command=self._toggle_right_panel)
+        rp_toggle_btn.pack(side=tk.RIGHT, padx=(0, 6), pady=0)
+        self._tw_buttons.append((rp_toggle_btn, 'normal'))
+        self._rp_toggle_btn = rp_toggle_btn
 
         # ── Иконочная полоска (левая, узкая) ──────────────────────────────────
         icon_strip = tk.Frame(side_outer, bg=T['bg_main'], width=44)
@@ -4014,8 +4024,18 @@ class App:
 
         def _on_side_mousewheel(e):
             self._side_canvas.yview_scroll(int(-1*(e.delta/120)), 'units')
-        self._side_canvas.bind('<MouseWheel>', _on_side_mousewheel)
-        self._side.bind('<MouseWheel>', _on_side_mousewheel)
+        # v0.1.2: Enter/Leave tracking — mousewheel скроллит только когда курсор над sidebar
+        def _bind_wheel(_e=None):
+            self._side_canvas.bind('<MouseWheel>', _on_side_mousewheel)
+            self._side.bind('<MouseWheel>', _on_side_mousewheel)
+        def _unbind_wheel(_e=None):
+            self._side_canvas.unbind('<MouseWheel>')
+            self._side.unbind('<MouseWheel>')
+        self._side_canvas.bind('<Enter>', _bind_wheel)
+        self._side_canvas.bind('<Leave>', _unbind_wheel)
+        self._side.bind('<Enter>', _bind_wheel)
+        self._side.bind('<Leave>', _unbind_wheel)
+        _bind_wheel()  # initial bind (на случай если cursor уже там)
 
         self._tw_frames.append((self._side, 'bg_side'))
         self._tw_frames.append((panel_outer, 'bg_side'))
@@ -5057,6 +5077,18 @@ class App:
         except queue.Empty:
             pass
         self.root.after(100, self._poll_dbg_queue)
+
+    def _toggle_right_panel(self):
+        """v0.1.2: показать/скрыть right_panel (Загружено)."""
+        if self._right_panel_visible:
+            self._right_panel.pack_forget()
+            self._right_panel_visible = False
+            self._rp_toggle_btn.config(text='◀')
+        else:
+            # pack ПОСЛЕ viewport (side=LEFT), чтобы быть справа
+            self._right_panel.pack(side=tk.LEFT, fill=tk.Y)
+            self._right_panel_visible = True
+            self._rp_toggle_btn.config(text='▶')
 
     def _toggle_debug_monitor(self):
         global _dbg_enabled
