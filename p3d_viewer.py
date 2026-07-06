@@ -3998,10 +3998,22 @@ class App:
         self._header_frame.pack(side=tk.TOP, fill=tk.X)
         self._tw_frames.append((self._header_frame, 'bg_side'))
 
-        # scrollable середина
+        # v0.1.11: PanedWindow sash между модами и выключено (мышкой двигается)
+        self._side_paned = tk.PanedWindow(
+            panel_outer, orient=tk.VERTICAL, bg=T['bg_sep'],
+            sashwidth=5, sashrelief='raised', bd=0,
+            handlesize=0, opaqueresize=False)
+        self._side_paned.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+        self._tw_frames.append((self._side_paned, 'bg_sep'))
+
+        # scrollable середина (моды)
         self._side_canvas = tk.Canvas(
-            panel_outer, bg=T['bg_side'], bd=0, highlightthickness=0)
-        self._side_canvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+            self._side_paned, bg=T['bg_side'], bd=0, highlightthickness=0)
+        self._side_paned.add(self._side_canvas, minsize=80, stretch='always')
+
+        # bottom (выключено) — отдельная панель со своим scroll
+        self._disabled_frame = tk.Frame(self._side_paned, bg=T['bg_side'])
+        self._side_paned.add(self._disabled_frame, minsize=80, stretch='always')
 
         # v0.1.8: фиксированный footer (Загрузить+Blender) снизу
         self._footer_frame = tk.Frame(panel_outer, bg=T['bg_side'])
@@ -9191,98 +9203,114 @@ class App:
         dis_section_ref = [None]
 
         def _rebuild_disabled_section():
-            if dis_section_ref[0]:
-                try: dis_section_ref[0].destroy()
-                except Exception: pass
-            dis_now = self._app_settings.get('disabled_mods', [])
-            dis_items = self._app_settings.get('disabled_items', [])
-            # v3.1: группируем items по моду для отображения дерева
-            items_by_mod = {}
-            for k in dis_items:
-                if '/' in k:
-                    mn, fn = k.split('/', 1)
-                    items_by_mod.setdefault(mn, []).append(fn)
-            total_count = len(dis_now) + len(dis_items)
-            if total_count == 0:
-                return
-            ds = tk.Frame(scroll_frame, bg=T['bg_side'])
-            ds.pack(fill=tk.X, pady=(6, 0))
-            dis_section_ref[0] = ds
+                    if dis_section_ref[0]:
+                        try: dis_section_ref[0].destroy()
+                        except Exception: pass
+                    dis_now = self._app_settings.get('disabled_mods', [])
+                    dis_items = self._app_settings.get('disabled_items', [])
+                    items_by_mod = {}
+                    for k in dis_items:
+                        if '/' in k:
+                            mn, fn = k.split('/', 1)
+                            items_by_mod.setdefault(mn, []).append(fn)
+                    total_count = len(dis_now) + len(dis_items)
+                    # v0.1.11: даже если 0 — очищаем disabled_frame (он теперь отдельная панель)
+                    # и добавляем заголовок "Выключено (0)" чтобы был виден разделитель
+                    target = getattr(self, '_disabled_frame', None)
+                    if target is None:
+                        return
+                    # destroy все старые children
+                    for w in target.winfo_children():
+                        w.destroy()
+                    # Header "Выключено" с лейблом-счётчиком (всегда виден, поверх scroll)
+                    hdr_frame = tk.Frame(target, bg=T['bg_side'])
+                    hdr_frame.pack(side=tk.TOP, fill=tk.X, padx=8, pady=(6, 2))
+                    hdr_lbl = tk.Label(hdr_frame,
+                                       text=f'▼  Выключено ({total_count})',
+                                       bg=T['bg_side'], fg=T['fg_label'],
+                                       font=(T['font_fam'], T['font_sz'] - 1))
+                    hdr_lbl.pack(side=tk.LEFT)
+                    # Search box
+                    _dis_search_var = tk.StringVar(value='')
+                    srch = tk.Frame(target, bg=T['bg_side'])
+                    srch.pack(side=tk.TOP, fill=tk.X, padx=8, pady=(0, 4))
+                    tk.Label(srch, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
+                             font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
+                    tk.Entry(srch, textvariable=_dis_search_var,
+                             bg=T.get('bg_widget', '#1f2235'), fg=T['fg_text'],
+                             insertbackground=T['fg_text'], relief='flat',
+                             font=(T['font_fam'], T['font_sz'] - 1)
+                             ).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(4, 0))
+                    if total_count == 0:
+                        # показать "пусто" hint
+                        empty = tk.Label(target, text='  нет выключенных модов',
+                                         bg=T['bg_side'], fg=T['fg_muted'],
+                                         font=(T['font_fam'], T['font_sz'] - 2))
+                        empty.pack(anchor='w', padx=12)
+                        return
+                    # Canvas для скролла выключенных items
+                    dis_canvas = tk.Canvas(target, bg=T['bg_side'],
+                                            bd=0, highlightthickness=0)
+                    dis_canvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+                    dis_canvas.bind('<MouseWheel>',
+                        lambda e: dis_canvas.yview_scroll(-1*(e.delta//120) if e.delta else -1, 'units'))
+                    dis_inner = tk.Frame(dis_canvas, bg=T['bg_side'])
+                    dis_cw = dis_canvas.create_window((0, 0), window=dis_inner, anchor='nw')
+                    dis_inner.bind('<Configure>',
+                        lambda e: dis_canvas.configure(scrollregion=dis_canvas.bbox('all')))
+                    dis_canvas.bind('<Configure>',
+                        lambda e: dis_canvas.itemconfig(dis_cw, width=e.width))
+        # контейнер-обёртка для rows (compat с предыдущим API)
+                    ds = dis_inner
+                    dis_section_ref[0] = ds
 
-            hdr = tk.Frame(ds, bg=T['bg_side'])
-            hdr.pack(fill=tk.X)
-            hdr_lbl = tk.Label(hdr, text=f'▶  Выключено ({total_count})',
-                               bg=T['bg_side'], fg=T['fg_muted'],
-                               font=(T['font_fam'], T['font_sz'] - 1), cursor='hand2')
-            hdr_lbl.pack(side=tk.LEFT, padx=6, pady=2)
+                    # v0.1.11: search filter для выключено
+                    _dis_search_var = tk.StringVar(value='')
+                    _dis_row_refs = [[]]
 
-            body = tk.Frame(ds, bg=T['bg_side'])
-            body_state = [False]
+                    def _on_dis_search(*_):
+                        term = _dis_search_var.get().lower().strip()
+                        for mn, w in _dis_row_refs[0]:
+                            try:
+                                if not term or term in mn.lower():
+                                    w.pack(fill=tk.X)
+                                else:
+                                    w.pack_forget()
+                            except Exception:
+                                pass
+                    _dis_search_var.trace_add('write', _on_dis_search)
 
-            def _toggle_dis(event=None):
-                if body_state[0]:
-                    body.pack_forget()
-                    hdr_lbl.config(text=f'▶  Выключено ({total_count})')
-                    body_state[0] = False
-                else:
-                    body.pack(fill=tk.X)
-                    hdr_lbl.config(text=f'▼  Выключено ({total_count})')
-                    body_state[0] = True
-            hdr_lbl.bind('<Button-1>', _toggle_dis)
+                    # 1. Полностью выключенные моды
+                    for mn in dis_now:
+                        row = tk.Frame(ds, bg=T['bg_side'])
+                        row.pack(fill=tk.X)
+                        _dis_row_refs[0].append((mn, row))
+                        tk.Label(row, text=mn, bg=T['bg_side'], fg=T['fg_muted'],
+                                 font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, padx=14)
+                        en_btn = tk.Label(row, text='↩', bg=T['bg_side'], fg=T['fg_label'],
+                                          font=(T['font_fam'], T['font_sz']), cursor='hand2', padx=4)
+                        en_btn.pack(side=tk.RIGHT, padx=(0, 4))
+                        en_btn.bind('<Button-1>', lambda e, _mn=mn: _enable_mod(_mn, None))
 
-            # v0.0.6: search Entry в "Выключено" — фильтрует моды по имени
-            _dis_search_var = tk.StringVar(value='')
-            _dis_search_entry = tk.Entry(
-                ds, textvariable=_dis_search_var,
-                bg=T.get('bg_widget', '#1e1e2e'),
-                fg=T['fg_text'],
-                insertbackground=T['fg_text'],
-                relief='flat', font=(T['font_fam'], T['font_sz'] - 1))
-            _dis_search_entry.pack(fill=tk.X, padx=8, pady=(2, 4))
-            def _on_dis_search(*_):
-                term = _dis_search_var.get().lower().strip()
-                for mn, w in _dis_row_refs[0]:
-                    try:
-                        if not term or term in mn.lower():
-                            w.pack(fill=tk.X)
-                        else:
-                            w.pack_forget()
-                    except Exception:
-                        pass
-            _dis_search_var.trace_add('write', _on_dis_search)
-            _dis_row_refs = [[]]
-
-            # 1. Полностью выключенные моды (как раньше, одной строкой с ↩)
-            for mn in dis_now:
-                row = tk.Frame(body, bg=T['bg_side'])
-                row.pack(fill=tk.X)
-                _dis_row_refs[0].append((mn, row))
-                tk.Label(row, text=mn, bg=T['bg_side'], fg=T['fg_muted'],
-                         font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, padx=14)
-                en_btn = tk.Label(row, text='↩', bg=T['bg_side'], fg=T['fg_label'],
-                                  font=(T['font_fam'], T['font_sz']), cursor='hand2', padx=4)
-                en_btn.pack(side=tk.RIGHT, padx=(0, 4))
-                en_btn.bind('<Button-1>', lambda e, _mn=mn: _enable_mod(_mn, None))
-
-            # 2. v3.1: мод с частично выключенными файлами — заголовок + список
-            for mn in sorted(items_by_mod.keys()):
-                if mn in dis_now:
-                    continue  # уже выше показано
-                mod_row = tk.Frame(body, bg=T['bg_side'])
-                mod_row.pack(fill=tk.X, pady=(4, 0))
-                _dis_row_refs[0].append((mn, mod_row))
-                tk.Label(mod_row, text=mn, bg=T['bg_side'], fg=T['fg_label'],
-                         font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, padx=14)
-                for fn in sorted(items_by_mod[mn]):
-                    f_row = tk.Frame(body, bg=T['bg_side'])
-                    f_row.pack(fill=tk.X)
-                    tk.Label(f_row, text='    ├ ' + fn, bg=T['bg_side'], fg=T['fg_muted'],
-                             font=(T['font_fam'], T['font_sz'] - 2)).pack(side=tk.LEFT, padx=22)
-                    en_btn = tk.Label(f_row, text='↩', bg=T['bg_side'], fg=T['fg_label'],
-                                      font=(T['font_fam'], T['font_sz']), cursor='hand2', padx=4)
-                    en_btn.pack(side=tk.RIGHT, padx=(0, 4))
-                    en_btn.bind('<Button-1>',
-                                lambda e, _mn=mn, _fn=fn: _enable_item(_mn, _fn))
+                    # 2. мод с частично выключенными файлами
+                    for mn in sorted(items_by_mod.keys()):
+                        if mn in dis_now:
+                            continue
+                        mod_row = tk.Frame(ds, bg=T['bg_side'])
+                        mod_row.pack(fill=tk.X, pady=(4, 0))
+                        _dis_row_refs[0].append((mn, mod_row))
+                        tk.Label(mod_row, text=mn, bg=T['bg_side'], fg=T['fg_label'],
+                                 font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, padx=14)
+                        for fn in sorted(items_by_mod[mn]):
+                            f_row = tk.Frame(ds, bg=T['bg_side'])
+                            f_row.pack(fill=tk.X)
+                            tk.Label(f_row, text='    ├ ' + fn, bg=T['bg_side'], fg=T['fg_muted'],
+                                     font=(T['font_fam'], T['font_sz'] - 2)).pack(side=tk.LEFT, padx=22)
+                            en_btn = tk.Label(f_row, text='↩', bg=T['bg_side'], fg=T['fg_label'],
+                                              font=(T['font_fam'], T['font_sz']), cursor='hand2', padx=4)
+                            en_btn.pack(side=tk.RIGHT, padx=(0, 4))
+                            en_btn.bind('<Button-1>',
+                                        lambda e, _mn=mn, _fn=fn: _enable_item(_mn, _fn))
 
         _rebuild_disabled_section()
 
