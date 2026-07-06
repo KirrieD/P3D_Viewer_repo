@@ -1,0 +1,7 @@
+face_data_end=161475  nf=3366  n_mats=1
+n_sel_hdr=1 at 161475
+  sel "m_radio" n=3366 skip=28 first=0 last=3365
+  str "l" n=364 → no valid face array found
+  str "l" n=364 → no valid face array found
+found_sels count=1
+  ASSIGNED "m_radio" → "aid_set_traveler\data\m_radio_co.paa" (3366 faces)

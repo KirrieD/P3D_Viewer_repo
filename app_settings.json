@@ -1,0 +1,88 @@
+{
+    "log_enabled": true,
+    "dbg_enabled": true,
+    "dbg_cats": {
+        "general": true,
+        "parse": true,
+        "uv": true,
+        "recompute": true,
+        "apply": true,
+        "subproc": true,
+        "render": true,
+        "split": true,
+        "errors": true
+    },
+    "lighting": true,
+    "alpha": false,
+    "alpha_mats": {},
+    "brightness": 1.0,
+    "geometry": "1920x1027+16+-21",
+    "sidebar_width": 450,
+    "section_models": true,
+    "section_browser": true,
+    "section_mats": true,
+    "section_textures": true,
+    "section_display": true,
+    "section_blender": false,
+    "section_mods": true,
+    "blender_path": "",
+    "theme_name": "Teal Dark",
+    "section_order": [
+        "mods",
+        "mats",
+        "textures",
+        "view",
+        "file",
+        "convert"
+    ],
+    "disabled_mods": [
+        "ai",
+        "ai_bliss",
+        "animals",
+        "animals_bliss",
+        "anims_anm_infected",
+        "anims_anm_player",
+        "anims_cfg",
+        "anims_workspaces"
+    ],
+    "disabled_items": [],
+    "mods_list_height": 110,
+    "loaded_list_height": 160,
+    "showed_errors": [],
+    "dev_mode": false,
+    "custom_labels": {},
+    "mirror_uv": false,
+    "normalize_uv": false,
+    "per_face_flip": true,
+    "flip_x": false,
+    "flip_y": false,
+    "flip_z": false,
+    "proxies_enabled": true,
+    "gradient_enabled": false,
+    "gradient_color2": "#080c0a",
+    "font_fam": "Segoe UI",
+    "custom_colors": {},
+    "section_order_names": [],
+    "text_styles": {
+        "h1": {
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "h2": {
+            "bold": true,
+            "italic": false,
+            "underline": false
+        },
+        "h3": {
+            "bold": false,
+            "italic": false,
+            "underline": false
+        },
+        "body": {
+            "bold": false,
+            "italic": false,
+            "underline": false
+        }
+    }
+}

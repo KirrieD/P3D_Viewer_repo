@@ -1,0 +1,9 @@
+{
+    "model": "bolti",
+    "split1": 395,
+    "split2": 0,
+    "swap": true,
+    "uv_threshold": 1.5,
+    "edge_threshold": 50,
+    "note": ""
+}

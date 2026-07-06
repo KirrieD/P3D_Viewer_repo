@@ -1,0 +1,37 @@
+face_data_end=354422  nf=11796  n_mats=2
+n_sel_hdr=2 at 354422
+  sel "m_outfit_hoodie" n=5614 skip=45 first=0 last=5613
+  sel "pelvis" n=660 skip=1 first=0 last=2455
+  sel "spine" n=615 skip=6 first=0 last=2458
+  sel "spine1" n=777 skip=0 first=0 last=2453
+  sel "spine2" n=1137 skip=10 first=0 last=3550
+  sel "spine3" n=3262 skip=27 first=35 last=5613
+  sel "leftshoulder" n=851 skip=8 first=57 last=3572
+  sel "leftarm" n=711 skip=7 first=75 last=3301
+  sel "leftarmextra" n=708 skip=7 first=76 last=3300
+  sel "leftarmroll" n=506 skip=0 first=760 last=3282
+  sel "leftelbowextra" n=533 skip=0 first=0 last=3277
+  sel "leftforearm" n=582 skip=6 first=646 last=3282
+  sel "leftforearmextra" n=661 skip=1 first=0 last=3277
+  sel "leftforearmroll" n=408 skip=0 first=644 last=3283
+  sel "lefthand" n=248 skip=0 first=644 last=3283
+  sel "leftwristextra" n=301 skip=0 first=644 last=3283
+  sel "rightshoulder" n=879 skip=8 first=89 last=3569
+  sel "rightarm" n=704 skip=7 first=281 last=3561
+  str "rightarmextra" n=6825 → no valid face array found
+  sel "rightarmroll" n=479 skip=0 first=1015 last=3599
+  sel "rightelbowextra" n=606 skip=6 first=964 last=3599
+  sel "rightforearm" n=627 skip=6 first=891 last=3599
+  sel "rightforearmextra" n=643 skip=6 first=890 last=3599
+  sel "rightforearmroll" n=341 skip=0 first=890 last=3592
+  sel "righthand" n=205 skip=0 first=890 last=3521
+  sel "rightwristextra" n=240 skip=0 first=890 last=3521
+  sel "camomale" n=3561 skip=29 first=0 last=3599
+  sel "injury_body" n=1862 skip=16 first=0 last=3572
+  sel "injury_hands" n=2461 skip=21 first=75 last=3599
+  sel "zbytek" n=3561 skip=29 first=0 last=3599
+  sel "neck" n=110 skip=0 first=142 last=3569
+  sel "neck1" n=4 skip=0 first=157 last=168
+  sel "m_small_bags" n=6182 skip=50 first=5614 last=11795
+found_sels count=32
+  ASSIGNED "m_outfit_hoodie" → "aid_set_traveler\data\m_small_bags_co.paa" (5614 faces)

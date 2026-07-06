@@ -1,0 +1,9 @@
+{
+    "model": "Top_no_hood",
+    "split1": 5624,
+    "split2": 0,
+    "swap": false,
+    "uv_threshold": 1.5,
+    "edge_threshold": 50,
+    "note": ""
+}

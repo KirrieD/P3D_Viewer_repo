@@ -1,0 +1,20 @@
+face_data_end=49241  nf=4583  n_mats=1
+n_sel_hdr=3 at 49241
+  sel "spine3" n=430 skip=0 first=31 last=4481
+  sel "spine2" n=4289 skip=35 first=4 last=2
+  sel "spine1" n=502 skip=0 first=460 last=2231
+  sel "spine" n=392 skip=0 first=460 last=2045
+  sel "rightshoulder" n=173 skip=0 first=77 last=1
+  sel "rightarm" n=82 skip=0 first=112 last=2230
+  sel "pelvis" n=475 skip=0 first=460 last=2109
+  sel "neck" n=191 skip=0 first=31 last=4481
+  sel "leftshoulder" n=171 skip=0 first=31 last=3
+  sel "leftarm" n=94 skip=0 first=38 last=1993
+  sel "camomale" n=4579 skip=37 first=4 last=4582
+  sel "zbytek" n=4579 skip=37 first=4 last=4582
+  str "proxy:\dz\gear\consumables\chemlight.001" n=1 → no valid face array found
+  str "proxy:\dz\gear\radio\walkietalkie.001" n=1 → no valid face array found
+  str "proxy:\dz\characters\backpacks\proxy\backpack_1.001" n=1 → no valid face array found
+  str "ilot: lodnoshadow" n=49 → no valid face array found
+found_sels count=12
+FAILED — all faces get fallback mat

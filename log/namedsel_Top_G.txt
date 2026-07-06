@@ -1,0 +1,5 @@
+face_data_end=184096  nf=5624  n_mats=1
+n_sel_hdr=1 at 184096
+  sel "m_outfit_hoodie" n=5624 skip=0 first=0 last=5600
+found_sels count=1
+  ASSIGNED "m_outfit_hoodie" → "aid_set_traveler\data\m_outfit_hoodie_co.paa" (5624 faces)

@@ -1,0 +1,9 @@
+{
+    "model": "Free_Suit_1_ByHare_Jacket_f",
+    "split1": 360,
+    "split2": 6000,
+    "swap": true,
+    "uv_threshold": 1.0,
+    "edge_threshold": 50,
+    "note": ""
+}

@@ -1,0 +1,10 @@
+face_data_end=1292796  nf=20554  n_mats=1
+n_sel_hdr=1 at 1292796
+  sel "vest" n=20554 skip=1 first=0 last=20472
+  sel "camomale" n=20554 skip=1 first=0 last=20472
+  sel "zbytek" n=20554 skip=1 first=0 last=20472
+  sel "spine1" n=15443 skip=1 first=0 last=20443
+  str "spine2" n=17942 → no valid face array found
+  str "spine3" n=15775 → no valid face array found
+found_sels count=4
+  ASSIGNED "vest" → "aid_set_traveler\data\vest_co.paa" (20554 faces)

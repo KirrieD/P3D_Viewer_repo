@@ -1,0 +1,13 @@
+face_data_end=148509  nf=1996  n_mats=1
+n_sel_hdr=1 at 148509
+  sel "m_boot_glove" n=1996 skip=17 first=0 last=1995
+  sel "leftlegroll" n=311 skip=0 first=562 last=1935
+  sel "leftfoot" n=970 skip=9 first=519 last=1976
+  sel "lefttoebase" n=752 skip=7 first=519 last=1976
+  sel "rightlegroll" n=255 skip=0 first=45 last=1995
+  sel "rightfoot" n=975 skip=9 first=0 last=1995
+  sel "righttoebase" n=729 skip=7 first=0 last=1516
+  sel "camomale" n=1996 skip=17 first=0 last=1995
+  sel "zbytek" n=1996 skip=17 first=0 last=1995
+found_sels count=9
+  ASSIGNED "m_boot_glove" → "aid_set_traveler\data\m_boot_glove_co.paa" (1996 faces)

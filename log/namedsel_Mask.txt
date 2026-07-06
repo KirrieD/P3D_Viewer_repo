@@ -1,0 +1,13 @@
+face_data_end=226204  nf=3518  n_mats=1
+n_sel_hdr=2 at 226204
+  sel "glass" n=268 skip=0 first=3250 last=3517
+  sel "head" n=3518 skip=29 first=3250 last=3249
+  sel "neck" n=598 skip=6 first=5 last=3249
+  sel "neck1" n=399 skip=0 first=1166 last=3249
+  sel "spine3" n=293 skip=0 first=1140 last=3249
+  sel "camomale" n=3518 skip=29 first=3250 last=3249
+  sel "zbytek" n=3518 skip=29 first=3250 last=3249
+  sel "m_mask" n=3250 skip=27 first=0 last=3249
+  str "@" n=32 → no valid face array found
+found_sels count=8
+  ASSIGNED "camomale" → "aid_set_traveler\data\m_mask_co.paa" (3518 faces)

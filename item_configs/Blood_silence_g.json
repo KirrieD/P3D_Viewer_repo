@@ -1,0 +1,9 @@
+{
+    "model": "Blood_silence_g",
+    "split1": 10,
+    "split2": 1000,
+    "swap": false,
+    "uv_threshold": 1.0,
+    "edge_threshold": 50,
+    "note": ""
+}

@@ -1,0 +1,268 @@
+=== P3D Viewer v3.2.0 session started ===
+[22:20:54.614] [render ] init flip uniforms: mirror_uv=False x=False y=False z=False
+[22:20:54.622] _do_update_models_panel START: models=[] ready_count=0
+[22:20:55.049] _do_update_models_panel END: ready=0 loading=0 failed=0
+[22:20:55.050] _discover_widgets: 39 entries
+[22:21:28.935] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:28.985] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:29.131] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:29.137] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:29.285] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:29.292] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:29.433] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:29.439] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:29.585] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:29.593] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:29.735] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:29.742] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:29.885] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:29.891] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:30.036] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:30.042] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:30.234] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:30.239] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:30.517] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:30.529] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:30.646] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:21:30.695] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:21:30.726] parse diag Boot.p3d: dll_nf=1996 good=1996 base_limit=0.0117 robust=0.0117 em=50.0 uv=1.5
+[22:21:30.726] [parse  ] Boot.p3d: nf=1996 good=1996 base=0.0117 robust=0.0117
+[22:21:30.727] parse diag Mask.p3d: dll_nf=3518 good=3518 base_limit=0.0083 robust=0.0083 em=50.0 uv=1.5
+[22:21:30.727] [parse  ] Mask.p3d: nf=3518 good=3518 base=0.0083 robust=0.0083
+[22:21:30.728] parse diag Radio.p3d: dll_nf=3366 good=3366 base_limit=0.0024 robust=0.0024 em=50.0 uv=1.5
+[22:21:30.728] [parse  ] Radio.p3d: nf=3366 good=3366 base=0.0024 robust=0.0024
+[22:21:30.729] parse diag Traveler_Pouhc_3.p3d: dll_nf=4574 good=4574 base_limit=0.0019 robust=0.0019 em=50.0 uv=1.5
+[22:21:30.729] [parse  ] Traveler_Pouhc_3.p3d: nf=4574 good=4574 base=0.0019 robust=0.0019
+[22:21:30.730] parse diag Traveler_Pouhc_4.p3d: dll_nf=688 good=688 base_limit=0.0058 robust=0.0058 em=50.0 uv=1.5
+[22:21:30.730] [parse  ] Traveler_Pouhc_4.p3d: nf=688 good=688 base=0.0058 robust=0.0058
+[22:21:30.731] parse diag Boot_G.p3d: dll_nf=1996 good=1996 base_limit=0.0116 robust=0.0116 em=50.0 uv=1.5
+[22:21:30.731] [parse  ] Boot_G.p3d: nf=1996 good=1996 base=0.0116 robust=0.0116
+[22:21:30.732] parse diag Mask_g.p3d: dll_nf=3518 good=3518 base_limit=0.0078 robust=0.0078 em=50.0 uv=1.5
+[22:21:30.732] [parse  ] Mask_g.p3d: nf=3518 good=3518 base=0.0078 robust=0.0078
+[22:21:30.743] subproc files for Boot.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_1_488860_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_1_488860_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_1_488860_uvs.npy'
+[22:21:30.743] [subproc] Boot.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_1_488860_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_1_488860_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_1_488860_uvs.npy'
+[22:21:30.763] apply mesh: Boot.p3d pts=1322 tris=1996 uvs=1322 nrms=1322
+[22:21:30.763] [apply  ] Boot.p3d: pts=1322 tris=1996 uvs=1322 nrms=1322
+[22:21:30.765] [uv     ] Boot.p3d: U=[0.0127,0.5304] V=[0.0108,0.9874] uniq_U=302 uniq_V=403 pts=1322 tris=1996
+[22:21:30.768] raw check Boot.p3d: best_tris=1996 pts=1322 base_limit=0.0117 robust=0.0117
+[22:21:32.253] load_mesh: pts=1322 tris=1996
+[22:21:32.274] load_mesh RUN: idx=1 pts=1322
+[22:21:32.277] recompute: uv=1.5 edge=50.0 robust=0.0117 limit=0.59 → 1996/1996 tris, 1 groups
+[22:21:32.277] [recompute] uv=1.5 edge=50.0 → 1996/1996 tris, 1 groups
+[22:21:33.000] _recompute_mats: s1=0 s2=0 swap=False two_split=False groups=1 tris=1996
+[22:21:33.150] subproc files for Mask.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_2_488864_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_2_488864_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_2_488864_uvs.npy'
+[22:21:33.150] [subproc] Mask.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_2_488864_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_2_488864_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_2_488864_uvs.npy'
+[22:21:33.153] apply mesh: Mask.p3d pts=1949 tris=3518 uvs=1949 nrms=1949
+[22:21:33.153] [apply  ] Mask.p3d: pts=1949 tris=3518 uvs=1949 nrms=1949
+[22:21:33.154] [uv     ] Mask.p3d: U=[0.0130,0.9912] V=[0.0416,0.9777] uniq_U=806 uniq_V=721 pts=1949 tris=3518
+[22:21:33.155] raw check Mask.p3d: best_tris=3518 pts=1949 base_limit=0.0083 robust=0.0083
+[22:21:33.158] subproc files for Radio.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_7_488883_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_7_488883_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_7_488883_uvs.npy'
+[22:21:33.158] [subproc] Radio.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_7_488883_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_7_488883_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_7_488883_uvs.npy'
+[22:21:33.169] apply mesh: Radio.p3d pts=2265 tris=3366 uvs=2265 nrms=2265
+[22:21:33.169] [apply  ] Radio.p3d: pts=2265 tris=3366 uvs=2265 nrms=2265
+[22:21:33.170] [uv     ] Radio.p3d: U=[0.0098,0.9912] V=[0.0063,0.9884] uniq_U=631 uniq_V=652 pts=2265 tris=3366
+[22:21:33.171] raw check Radio.p3d: best_tris=3366 pts=2265 base_limit=0.0024 robust=0.0024
+[22:21:33.174] subproc files for Traveler_Pouhc_3.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_10_488895_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_10_488895_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_10_488895_uvs.npy'
+[22:21:33.174] [subproc] Traveler_Pouhc_3.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_10_488895_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_10_488895_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_10_488895_uvs.npy'
+[22:21:33.177] apply mesh: Traveler_Pouhc_3.p3d pts=2948 tris=4574 uvs=2948 nrms=2948
+[22:21:33.177] [apply  ] Traveler_Pouhc_3.p3d: pts=2948 tris=4574 uvs=2948 nrms=2948
+[22:21:33.179] [uv     ] Traveler_Pouhc_3.p3d: U=[0.0305,0.8675] V=[0.0014,0.9948] uniq_U=504 uniq_V=407 pts=2948 tris=4574
+[22:21:33.180] raw check Traveler_Pouhc_3.p3d: best_tris=4574 pts=2948 base_limit=0.0019 robust=0.0019
+[22:21:33.183] subproc files for Traveler_Pouhc_4.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_11_488900_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_11_488900_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_11_488900_uvs.npy'
+[22:21:33.183] [subproc] Traveler_Pouhc_4.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_11_488900_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_11_488900_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_11_488900_uvs.npy'
+[22:21:33.184] apply mesh: Traveler_Pouhc_4.p3d pts=441 tris=688 uvs=441 nrms=441
+[22:21:33.184] [apply  ] Traveler_Pouhc_4.p3d: pts=441 tris=688 uvs=441 nrms=441
+[22:21:33.184] [uv     ] Traveler_Pouhc_4.p3d: U=[0.2762,0.9938] V=[0.0022,0.9925] uniq_U=241 uniq_V=231 pts=441 tris=688
+[22:21:33.185] raw check Traveler_Pouhc_4.p3d: best_tris=688 pts=441 base_limit=0.0058 robust=0.0058
+[22:21:33.187] subproc files for Boot_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_13_488908_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_13_488908_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_13_488908_uvs.npy'
+[22:21:33.187] [subproc] Boot_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_13_488908_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_13_488908_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_13_488908_uvs.npy'
+[22:21:33.189] apply mesh: Boot_G.p3d pts=1322 tris=1996 uvs=1322 nrms=1322
+[22:21:33.189] [apply  ] Boot_G.p3d: pts=1322 tris=1996 uvs=1322 nrms=1322
+[22:21:33.190] [uv     ] Boot_G.p3d: U=[0.0127,0.5304] V=[0.0108,0.9874] uniq_U=302 uniq_V=403 pts=1322 tris=1996
+[22:21:33.191] raw check Boot_G.p3d: best_tris=1996 pts=1322 base_limit=0.0116 robust=0.0116
+[22:21:33.193] subproc files for Mask_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_14_488913_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_14_488913_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_14_488913_uvs.npy'
+[22:21:33.193] [subproc] Mask_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_14_488913_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_14_488913_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_14_488913_uvs.npy'
+[22:21:33.195] apply mesh: Mask_g.p3d pts=1949 tris=3518 uvs=1949 nrms=1949
+[22:21:33.195] [apply  ] Mask_g.p3d: pts=1949 tris=3518 uvs=1949 nrms=1949
+[22:21:33.197] [uv     ] Mask_g.p3d: U=[0.0130,0.9912] V=[0.0416,0.9777] uniq_U=806 uniq_V=721 pts=1949 tris=3518
+[22:21:33.197] raw check Mask_g.p3d: best_tris=3518 pts=1949 base_limit=0.0078 robust=0.0078
+[22:21:33.404] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=7
+[22:21:33.536] _do_update_models_panel END: ready=7 loading=11 failed=0
+[22:21:33.539] parse diag Bag.p3d: dll_nf=67367 good=67302 base_limit=0.0022 robust=0.0022 em=50.0 uv=1.5
+[22:21:33.539] [parse  ] Bag.p3d: nf=67367 good=67302 base=0.0022 robust=0.0022
+[22:21:33.539] parse diag Pants.p3d: dll_nf=10378 good=10378 base_limit=0.0061 robust=0.0061 em=50.0 uv=1.5
+[22:21:33.540] [parse  ] Pants.p3d: nf=10378 good=10378 base=0.0061 robust=0.0061
+[22:21:33.540] parse diag Top.p3d: dll_nf=11806 good=11806 base_limit=0.0125 robust=0.0125 em=50.0 uv=1.5
+[22:21:33.540] [parse  ] Top.p3d: nf=11806 good=11806 base=0.0125 robust=0.0125
+[22:21:33.541] parse diag Top_no_hood.p3d: dll_nf=11796 good=11796 base_limit=0.0106 robust=0.0106 em=50.0 uv=1.5
+[22:21:33.541] [parse  ] Top_no_hood.p3d: nf=11796 good=11796 base=0.0106 robust=0.0106
+[22:21:33.542] parse diag Vest.p3d: dll_nf=20554 good=20554 base_limit=0.0072 robust=0.0072 em=50.0 uv=1.5
+[22:21:33.542] [parse  ] Vest.p3d: nf=20554 good=20554 base=0.0072 robust=0.0072
+[22:21:33.543] parse diag Traveler_Pouhc_1.p3d: dll_nf=4700 good=4700 base_limit=0.0019 robust=0.0019 em=50.0 uv=1.5
+[22:21:33.543] [parse  ] Traveler_Pouhc_1.p3d: nf=4700 good=4700 base=0.0019 robust=0.0019
+[22:21:33.543] parse diag Traveler_Pouhc_2.p3d: dll_nf=4700 good=4700 base_limit=0.0019 robust=0.0019 em=50.0 uv=1.5
+[22:21:33.543] [parse  ] Traveler_Pouhc_2.p3d: nf=4700 good=4700 base=0.0019 robust=0.0019
+[22:21:33.544] parse diag Bag_g.p3d: dll_nf=47386 good=47338 base_limit=0.0025 robust=0.0025 em=50.0 uv=1.5
+[22:21:33.544] [parse  ] Bag_g.p3d: nf=47386 good=47338 base=0.0025 robust=0.0025
+[22:21:33.545] parse diag Pants_G.p3d: dll_nf=4324 good=4324 base_limit=0.0163 robust=0.0163 em=50.0 uv=1.5
+[22:21:33.545] [parse  ] Pants_G.p3d: nf=4324 good=4324 base=0.0163 robust=0.0163
+[22:21:33.546] parse diag Top_G.p3d: dll_nf=5624 good=5624 base_limit=0.0178 robust=0.0178 em=50.0 uv=1.5
+[22:21:33.546] [parse  ] Top_G.p3d: nf=5624 good=5624 base=0.0178 robust=0.0178
+[22:21:33.546] parse diag Vest_g.p3d: dll_nf=9192 good=10277 base_limit=0.0110 robust=0.0110 em=50.0 uv=1.5
+[22:21:33.547] [parse  ] Vest_g.p3d: nf=9192 good=10277 base=0.0110 robust=0.0110
+[22:21:33.586] subproc files for Bag.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_0_488854_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_0_488854_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_0_488854_uvs.npy'
+[22:21:33.586] [subproc] Bag.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_0_488854_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_0_488854_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_0_488854_uvs.npy'
+[22:21:33.642] apply mesh: Bag.p3d pts=52992 tris=67302 uvs=52992 nrms=52992
+[22:21:33.642] [apply  ] Bag.p3d: pts=52992 tris=67302 uvs=52992 nrms=52992
+[22:21:33.680] [uv     ] Bag.p3d: U=[0.0000,0.9981] V=[0.0000,0.9964] uniq_U=997 uniq_V=995 pts=52992 tris=67302
+[22:21:33.682] raw check Bag.p3d: best_tris=67367 pts=52992 base_limit=0.0022 robust=0.0022
+[22:21:33.688] subproc files for Pants.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_3_488868_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_3_488868_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_3_488868_uvs.npy'
+[22:21:33.688] [subproc] Pants.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_3_488868_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_3_488868_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_3_488868_uvs.npy'
+[22:21:33.695] apply mesh: Pants.p3d pts=6270 tris=10378 uvs=6270 nrms=6270
+[22:21:33.695] [apply  ] Pants.p3d: pts=6270 tris=10378 uvs=6270 nrms=6270
+[22:21:33.699] [uv     ] Pants.p3d: U=[-0.0455,1.1136] V=[0.0014,0.9948] uniq_U=939 uniq_V=902 pts=6270 tris=10378
+[22:21:33.700] raw check Pants.p3d: best_tris=10378 pts=6270 base_limit=0.0061 robust=0.0061
+[22:21:33.704] subproc files for Top.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_4_488871_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_4_488871_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_4_488871_uvs.npy'
+[22:21:33.704] [subproc] Top.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_4_488871_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_4_488871_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_4_488871_uvs.npy'
+[22:21:33.733] apply mesh: Top.p3d pts=7124 tris=11806 uvs=7124 nrms=7124
+[22:21:33.733] [apply  ] Top.p3d: pts=7124 tris=11806 uvs=7124 nrms=7124
+[22:21:33.741] [uv     ] Top.p3d: U=[-0.0433,1.2142] V=[0.0014,0.9948] uniq_U=969 uniq_V=943 pts=7124 tris=11806
+[22:21:33.742] raw check Top.p3d: best_tris=11806 pts=7124 base_limit=0.0125 robust=0.0125
+[22:21:33.746] subproc files for Top_no_hood.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_5_488875_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_5_488875_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_5_488875_uvs.npy'
+[22:21:33.746] [subproc] Top_no_hood.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_5_488875_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_5_488875_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_5_488875_uvs.npy'
+[22:21:33.752] apply mesh: Top_no_hood.p3d pts=7123 tris=11796 uvs=7123 nrms=7123
+[22:21:33.752] [apply  ] Top_no_hood.p3d: pts=7123 tris=11796 uvs=7123 nrms=7123
+[22:21:33.757] [uv     ] Top_no_hood.p3d: U=[-0.0433,1.2142] V=[0.0014,0.9948] uniq_U=969 uniq_V=943 pts=7123 tris=11796
+[22:21:33.758] raw check Top_no_hood.p3d: best_tris=11796 pts=7123 base_limit=0.0106 robust=0.0106
+[22:21:33.762] subproc files for Vest.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_6_488878_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_6_488878_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_6_488878_uvs.npy'
+[22:21:33.762] [subproc] Vest.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_6_488878_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_6_488878_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_6_488878_uvs.npy'
+[22:21:33.773] apply mesh: Vest.p3d pts=11189 tris=20554 uvs=11189 nrms=11189
+[22:21:33.773] [apply  ] Vest.p3d: pts=11189 tris=20554 uvs=11189 nrms=11189
+[22:21:33.782] [uv     ] Vest.p3d: U=[0.0008,1.9281] V=[0.0132,0.9991] uniq_U=1318 uniq_V=904 pts=11189 tris=20554
+[22:21:33.782] raw check Vest.p3d: best_tris=20554 pts=11189 base_limit=0.0072 robust=0.0072
+[22:21:33.786] subproc files for Traveler_Pouhc_1.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_8_488887_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_8_488887_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_8_488887_uvs.npy'
+[22:21:33.786] [subproc] Traveler_Pouhc_1.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_8_488887_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_8_488887_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_8_488887_uvs.npy'
+[22:21:33.789] apply mesh: Traveler_Pouhc_1.p3d pts=3054 tris=4700 uvs=3054 nrms=3054
+[22:21:33.789] [apply  ] Traveler_Pouhc_1.p3d: pts=3054 tris=4700 uvs=3054 nrms=3054
+[22:21:33.791] [uv     ] Traveler_Pouhc_1.p3d: U=[-0.0022,0.9974] V=[0.0010,0.9950] uniq_U=579 uniq_V=395 pts=3054 tris=4700
+[22:21:33.791] raw check Traveler_Pouhc_1.p3d: best_tris=4700 pts=3054 base_limit=0.0019 robust=0.0019
+[22:21:33.794] subproc files for Traveler_Pouhc_2.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_9_488891_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_9_488891_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_9_488891_uvs.npy'
+[22:21:33.795] [subproc] Traveler_Pouhc_2.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_9_488891_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_9_488891_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_9_488891_uvs.npy'
+[22:21:33.798] apply mesh: Traveler_Pouhc_2.p3d pts=3054 tris=4700 uvs=3054 nrms=3054
+[22:21:33.798] [apply  ] Traveler_Pouhc_2.p3d: pts=3054 tris=4700 uvs=3054 nrms=3054
+[22:21:33.800] [uv     ] Traveler_Pouhc_2.p3d: U=[-0.0022,0.9974] V=[0.0010,0.9950] uniq_U=579 uniq_V=395 pts=3054 tris=4700
+[22:21:33.801] raw check Traveler_Pouhc_2.p3d: best_tris=4700 pts=3054 base_limit=0.0019 robust=0.0019
+[22:21:33.805] subproc files for Bag_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_12_488904_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_12_488904_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_12_488904_uvs.npy'
+[22:21:33.805] [subproc] Bag_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_12_488904_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_12_488904_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_12_488904_uvs.npy'
+[22:21:33.831] apply mesh: Bag_g.p3d pts=31994 tris=47338 uvs=31994 nrms=31994
+[22:21:33.831] [apply  ] Bag_g.p3d: pts=31994 tris=47338 uvs=31994 nrms=31994
+[22:21:33.854] [uv     ] Bag_g.p3d: U=[0.0032,0.9981] V=[0.0013,0.9959] uniq_U=995 uniq_V=939 pts=31994 tris=47338
+[22:21:33.856] raw check Bag_g.p3d: best_tris=47386 pts=31994 base_limit=0.0025 robust=0.0025
+[22:21:33.860] subproc files for Pants_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_15_488917_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_15_488917_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_15_488917_uvs.npy'
+[22:21:33.860] [subproc] Pants_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_15_488917_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_15_488917_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_15_488917_uvs.npy'
+[22:21:33.862] apply mesh: Pants_G.p3d pts=2508 tris=4324 uvs=2508 nrms=2508
+[22:21:33.862] [apply  ] Pants_G.p3d: pts=2508 tris=4324 uvs=2508 nrms=2508
+[22:21:33.864] [uv     ] Pants_G.p3d: U=[0.0068,0.9910] V=[0.0078,0.9856] uniq_U=852 uniq_V=842 pts=2508 tris=4324
+[22:21:33.865] raw check Pants_G.p3d: best_tris=4324 pts=2508 base_limit=0.0163 robust=0.0163
+[22:21:33.868] subproc files for Top_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_16_488921_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_16_488921_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_16_488921_uvs.npy'
+[22:21:33.868] [subproc] Top_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_16_488921_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_16_488921_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_16_488921_uvs.npy'
+[22:21:33.871] apply mesh: Top_G.p3d pts=3197 tris=5624 uvs=3197 nrms=3197
+[22:21:33.871] [apply  ] Top_G.p3d: pts=3197 tris=5624 uvs=3197 nrms=3197
+[22:21:33.873] [uv     ] Top_G.p3d: U=[0.0112,0.9927] V=[0.0062,0.9940] uniq_U=907 uniq_V=907 pts=3197 tris=5624
+[22:21:33.874] raw check Top_G.p3d: best_tris=5624 pts=3197 base_limit=0.0178 robust=0.0178
+[22:21:33.877] subproc files for Vest_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_17_488926_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_17_488926_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_17_488926_uvs.npy'
+[22:21:33.877] [subproc] Vest_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_17_488926_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_17_488926_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_9676_17_488926_uvs.npy'
+[22:21:33.882] apply mesh: Vest_g.p3d pts=5924 tris=10277 uvs=5924 nrms=5924
+[22:21:33.882] [apply  ] Vest_g.p3d: pts=5924 tris=10277 uvs=5924 nrms=5924
+[22:21:33.887] [uv     ] Vest_g.p3d: U=[0.0008,1.9281] V=[0.0132,0.9991] uniq_U=1261 uniq_V=894 pts=5924 tris=10277
+[22:21:33.887] raw check Vest_g.p3d: best_tris=10277 pts=5924 base_limit=0.0110 robust=0.0110
+[22:21:33.890] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=18
+[22:21:33.992] _do_update_models_panel END: ready=18 loading=0 failed=0
+[22:21:39.782] load_mesh: pts=52992 tris=67302
+[22:21:39.796] proxy copied: walkietalkie.p3d
+[22:21:39.866] load_mesh RUN: idx=0 pts=52992
+[22:21:39.943] recompute: uv=1.5 edge=50.0 robust=0.0022 limit=0.11 → 67302/67302 tris, 2 groups
+[22:21:39.943] [recompute] uv=1.5 edge=50.0 → 67302/67302 tris, 2 groups
+[22:21:41.326] _recompute_mats: s1=14656 s2=0 swap=False two_split=False groups=2 tris=67302
+[22:21:42.063] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=18
+[22:21:42.212] _do_update_models_panel END: ready=18 loading=0 failed=0
+[22:21:42.227] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:21:42.237] DLL loaded OK
+[22:21:42.239] Reading face/points/normals/UV tables...
+[22:21:42.240]   nf=1352  face_ptr=1910985062528
+[22:21:42.240]   pts=1870
+[22:21:42.240]   nrms=1870
+[22:21:42.241]   uvs=1870
+[22:21:42.242] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:21:42.244]   UV U range: [0.0030, 0.9972] uniq=641
+[22:21:42.244]   UV V range: [0.0164, 0.9909] uniq=583
+[22:21:42.244]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:21:42.244]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:21:42.244] Reading material list...
+[22:21:42.244]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:21:42.246] Strategy A: LodFace struct probe
+[22:21:42.246]     _safe_read lodface_probe: ptr=1910985062528 bytes=2880
+[22:21:42.246]     _safe_read OK (2880 bytes)
+[22:21:42.246] Strategy C: p3d_get_item (info only)
+[22:21:42.246]   item_ptr=None n=0
+[22:21:42.246] flagbits=0x00000000
+[22:21:42.246]   sec_ptr=1910987873040 n=1
+[22:21:42.246] Analysis done. solved=False  writing dll_sections.txt
+[22:21:42.358] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:21:46.544] proxy selected: 0
+[22:21:46.544] proxy drag START: sel=0 ax=None
+[22:21:47.662] proxy selected: 0
+[22:21:47.662] proxy drag START: sel=0 ax=None
+[22:21:47.672] proxy moved: ax=None dx=0.0020 pos=-0.141,0.862,-0.212
+[22:21:47.684] proxy moved: ax=None dx=0.0020 pos=-0.139,0.862,-0.212
+[22:21:47.692] proxy moved: ax=None dx=0.0020 pos=-0.137,0.862,-0.212
+[22:21:47.698] proxy moved: ax=None dx=0.0020 pos=-0.135,0.862,-0.212
+[22:21:47.703] proxy moved: ax=None dx=0.0020 pos=-0.133,0.862,-0.212
+[22:21:47.708] proxy moved: ax=None dx=0.0020 pos=-0.131,0.862,-0.212
+[22:21:47.722] proxy moved: ax=None dx=0.0020 pos=-0.129,0.862,-0.212
+[22:21:47.728] proxy moved: ax=None dx=0.0020 pos=-0.127,0.862,-0.212
+[22:21:47.748] proxy moved: ax=None dx=0.0020 pos=-0.125,0.862,-0.212
+[22:21:47.778] proxy moved: ax=None dx=0.0020 pos=-0.123,0.862,-0.212
+[22:21:47.794] proxy moved: ax=None dx=0.0020 pos=-0.121,0.862,-0.212
+[22:21:47.800] proxy moved: ax=None dx=0.0020 pos=-0.119,0.862,-0.212
+[22:21:47.814] proxy moved: ax=None dx=0.0020 pos=-0.117,0.862,-0.212
+[22:21:47.828] proxy moved: ax=None dx=0.0020 pos=-0.115,0.862,-0.212
+[22:21:47.844] proxy moved: ax=None dx=0.0020 pos=-0.113,0.862,-0.212
+[22:21:48.014] proxy moved: ax=None dx=-0.0020 pos=-0.115,0.862,-0.212
+[22:21:48.028] proxy moved: ax=None dx=-0.0020 pos=-0.117,0.862,-0.212
+[22:21:48.040] proxy moved: ax=None dx=-0.0020 pos=-0.119,0.862,-0.212
+[22:21:48.046] proxy moved: ax=None dx=-0.0020 pos=-0.121,0.862,-0.212
+[22:21:48.056] proxy moved: ax=None dx=-0.0020 pos=-0.123,0.862,-0.212
+[22:21:48.064] proxy moved: ax=None dx=-0.0020 pos=-0.125,0.862,-0.212
+[22:21:48.072] proxy moved: ax=None dx=-0.0020 pos=-0.127,0.862,-0.212
+[22:21:48.076] proxy moved: ax=None dx=-0.0020 pos=-0.129,0.862,-0.212
+[22:21:48.086] proxy moved: ax=None dx=-0.0020 pos=-0.131,0.862,-0.212
+[22:21:48.094] proxy moved: ax=None dx=-0.0020 pos=-0.133,0.862,-0.212
+[22:21:48.102] proxy moved: ax=None dx=-0.0020 pos=-0.135,0.862,-0.212
+[22:21:48.106] proxy moved: ax=None dx=-0.0020 pos=-0.137,0.862,-0.212
+[22:21:48.115] proxy moved: ax=None dx=-0.0020 pos=-0.139,0.862,-0.212
+[22:21:48.122] proxy moved: ax=None dx=-0.0020 pos=-0.141,0.862,-0.212
+[22:21:48.132] proxy moved: ax=None dx=-0.0020 pos=-0.143,0.862,-0.214
+[22:21:48.136] proxy moved: ax=None dx=-0.0020 pos=-0.145,0.862,-0.214
+[22:21:48.146] proxy moved: ax=None dx=-0.0020 pos=-0.147,0.862,-0.214
+[22:21:48.168] proxy moved: ax=None dx=-0.0020 pos=-0.149,0.862,-0.214
+[22:21:48.188] proxy moved: ax=None dx=-0.0020 pos=-0.151,0.862,-0.214
+[22:21:48.200] proxy moved: ax=None dx=-0.0020 pos=-0.153,0.862,-0.214
+[22:21:48.240] proxy moved: ax=None dx=-0.0020 pos=-0.155,0.862,-0.214
+[22:21:48.286] proxy moved: ax=None dx=-0.0020 pos=-0.157,0.862,-0.214
+[22:21:48.530] proxy moved: ax=None dx=0.0020 pos=-0.155,0.862,-0.214
+[22:21:48.552] proxy moved: ax=None dx=0.0020 pos=-0.153,0.862,-0.214
+[22:21:48.566] proxy moved: ax=None dx=0.0020 pos=-0.151,0.862,-0.214
+[22:21:48.588] proxy moved: ax=None dx=0.0020 pos=-0.149,0.862,-0.214
+[22:21:48.616] proxy moved: ax=None dx=0.0020 pos=-0.147,0.862,-0.214
+[22:21:48.652] proxy moved: ax=None dx=0.0020 pos=-0.145,0.862,-0.214
+[22:21:48.658] proxy moved: ax=None dx=0.0020 pos=-0.143,0.862,-0.214
+[22:21:48.688] proxy moved: ax=None dx=0.0020 pos=-0.141,0.862,-0.214
+[22:21:48.706] proxy moved: ax=None dx=0.0020 pos=-0.139,0.862,-0.214
+[22:21:48.834] proxy moved: ax=None dx=0.0020 pos=-0.137,0.862,-0.214
+[22:22:06.020] [render ] flip_x toggle → True
+[22:22:07.160] [render ] flip_x toggle → False
+[22:22:08.180] [render ] flip_y toggle → True
+[22:22:08.708] [render ] flip_y toggle → False
+[22:22:09.836] [render ] flip_z toggle → True
+[22:22:10.446] [render ] flip_z toggle → False

@@ -1,0 +1,5 @@
+face_data_end=69290  nf=1352  n_mats=1
+n_sel_hdr=1 at 69290
+  str "lodnoshadow" n=49 → no valid face array found
+found_sels count=0
+FAILED — all faces get fallback mat

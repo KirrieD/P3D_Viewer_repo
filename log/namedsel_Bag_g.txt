@@ -1,0 +1,5 @@
+face_data_end=1587751  nf=47386  n_mats=1
+n_sel_hdr=1 at 1587751
+  sel "m_backpack" n=47386 skip=1 first=0 last=47199
+found_sels count=1
+  ASSIGNED "m_backpack" → "aid_set_traveler\data\m_backpack_co.paa" (47386 faces)

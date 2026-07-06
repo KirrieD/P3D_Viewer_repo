@@ -1,0 +1,5 @@
+face_data_end=35667  nf=4574  n_mats=1
+n_sel_hdr=1 at 35667
+  sel "m_small_bags" n=4574 skip=37 first=0 last=4573
+found_sels count=1
+  ASSIGNED "m_small_bags" → "aid_set_traveler\data\m_small_bags_co.paa" (4574 faces)

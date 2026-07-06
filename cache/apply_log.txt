@@ -1,0 +1,10 @@
+>>> _apply() ENTER n_mats=2
+<<< _apply() EXIT
+>>> _apply() ENTER n_mats=1
+<<< _apply() EXIT
+>>> _apply() ENTER n_mats=1
+<<< _apply() EXIT
+>>> _apply() ENTER n_mats=1
+<<< _apply() EXIT
+>>> _apply() ENTER n_mats=1
+<<< _apply() EXIT

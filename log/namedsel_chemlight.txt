@@ -1,0 +1,7 @@
+face_data_end=18801  nf=340  n_mats=1
+n_sel_hdr=1 at 18801
+  sel "zbytek" n=340 skip=0 first=0 last=339
+  sel "camo" n=340 skip=0 first=0 last=339
+  str "lodnoshadow" n=49 → no valid face array found
+found_sels count=2
+FAILED — all faces get fallback mat

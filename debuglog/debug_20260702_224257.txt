@@ -1,0 +1,97 @@
+=== P3D Viewer v3.2.0 session started ===
+[22:42:57.397] [render ] init flip uniforms: mirror_uv=False x=False y=False z=False
+[22:42:57.404] _do_update_models_panel START: models=[] ready_count=0
+[22:42:57.803] _do_update_models_panel END: ready=0 loading=0 failed=0
+[22:42:57.804] _discover_widgets: 39 entries
+[22:43:10.076] _do_update_models_panel START: models=[0] ready_count=0
+[22:43:10.090] _do_update_models_panel END: ready=0 loading=1 failed=0
+[22:43:10.239] _do_update_models_panel START: models=[0] ready_count=0
+[22:43:10.243] _do_update_models_panel END: ready=0 loading=1 failed=0
+[22:43:10.389] _do_update_models_panel START: models=[0] ready_count=0
+[22:43:10.396] _do_update_models_panel END: ready=0 loading=1 failed=0
+[22:43:10.539] _do_update_models_panel START: models=[0] ready_count=0
+[22:43:10.544] _do_update_models_panel END: ready=0 loading=1 failed=0
+[22:43:10.640] parse diag alicebackpack_f.p3d: dll_nf=4582 good=8894 base_limit=0.0240 robust=0.0240 em=50.0 uv=1.5
+[22:43:10.640] [parse  ] alicebackpack_f.p3d: nf=4582 good=8894 base=0.0240 robust=0.0240
+[22:43:10.643] subproc files for alicebackpack_f.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_8860_0_790036_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_8860_0_790036_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_8860_0_790036_uvs.npy'
+[22:43:10.643] [subproc] alicebackpack_f.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_8860_0_790036_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_8860_0_790036_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_8860_0_790036_uvs.npy'
+[22:43:10.650] apply mesh: alicebackpack_f.p3d pts=7752 tris=8894 uvs=7752 nrms=7752
+[22:43:10.650] [apply  ] alicebackpack_f.p3d: pts=7752 tris=8894 uvs=7752 nrms=7752
+[22:43:10.656] [uv     ] alicebackpack_f.p3d: U=[-0.0977,0.9949] V=[0.0000,1.1403] uniq_U=899 uniq_V=835 pts=7752 tris=8894
+[22:43:10.657] raw check alicebackpack_f.p3d: best_tris=8894 pts=7752 base_limit=0.0240 robust=0.0240
+[22:43:11.061] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\chemlight.p3d
+[22:43:11.069] DLL loaded OK
+[22:43:11.070] load_mesh: pts=7752 tris=8894
+[22:43:11.072] Reading face/points/normals/UV tables...
+[22:43:11.072]   nf=340  face_ptr=2489302386432
+[22:43:11.073]   pts=455
+[22:43:11.073]   nrms=455
+[22:43:11.073]   uvs=455
+[22:43:11.074] [uv     ] chemlight.p3d: U=[0.0172,0.9880] V=[0.0164,0.9935] uniq_U=116 uniq_V=52
+[22:43:11.074]   UV U range: [0.0172, 0.9880] uniq=116
+[22:43:11.074]   UV V range: [0.0164, 0.9935] uniq=52
+[22:43:11.074]   UV first12: [(0.14285147190093994, 0.47728055715560913), (0.8920320272445679, 0.15118861198425293), (0.9026976227760315, 0.1405276358127594), (0.08084316551685333, 0.47728055715560913), (0.9166220426559448, 0.13475728034973145), (0.9848371148109436, 0.47728055715560913), (0.018316393718123436, 0.47728055715560913), (0.2040746659040451, 0.47728055715560913), (0.8862549066543579, 0.16511498391628265), (0.9316871166229248, 0.13475728034973145), (0.9221177697181702, 0.47728055715560913), (0.2644238770008087, 0.47728055715560913)]
+[22:43:11.074]   UV last12:  [(0.7028074860572815, 0.01636815071105957), (0.771318793296814, 0.01636815071105957), (0.8398153185844421, 0.01636815071105957), (0.01776830293238163, 0.01636815071105957), (0.08627963066101074, 0.01636815071105957), (0.15477614104747772, 0.01636815071105957), (0.2232874631881714, 0.01636815071105957), (0.2917839586734772, 0.01636815071105957), (0.36029529571533203, 0.01636815071105957), (0.4287917912006378, 0.01636815071105957), (0.4973031282424927, 0.01636815071105957), (0.5657996535301208, 0.01636815071105957)]
+[22:43:11.074] Reading material list...
+[22:43:11.074]   mat_list (1): ['dz\\gear\\consumables\\data\\chemlight_ca.paa']
+[22:43:11.077] Strategy A: LodFace struct probe
+[22:43:11.077]     _safe_read lodface_probe: ptr=2489302386432 bytes=2880
+[22:43:11.081]     _safe_read OK (2880 bytes)
+[22:43:11.081] Strategy C: p3d_get_item (info only)
+[22:43:11.081]   item_ptr=None n=0
+[22:43:11.081] flagbits=0x00000000
+[22:43:11.081]   sec_ptr=2489302570720 n=1
+[22:43:11.082] Analysis done. solved=False  writing dll_sections.txt
+[22:43:11.087] load_mesh RUN: idx=0 pts=7752
+[22:43:11.096] recompute: uv=1.5 edge=50.0 robust=0.0240 limit=1.20 → 8894/8894 tris, 1 groups
+[22:43:11.096] [recompute] uv=1.5 edge=50.0 → 8894/8894 tris, 1 groups
+[22:43:11.115] proxy mesh loaded: chemlight.p3d (455 verts, 352 tris)
+[22:43:11.116] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:43:11.117] DLL loaded OK
+[22:43:11.119] Reading face/points/normals/UV tables...
+[22:43:11.119]   nf=1352  face_ptr=2489304874096
+[22:43:11.119]   pts=1870
+[22:43:11.120]   nrms=1870
+[22:43:11.120]   uvs=1870
+[22:43:11.121] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:43:11.123]   UV U range: [0.0030, 0.9972] uniq=641
+[22:43:11.123]   UV V range: [0.0164, 0.9909] uniq=583
+[22:43:11.123]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:43:11.123]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:43:11.123] Reading material list...
+[22:43:11.123]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:43:11.124] Strategy A: LodFace struct probe
+[22:43:11.125]     _safe_read lodface_probe: ptr=2489304874096 bytes=2880
+[22:43:11.125]     _safe_read OK (2880 bytes)
+[22:43:11.125] Strategy C: p3d_get_item (info only)
+[22:43:11.125]   item_ptr=None n=0
+[22:43:11.125] flagbits=0x00000000
+[22:43:11.125]   sec_ptr=2489302573424 n=1
+[22:43:11.125] Analysis done. solved=False  writing dll_sections.txt
+[22:43:11.167] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:43:11.168] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\backpack_1.p3d
+[22:43:11.168] DLL loaded OK
+[22:43:11.169] Reading face/points/normals/UV tables...
+[22:43:11.169]   nf=201  face_ptr=2489305366336
+[22:43:11.169]   pts=275
+[22:43:11.169]   nrms=275
+[22:43:11.169]   uvs=275
+[22:43:11.169] [uv     ] backpack_1.p3d: U=[0.0050,0.9919] V=[0.0014,0.9940] uniq_U=228 uniq_V=226
+[22:43:11.169]   UV U range: [0.0050, 0.9919] uniq=228
+[22:43:11.169]   UV V range: [0.0014, 0.9940] uniq=226
+[22:43:11.169]   UV first12: [(0.3673963248729706, 0.765080988407135), (0.33959800004959106, 0.6920452117919922), (0.2791825830936432, 0.6446068286895752), (0.20414520800113678, 0.6336711645126343), (0.13371577858924866, 0.6611769199371338), (0.08626589179039001, 0.7200811505317688), (0.07471588999032974, 0.7946921586990356), (0.10155044496059418, 0.865092396736145), (0.15988776087760925, 0.9129700660705566), (0.23442821204662323, 0.9253597855567932), (0.30536961555480957, 0.8991111516952515), (0.35417479276657104, 0.8408430814743042)]
+[22:43:11.169]   UV last12:  [(0.45146891474723816, 0.4613964259624481), (0.39383935928344727, 0.4078691601753235), (0.816250205039978, 0.6305358409881592), (0.7327347993850708, 0.576811671257019), (0.5674206614494324, 0.4474920630455017), (0.5414294004440308, 0.4280744194984436), (0.4749453663825989, 0.48496416211128235), (0.3071465492248535, 0.48626673221588135), (0.1770998239517212, 0.5532136559486389), (0.5714112520217896, 0.17805340886116028), (0.7042889595031738, 0.39320749044418335), (0.6247490644454956, 0.49330979585647583)]
+[22:43:11.169] Reading material list...
+[22:43:11.169]   mat_list (0): []
+[22:43:11.170] Strategy A: LodFace struct probe
+[22:43:11.170]     _safe_read lodface_probe: ptr=2489305366336 bytes=2880
+[22:43:11.170]     _safe_read OK (2880 bytes)
+[22:43:11.170] Strategy C: p3d_get_item (info only)
+[22:43:11.170]   item_ptr=None n=0
+[22:43:11.170] flagbits=0x00000000
+[22:43:11.170]   sec_ptr=2489302571552 n=1
+[22:43:11.170] Analysis done. solved=False  writing dll_sections.txt
+[22:43:11.180] proxy mesh loaded: backpack_1.p3d (275 verts, 342 tris)
+[22:43:11.324] _recompute_mats: s1=0 s2=0 swap=False two_split=False groups=1 tris=8894
+[22:43:11.522] _do_update_models_panel START: models=[0] ready_count=1
+[22:43:11.551] _do_update_models_panel END: ready=1 loading=0 failed=0

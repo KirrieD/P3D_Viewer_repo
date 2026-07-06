@@ -1,0 +1,9 @@
+{
+    "model": "Vest_g",
+    "split1": 0,
+    "split2": 0,
+    "swap": false,
+    "uv_threshold": 1.0,
+    "edge_threshold": 50,
+    "note": ""
+}

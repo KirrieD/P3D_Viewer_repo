@@ -1,0 +1,12 @@
+{
+    "model": "Bag",
+    "split1": 47386,
+    "split2": 0,
+    "swap": true,
+    "uv_threshold": 1.0,
+    "edge_threshold": 150,
+    "note": "",
+    "splits": [
+        47386
+    ]
+}

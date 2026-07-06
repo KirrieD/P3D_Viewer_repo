@@ -1,0 +1,24 @@
+face_data_end=373640  nf=10378  n_mats=2
+n_sel_hdr=2 at 373640
+  sel "m_outfit_pants" n=4324 skip=35 first=0 last=4323
+  sel "leftfoot" n=1000 skip=9 first=4324 last=3326
+  sel "leftkneeextra" n=1110 skip=10 first=4325 last=4323
+  str "leftleg" n=6706 → no valid face array found
+  str "leftlegroll" n=6577 → no valid face array found
+  sel "leftupleg" n=1348 skip=12 first=1061 last=4142
+  sel "leftuplegroll" n=1263 skip=11 first=995 last=4323
+  sel "pelvis" n=2429 skip=20 first=394 last=4291
+  sel "rightfoot" n=446 skip=0 first=0 last=2572
+  sel "rightkneeextra" n=598 skip=6 first=167 last=4307
+  sel "rightleg" n=672 skip=7 first=0 last=4307
+  sel "rightlegroll" n=640 skip=6 first=0 last=4307
+  sel "rightupleg" n=1359 skip=12 first=323 last=4307
+  sel "rightuplegroll" n=1236 skip=11 first=208 last=4307
+  sel "spine" n=1001 skip=9 first=608 last=4164
+  sel "spine1" n=449 skip=0 first=696 last=4142
+  str "injury_legs" n=10378 → no valid face array found
+  str "zbytek" n=10378 → no valid face array found
+  str "camomale" n=10378 → no valid face array found
+  sel "m_small_bags" n=6054 skip=49 first=4324 last=10377
+found_sels count=15
+  ASSIGNED "m_outfit_pants" → "aid_set_traveler\data\m_small_bags_co.paa" (4324 faces)

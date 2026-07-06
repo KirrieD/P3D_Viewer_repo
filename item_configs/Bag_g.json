@@ -1,0 +1,9 @@
+{
+    "model": "Bag_g",
+    "split1": 0,
+    "split2": 0,
+    "swap": false,
+    "uv_threshold": 0.8,
+    "edge_threshold": 100,
+    "note": ""
+}

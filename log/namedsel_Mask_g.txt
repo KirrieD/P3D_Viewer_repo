@@ -1,0 +1,5 @@
+face_data_end=111293  nf=3518  n_mats=1
+n_sel_hdr=1 at 111293
+  sel "m_mask" n=3518 skip=29 first=0 last=3517
+found_sels count=1
+  ASSIGNED "m_mask" → "aid_set_traveler\data\m_mask_co.paa" (3518 faces)

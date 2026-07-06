@@ -1,0 +1,13 @@
+face_data_end=3042048  nf=67367  n_mats=2
+n_sel_hdr=6 at 3042048
+  sel "R" n=16414 skip=0 first=16256 last=30069
+  sel "leftshoulder" n=8977 skip=0 first=0 last=1704
+  sel "rightshoulder" n=10966 skip=0 first=0 last=58113
+  sel "spine" n=22684 skip=0 first=0 last=39428
+  sel "spine1" n=32900 skip=0 first=0 last=46596
+  sel "spine2" n=37484 skip=0 first=0 last=49669
+found_sels count=6
+Strategy F (UV k-means): split=43980/67367 ошибок=21382 уверенность=0.683
+Strategy F: уверенность <80%, пропуск
+Strategy E: fc_at+8=14656 split=14656/67367
+  => face_mats SET via binary section range (14656 × mat[1], 52711 × mat[0])

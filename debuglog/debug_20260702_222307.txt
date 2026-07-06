@@ -1,0 +1,1561 @@
+=== P3D Viewer v3.2.0 session started ===
+[22:23:07.046] [render ] init flip uniforms: mirror_uv=False x=False y=False z=False
+[22:23:07.053] _do_update_models_panel START: models=[] ready_count=0
+[22:23:07.444] _do_update_models_panel END: ready=0 loading=0 failed=0
+[22:23:07.445] _discover_widgets: 39 entries
+[22:23:19.633] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:23:19.662] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:23:19.749] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:23:19.756] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:23:19.900] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:23:19.906] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:23:20.047] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:23:20.052] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:23:20.199] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:23:20.206] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:23:20.348] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:23:20.355] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:23:20.538] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=0
+[22:23:20.543] _do_update_models_panel END: ready=0 loading=18 failed=0
+[22:23:20.635] parse diag Radio.p3d: dll_nf=3366 good=3366 base_limit=0.0024 robust=0.0024 em=50.0 uv=1.5
+[22:23:20.635] [parse  ] Radio.p3d: nf=3366 good=3366 base=0.0024 robust=0.0024
+[22:23:20.683] subproc files for Radio.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_7_599567_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_7_599567_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_7_599567_uvs.npy'
+[22:23:20.683] [subproc] Radio.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_7_599567_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_7_599567_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_7_599567_uvs.npy'
+[22:23:20.691] apply mesh: Radio.p3d pts=2265 tris=3366 uvs=2265 nrms=2265
+[22:23:20.691] [apply  ] Radio.p3d: pts=2265 tris=3366 uvs=2265 nrms=2265
+[22:23:20.694] [uv     ] Radio.p3d: U=[0.0098,0.9912] V=[0.0063,0.9884] uniq_U=631 uniq_V=652 pts=2265 tris=3366
+[22:23:20.695] raw check Radio.p3d: best_tris=3366 pts=2265 base_limit=0.0024 robust=0.0024
+[22:23:21.424] load_mesh: pts=2265 tris=3366
+[22:23:21.432] load_mesh RUN: idx=7 pts=2265
+[22:23:21.437] recompute: uv=1.5 edge=50.0 robust=0.0024 limit=0.12 → 3366/3366 tris, 1 groups
+[22:23:21.437] [recompute] uv=1.5 edge=50.0 → 3366/3366 tris, 1 groups
+[22:23:21.732] _recompute_mats: s1=0 s2=0 swap=False two_split=False groups=1 tris=3366
+[22:23:21.896] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=1
+[22:23:21.942] _do_update_models_panel END: ready=1 loading=17 failed=0
+[22:23:21.944] parse diag Boot.p3d: dll_nf=1996 good=1996 base_limit=0.0117 robust=0.0117 em=50.0 uv=1.5
+[22:23:21.944] [parse  ] Boot.p3d: nf=1996 good=1996 base=0.0117 robust=0.0117
+[22:23:21.945] parse diag Mask.p3d: dll_nf=3518 good=3518 base_limit=0.0083 robust=0.0083 em=50.0 uv=1.5
+[22:23:21.945] [parse  ] Mask.p3d: nf=3518 good=3518 base=0.0083 robust=0.0083
+[22:23:21.946] parse diag Pants.p3d: dll_nf=10378 good=10378 base_limit=0.0061 robust=0.0061 em=50.0 uv=1.5
+[22:23:21.946] [parse  ] Pants.p3d: nf=10378 good=10378 base=0.0061 robust=0.0061
+[22:23:21.946] parse diag Top.p3d: dll_nf=11806 good=11806 base_limit=0.0125 robust=0.0125 em=50.0 uv=1.5
+[22:23:21.946] [parse  ] Top.p3d: nf=11806 good=11806 base=0.0125 robust=0.0125
+[22:23:21.947] parse diag Top_no_hood.p3d: dll_nf=11796 good=11796 base_limit=0.0106 robust=0.0106 em=50.0 uv=1.5
+[22:23:21.947] [parse  ] Top_no_hood.p3d: nf=11796 good=11796 base=0.0106 robust=0.0106
+[22:23:21.948] parse diag Vest.p3d: dll_nf=20554 good=20554 base_limit=0.0072 robust=0.0072 em=50.0 uv=1.0
+[22:23:21.948] [parse  ] Vest.p3d: nf=20554 good=20554 base=0.0072 robust=0.0072
+[22:23:21.949] parse diag Traveler_Pouhc_1.p3d: dll_nf=4700 good=4700 base_limit=0.0019 robust=0.0019 em=50.0 uv=1.5
+[22:23:21.949] [parse  ] Traveler_Pouhc_1.p3d: nf=4700 good=4700 base=0.0019 robust=0.0019
+[22:23:21.950] parse diag Traveler_Pouhc_2.p3d: dll_nf=4700 good=4700 base_limit=0.0019 robust=0.0019 em=50.0 uv=1.5
+[22:23:21.950] [parse  ] Traveler_Pouhc_2.p3d: nf=4700 good=4700 base=0.0019 robust=0.0019
+[22:23:21.950] parse diag Traveler_Pouhc_3.p3d: dll_nf=4574 good=4574 base_limit=0.0019 robust=0.0019 em=50.0 uv=1.5
+[22:23:21.950] [parse  ] Traveler_Pouhc_3.p3d: nf=4574 good=4574 base=0.0019 robust=0.0019
+[22:23:21.951] parse diag Traveler_Pouhc_4.p3d: dll_nf=688 good=688 base_limit=0.0058 robust=0.0058 em=50.0 uv=1.5
+[22:23:21.951] [parse  ] Traveler_Pouhc_4.p3d: nf=688 good=688 base=0.0058 robust=0.0058
+[22:23:21.952] parse diag Bag_g.p3d: dll_nf=47386 good=47386 base_limit=0.0025 robust=0.0025 em=100.0 uv=0.8
+[22:23:21.952] [parse  ] Bag_g.p3d: nf=47386 good=47386 base=0.0025 robust=0.0025
+[22:23:21.953] parse diag Boot_G.p3d: dll_nf=1996 good=1996 base_limit=0.0116 robust=0.0116 em=50.0 uv=1.5
+[22:23:21.953] [parse  ] Boot_G.p3d: nf=1996 good=1996 base=0.0116 robust=0.0116
+[22:23:21.954] parse diag Mask_g.p3d: dll_nf=3518 good=3518 base_limit=0.0078 robust=0.0078 em=50.0 uv=1.5
+[22:23:21.954] [parse  ] Mask_g.p3d: nf=3518 good=3518 base=0.0078 robust=0.0078
+[22:23:21.954] parse diag Pants_G.p3d: dll_nf=4324 good=4324 base_limit=0.0163 robust=0.0163 em=50.0 uv=1.5
+[22:23:21.954] [parse  ] Pants_G.p3d: nf=4324 good=4324 base=0.0163 robust=0.0163
+[22:23:21.955] parse diag Top_G.p3d: dll_nf=5624 good=5624 base_limit=0.0178 robust=0.0178 em=50.0 uv=1.5
+[22:23:21.955] [parse  ] Top_G.p3d: nf=5624 good=5624 base=0.0178 robust=0.0178
+[22:23:21.956] parse diag Vest_g.p3d: dll_nf=9192 good=10277 base_limit=0.0110 robust=0.0110 em=50.0 uv=1.0
+[22:23:21.956] [parse  ] Vest_g.p3d: nf=9192 good=10277 base=0.0110 robust=0.0110
+[22:23:21.963] subproc files for Boot.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_1_599519_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_1_599519_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_1_599519_uvs.npy'
+[22:23:21.963] [subproc] Boot.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_1_599519_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_1_599519_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_1_599519_uvs.npy'
+[22:23:21.965] apply mesh: Boot.p3d pts=1322 tris=1996 uvs=1322 nrms=1322
+[22:23:21.965] [apply  ] Boot.p3d: pts=1322 tris=1996 uvs=1322 nrms=1322
+[22:23:21.966] [uv     ] Boot.p3d: U=[0.0127,0.5304] V=[0.0108,0.9874] uniq_U=302 uniq_V=403 pts=1322 tris=1996
+[22:23:21.967] raw check Boot.p3d: best_tris=1996 pts=1322 base_limit=0.0117 robust=0.0117
+[22:23:21.970] subproc files for Mask.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_2_599522_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_2_599522_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_2_599522_uvs.npy'
+[22:23:21.970] [subproc] Mask.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_2_599522_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_2_599522_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_2_599522_uvs.npy'
+[22:23:21.981] apply mesh: Mask.p3d pts=1949 tris=3518 uvs=1949 nrms=1949
+[22:23:21.981] [apply  ] Mask.p3d: pts=1949 tris=3518 uvs=1949 nrms=1949
+[22:23:21.983] [uv     ] Mask.p3d: U=[0.0130,0.9912] V=[0.0416,0.9777] uniq_U=806 uniq_V=721 pts=1949 tris=3518
+[22:23:21.983] raw check Mask.p3d: best_tris=3518 pts=1949 base_limit=0.0083 robust=0.0083
+[22:23:21.986] subproc files for Pants.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_3_599531_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_3_599531_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_3_599531_uvs.npy'
+[22:23:21.986] [subproc] Pants.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_3_599531_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_3_599531_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_3_599531_uvs.npy'
+[22:23:21.992] apply mesh: Pants.p3d pts=6270 tris=10378 uvs=6270 nrms=6270
+[22:23:21.992] [apply  ] Pants.p3d: pts=6270 tris=10378 uvs=6270 nrms=6270
+[22:23:21.997] [uv     ] Pants.p3d: U=[-0.0455,1.1136] V=[0.0014,0.9948] uniq_U=939 uniq_V=902 pts=6270 tris=10378
+[22:23:21.998] raw check Pants.p3d: best_tris=10378 pts=6270 base_limit=0.0061 robust=0.0061
+[22:23:22.001] subproc files for Top.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_4_599541_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_4_599541_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_4_599541_uvs.npy'
+[22:23:22.001] [subproc] Top.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_4_599541_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_4_599541_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_4_599541_uvs.npy'
+[22:23:22.007] apply mesh: Top.p3d pts=7124 tris=11806 uvs=7124 nrms=7124
+[22:23:22.007] [apply  ] Top.p3d: pts=7124 tris=11806 uvs=7124 nrms=7124
+[22:23:22.013] [uv     ] Top.p3d: U=[-0.0433,1.2142] V=[0.0014,0.9948] uniq_U=969 uniq_V=943 pts=7124 tris=11806
+[22:23:22.013] raw check Top.p3d: best_tris=11806 pts=7124 base_limit=0.0125 robust=0.0125
+[22:23:22.016] subproc files for Top_no_hood.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_5_599552_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_5_599552_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_5_599552_uvs.npy'
+[22:23:22.016] [subproc] Top_no_hood.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_5_599552_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_5_599552_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_5_599552_uvs.npy'
+[22:23:22.033] apply mesh: Top_no_hood.p3d pts=7123 tris=11796 uvs=7123 nrms=7123
+[22:23:22.033] [apply  ] Top_no_hood.p3d: pts=7123 tris=11796 uvs=7123 nrms=7123
+[22:23:22.041] [uv     ] Top_no_hood.p3d: U=[-0.0433,1.2142] V=[0.0014,0.9948] uniq_U=969 uniq_V=943 pts=7123 tris=11796
+[22:23:22.041] raw check Top_no_hood.p3d: best_tris=11796 pts=7123 base_limit=0.0106 robust=0.0106
+[22:23:22.045] subproc files for Vest.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_6_599563_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_6_599563_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_6_599563_uvs.npy'
+[22:23:22.045] [subproc] Vest.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_6_599563_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_6_599563_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_6_599563_uvs.npy'
+[22:23:22.059] apply mesh: Vest.p3d pts=11189 tris=20554 uvs=11189 nrms=11189
+[22:23:22.060] [apply  ] Vest.p3d: pts=11189 tris=20554 uvs=11189 nrms=11189
+[22:23:22.068] [uv     ] Vest.p3d: U=[0.0008,1.9281] V=[0.0132,0.9991] uniq_U=1318 uniq_V=904 pts=11189 tris=20554
+[22:23:22.069] raw check Vest.p3d: best_tris=20554 pts=11189 base_limit=0.0072 robust=0.0072
+[22:23:22.072] subproc files for Traveler_Pouhc_1.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_8_599570_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_8_599570_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_8_599570_uvs.npy'
+[22:23:22.072] [subproc] Traveler_Pouhc_1.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_8_599570_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_8_599570_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_8_599570_uvs.npy'
+[22:23:22.077] apply mesh: Traveler_Pouhc_1.p3d pts=3054 tris=4700 uvs=3054 nrms=3054
+[22:23:22.077] [apply  ] Traveler_Pouhc_1.p3d: pts=3054 tris=4700 uvs=3054 nrms=3054
+[22:23:22.079] [uv     ] Traveler_Pouhc_1.p3d: U=[-0.0022,0.9974] V=[0.0010,0.9950] uniq_U=579 uniq_V=395 pts=3054 tris=4700
+[22:23:22.080] raw check Traveler_Pouhc_1.p3d: best_tris=4700 pts=3054 base_limit=0.0019 robust=0.0019
+[22:23:22.082] subproc files for Traveler_Pouhc_2.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_9_599573_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_9_599573_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_9_599573_uvs.npy'
+[22:23:22.082] [subproc] Traveler_Pouhc_2.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_9_599573_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_9_599573_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_9_599573_uvs.npy'
+[22:23:22.086] apply mesh: Traveler_Pouhc_2.p3d pts=3054 tris=4700 uvs=3054 nrms=3054
+[22:23:22.086] [apply  ] Traveler_Pouhc_2.p3d: pts=3054 tris=4700 uvs=3054 nrms=3054
+[22:23:22.088] [uv     ] Traveler_Pouhc_2.p3d: U=[-0.0022,0.9974] V=[0.0010,0.9950] uniq_U=579 uniq_V=395 pts=3054 tris=4700
+[22:23:22.089] raw check Traveler_Pouhc_2.p3d: best_tris=4700 pts=3054 base_limit=0.0019 robust=0.0019
+[22:23:22.092] subproc files for Traveler_Pouhc_3.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_10_599576_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_10_599576_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_10_599576_uvs.npy'
+[22:23:22.092] [subproc] Traveler_Pouhc_3.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_10_599576_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_10_599576_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_10_599576_uvs.npy'
+[22:23:22.112] apply mesh: Traveler_Pouhc_3.p3d pts=2948 tris=4574 uvs=2948 nrms=2948
+[22:23:22.112] [apply  ] Traveler_Pouhc_3.p3d: pts=2948 tris=4574 uvs=2948 nrms=2948
+[22:23:22.116] [uv     ] Traveler_Pouhc_3.p3d: U=[0.0305,0.8675] V=[0.0014,0.9948] uniq_U=504 uniq_V=407 pts=2948 tris=4574
+[22:23:22.116] raw check Traveler_Pouhc_3.p3d: best_tris=4574 pts=2948 base_limit=0.0019 robust=0.0019
+[22:23:22.119] subproc files for Traveler_Pouhc_4.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_11_599580_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_11_599580_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_11_599580_uvs.npy'
+[22:23:22.119] [subproc] Traveler_Pouhc_4.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_11_599580_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_11_599580_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_11_599580_uvs.npy'
+[22:23:22.120] apply mesh: Traveler_Pouhc_4.p3d pts=441 tris=688 uvs=441 nrms=441
+[22:23:22.120] [apply  ] Traveler_Pouhc_4.p3d: pts=441 tris=688 uvs=441 nrms=441
+[22:23:22.120] [uv     ] Traveler_Pouhc_4.p3d: U=[0.2762,0.9938] V=[0.0022,0.9925] uniq_U=241 uniq_V=231 pts=441 tris=688
+[22:23:22.121] raw check Traveler_Pouhc_4.p3d: best_tris=688 pts=441 base_limit=0.0058 robust=0.0058
+[22:23:22.124] subproc files for Bag_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_12_599591_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_12_599591_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_12_599591_uvs.npy'
+[22:23:22.124] [subproc] Bag_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_12_599591_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_12_599591_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_12_599591_uvs.npy'
+[22:23:22.150] apply mesh: Bag_g.p3d pts=31994 tris=47386 uvs=31994 nrms=31994
+[22:23:22.150] [apply  ] Bag_g.p3d: pts=31994 tris=47386 uvs=31994 nrms=31994
+[22:23:22.174] [uv     ] Bag_g.p3d: U=[0.0032,0.9981] V=[0.0013,0.9959] uniq_U=995 uniq_V=939 pts=31994 tris=47386
+[22:23:22.175] raw check Bag_g.p3d: best_tris=47386 pts=31994 base_limit=0.0025 robust=0.0025
+[22:23:22.179] subproc files for Boot_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_13_599595_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_13_599595_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_13_599595_uvs.npy'
+[22:23:22.179] [subproc] Boot_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_13_599595_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_13_599595_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_13_599595_uvs.npy'
+[22:23:22.181] apply mesh: Boot_G.p3d pts=1322 tris=1996 uvs=1322 nrms=1322
+[22:23:22.181] [apply  ] Boot_G.p3d: pts=1322 tris=1996 uvs=1322 nrms=1322
+[22:23:22.182] [uv     ] Boot_G.p3d: U=[0.0127,0.5304] V=[0.0108,0.9874] uniq_U=302 uniq_V=403 pts=1322 tris=1996
+[22:23:22.182] raw check Boot_G.p3d: best_tris=1996 pts=1322 base_limit=0.0116 robust=0.0116
+[22:23:22.185] subproc files for Mask_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_14_599598_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_14_599598_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_14_599598_uvs.npy'
+[22:23:22.185] [subproc] Mask_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_14_599598_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_14_599598_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_14_599598_uvs.npy'
+[22:23:22.187] apply mesh: Mask_g.p3d pts=1949 tris=3518 uvs=1949 nrms=1949
+[22:23:22.187] [apply  ] Mask_g.p3d: pts=1949 tris=3518 uvs=1949 nrms=1949
+[22:23:22.189] [uv     ] Mask_g.p3d: U=[0.0130,0.9912] V=[0.0416,0.9777] uniq_U=806 uniq_V=721 pts=1949 tris=3518
+[22:23:22.189] raw check Mask_g.p3d: best_tris=3518 pts=1949 base_limit=0.0078 robust=0.0078
+[22:23:22.192] subproc files for Pants_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_15_599602_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_15_599602_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_15_599602_uvs.npy'
+[22:23:22.192] [subproc] Pants_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_15_599602_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_15_599602_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_15_599602_uvs.npy'
+[22:23:22.195] apply mesh: Pants_G.p3d pts=2508 tris=4324 uvs=2508 nrms=2508
+[22:23:22.195] [apply  ] Pants_G.p3d: pts=2508 tris=4324 uvs=2508 nrms=2508
+[22:23:22.197] [uv     ] Pants_G.p3d: U=[0.0068,0.9910] V=[0.0078,0.9856] uniq_U=852 uniq_V=842 pts=2508 tris=4324
+[22:23:22.197] raw check Pants_G.p3d: best_tris=4324 pts=2508 base_limit=0.0163 robust=0.0163
+[22:23:22.200] subproc files for Top_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_16_599614_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_16_599614_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_16_599614_uvs.npy'
+[22:23:22.200] [subproc] Top_G.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_16_599614_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_16_599614_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_16_599614_uvs.npy'
+[22:23:22.204] apply mesh: Top_G.p3d pts=3197 tris=5624 uvs=3197 nrms=3197
+[22:23:22.204] [apply  ] Top_G.p3d: pts=3197 tris=5624 uvs=3197 nrms=3197
+[22:23:22.207] [uv     ] Top_G.p3d: U=[0.0112,0.9927] V=[0.0062,0.9940] uniq_U=907 uniq_V=907 pts=3197 tris=5624
+[22:23:22.207] raw check Top_G.p3d: best_tris=5624 pts=3197 base_limit=0.0178 robust=0.0178
+[22:23:22.211] subproc files for Vest_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_17_599625_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_17_599625_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_17_599625_uvs.npy'
+[22:23:22.211] [subproc] Vest_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_17_599625_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_17_599625_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_17_599625_uvs.npy'
+[22:23:22.217] apply mesh: Vest_g.p3d pts=5924 tris=10277 uvs=5924 nrms=5924
+[22:23:22.218] [apply  ] Vest_g.p3d: pts=5924 tris=10277 uvs=5924 nrms=5924
+[22:23:22.223] [uv     ] Vest_g.p3d: U=[0.0008,1.9281] V=[0.0132,0.9991] uniq_U=1261 uniq_V=894 pts=5924 tris=10277
+[22:23:22.223] raw check Vest_g.p3d: best_tris=10277 pts=5924 base_limit=0.0110 robust=0.0110
+[22:23:22.228] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=17
+[22:23:22.377] _do_update_models_panel END: ready=17 loading=1 failed=0
+[22:23:22.429] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=17
+[22:23:22.548] _do_update_models_panel END: ready=17 loading=1 failed=0
+[22:23:22.555] parse diag Bag.p3d: dll_nf=67367 good=67366 base_limit=0.0022 robust=0.0022 em=150.0 uv=1.0
+[22:23:22.555] [parse  ] Bag.p3d: nf=67367 good=67366 base=0.0022 robust=0.0022
+[22:23:22.559] subproc files for Bag.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_0_599515_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_0_599515_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_0_599515_uvs.npy'
+[22:23:22.559] [subproc] Bag.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_0_599515_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_0_599515_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_0_599515_uvs.npy'
+[22:23:22.651] apply mesh: Bag.p3d pts=52992 tris=67366 uvs=52992 nrms=52992
+[22:23:22.651] [apply  ] Bag.p3d: pts=52992 tris=67366 uvs=52992 nrms=52992
+[22:23:22.694] [uv     ] Bag.p3d: U=[0.0000,0.9981] V=[0.0000,0.9964] uniq_U=997 uniq_V=995 pts=52992 tris=67366
+[22:23:22.696] raw check Bag.p3d: best_tris=67367 pts=52992 base_limit=0.0022 robust=0.0022
+[22:23:22.701] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=18
+[22:23:22.830] _do_update_models_panel END: ready=18 loading=0 failed=0
+[22:23:25.552] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:23:25.554] load_mesh: pts=52992 tris=67366
+[22:23:25.569] DLL loaded OK
+[22:23:25.571] Reading face/points/normals/UV tables...
+[22:23:25.571]   nf=1352  face_ptr=1812135019168
+[22:23:25.571]   pts=1870
+[22:23:25.571]   nrms=1870
+[22:23:25.572]   uvs=1870
+[22:23:25.573] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:23:25.575]   UV U range: [0.0030, 0.9972] uniq=641
+[22:23:25.575]   UV V range: [0.0164, 0.9909] uniq=583
+[22:23:25.575]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:23:25.575]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:23:25.575] Reading material list...
+[22:23:25.583]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:23:25.606] Strategy A: LodFace struct probe
+[22:23:25.615]     _safe_read lodface_probe: ptr=1812135019168 bytes=2880
+[22:23:25.615]     _safe_read OK (2880 bytes)
+[22:23:25.615] Strategy C: p3d_get_item (info only)
+[22:23:25.615]   item_ptr=None n=0
+[22:23:25.615] flagbits=0x00000000
+[22:23:25.615]   sec_ptr=1812064636240 n=1
+[22:23:25.615] Analysis done. solved=False  writing dll_sections.txt
+[22:23:25.653] load_mesh RUN: idx=0 pts=52992
+[22:23:25.730] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:23:25.767] recompute: uv=1.0 edge=150.0 robust=0.0022 limit=0.32 → 67366/67366 tris, 2 groups
+[22:23:25.767] [recompute] uv=1.0 edge=150.0 → 67366/67366 tris, 2 groups
+[22:23:26.848] _recompute_mats: s1=47386 s2=0 swap=False two_split=False groups=2 tris=67366
+[22:23:27.685] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=18
+[22:23:27.809] _do_update_models_panel END: ready=18 loading=0 failed=0
+[22:23:32.687] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:23:32.687] DLL loaded OK
+[22:23:32.689] Reading face/points/normals/UV tables...
+[22:23:32.689]   nf=1352  face_ptr=1812065423488
+[22:23:32.689]   pts=1870
+[22:23:32.689]   nrms=1870
+[22:23:32.690]   uvs=1870
+[22:23:32.691] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:23:32.692]   UV U range: [0.0030, 0.9972] uniq=641
+[22:23:32.692]   UV V range: [0.0164, 0.9909] uniq=583
+[22:23:32.692]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:23:32.692]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:23:32.693] Reading material list...
+[22:23:32.693]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:23:32.695] Strategy A: LodFace struct probe
+[22:23:32.695]     _safe_read lodface_probe: ptr=1812065423488 bytes=2880
+[22:23:32.695]     _safe_read OK (2880 bytes)
+[22:23:32.695] Strategy C: p3d_get_item (info only)
+[22:23:32.695]   item_ptr=None n=0
+[22:23:32.695] flagbits=0x00000000
+[22:23:32.695]   sec_ptr=1812146104144 n=1
+[22:23:32.695] Analysis done. solved=False  writing dll_sections.txt
+[22:23:32.695] load_mesh: pts=52992 tris=67366
+[22:23:32.695] load_mesh SKIPPED: idx=0 already loaded
+[22:23:32.695] _recompute_mats SKIPPED: same model idx=0
+[22:23:32.695] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:23:32.741] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:23:32.821] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=18
+[22:23:32.936] _do_update_models_panel END: ready=18 loading=0 failed=0
+[22:23:34.170] load_mesh: pts=31994 tris=47386
+[22:23:34.225] load_mesh RUN: idx=12 pts=31994
+[22:23:34.271] recompute: uv=0.8 edge=100.0 robust=0.0025 limit=0.25 → 47386/47386 tris, 1 groups
+[22:23:34.271] [recompute] uv=0.8 edge=100.0 → 47386/47386 tris, 1 groups
+[22:23:34.865] _recompute_mats: s1=0 s2=0 swap=False two_split=False groups=1 tris=47386
+[22:23:35.060] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=18
+[22:23:35.186] _do_update_models_panel END: ready=18 loading=0 failed=0
+[22:23:42.999] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:23:43.000] DLL loaded OK
+[22:23:43.001] load_mesh: pts=52992 tris=67366
+[22:23:43.015] Reading face/points/normals/UV tables...
+[22:23:43.015]   nf=1352  face_ptr=1810867253504
+[22:23:43.016]   pts=1870
+[22:23:43.016]   nrms=1870
+[22:23:43.016]   uvs=1870
+[22:23:43.018] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:23:43.019]   UV U range: [0.0030, 0.9972] uniq=641
+[22:23:43.019]   UV V range: [0.0164, 0.9909] uniq=583
+[22:23:43.019]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:23:43.019]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:23:43.019] Reading material list...
+[22:23:43.019]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:23:43.050] Strategy A: LodFace struct probe
+[22:23:43.050]     _safe_read lodface_probe: ptr=1810867253504 bytes=2880
+[22:23:43.059]     _safe_read OK (2880 bytes)
+[22:23:43.059] Strategy C: p3d_get_item (info only)
+[22:23:43.059]   item_ptr=None n=0
+[22:23:43.059] flagbits=0x00000000
+[22:23:43.059]   sec_ptr=1812146103520 n=1
+[22:23:43.060] Analysis done. solved=False  writing dll_sections.txt
+[22:23:43.096] load_mesh RUN: idx=0 pts=52992
+[22:23:43.139] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:23:43.177] recompute: uv=1.0 edge=150.0 robust=0.0022 limit=0.32 → 67366/67366 tris, 2 groups
+[22:23:43.177] [recompute] uv=1.0 edge=150.0 → 67366/67366 tris, 2 groups
+[22:23:44.037] _recompute_mats: s1=47386 s2=0 swap=False two_split=False groups=2 tris=67366
+[22:23:44.201] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] ready_count=18
+[22:23:44.314] _do_update_models_panel END: ready=18 loading=0 failed=0
+[22:23:50.245] [render ] flip_x toggle → False
+[22:23:50.245] [render ] flip_y toggle → False
+[22:23:50.245] [render ] flip_z toggle → False
+[22:23:50.319] recompute: uv=1.0 edge=150 robust=0.0022 limit=0.32 → 67366/67366 tris, 2 groups
+[22:23:50.319] [recompute] uv=1.0 edge=150 → 67366/67366 tris, 2 groups
+[22:23:50.947] _recompute_mats: s1=None s2=None swap=True two_split=False groups=2 tris=67366
+[22:24:19.226] proxy selected: 0
+[22:24:19.226] proxy drag START: sel=0 ax=None
+[22:24:20.789] proxy selected: 0
+[22:24:20.789] proxy drag START: sel=0 ax=x
+[22:24:20.884] proxy moved: ax=x dx=0.0022 pos=-0.141,0.862,-0.212
+[22:24:20.891] proxy moved: ax=x dx=0.0022 pos=-0.139,0.862,-0.212
+[22:24:20.902] proxy moved: ax=x dx=0.0022 pos=-0.137,0.862,-0.212
+[22:24:20.914] proxy moved: ax=x dx=0.0022 pos=-0.134,0.862,-0.212
+[22:24:20.924] proxy moved: ax=x dx=0.0022 pos=-0.132,0.862,-0.212
+[22:24:20.930] proxy moved: ax=x dx=0.0022 pos=-0.130,0.862,-0.212
+[22:24:20.936] proxy moved: ax=x dx=0.0022 pos=-0.128,0.862,-0.212
+[22:24:20.942] proxy moved: ax=x dx=0.0022 pos=-0.126,0.862,-0.212
+[22:24:20.948] proxy moved: ax=x dx=0.0000 pos=-0.126,0.862,-0.212
+[22:24:20.952] proxy moved: ax=x dx=0.0022 pos=-0.124,0.862,-0.212
+[22:24:20.957] proxy moved: ax=x dx=0.0022 pos=-0.122,0.862,-0.212
+[22:24:20.964] proxy moved: ax=x dx=0.0022 pos=-0.119,0.862,-0.212
+[22:24:20.975] proxy moved: ax=x dx=0.0022 pos=-0.117,0.862,-0.212
+[22:24:20.981] proxy moved: ax=x dx=0.0022 pos=-0.115,0.862,-0.212
+[22:24:20.986] proxy moved: ax=x dx=0.0022 pos=-0.113,0.862,-0.212
+[22:24:20.997] proxy moved: ax=x dx=0.0022 pos=-0.111,0.862,-0.212
+[22:24:21.002] proxy moved: ax=x dx=0.0043 pos=-0.106,0.862,-0.212
+[22:24:21.007] proxy moved: ax=x dx=0.0043 pos=-0.102,0.862,-0.212
+[22:24:21.012] proxy moved: ax=x dx=0.0043 pos=-0.098,0.862,-0.212
+[22:24:21.017] proxy moved: ax=x dx=0.0043 pos=-0.094,0.862,-0.212
+[22:24:21.022] proxy moved: ax=x dx=0.0043 pos=-0.089,0.862,-0.212
+[22:24:21.027] proxy moved: ax=x dx=0.0065 pos=-0.083,0.862,-0.212
+[22:24:21.032] proxy moved: ax=x dx=0.0022 pos=-0.081,0.862,-0.212
+[22:24:21.038] proxy moved: ax=x dx=0.0043 pos=-0.076,0.862,-0.212
+[22:24:21.044] proxy moved: ax=x dx=0.0043 pos=-0.072,0.862,-0.212
+[22:24:21.049] proxy moved: ax=x dx=0.0065 pos=-0.066,0.862,-0.212
+[22:24:21.055] proxy moved: ax=x dx=0.0065 pos=-0.059,0.862,-0.212
+[22:24:21.061] proxy moved: ax=x dx=0.0086 pos=-0.050,0.862,-0.212
+[22:24:21.067] proxy moved: ax=x dx=0.0108 pos=-0.040,0.862,-0.212
+[22:24:21.071] proxy moved: ax=x dx=0.0108 pos=-0.029,0.862,-0.212
+[22:24:21.076] proxy moved: ax=x dx=0.0086 pos=-0.020,0.862,-0.212
+[22:24:21.082] proxy moved: ax=x dx=0.0086 pos=-0.012,0.862,-0.212
+[22:24:21.086] proxy moved: ax=x dx=0.0065 pos=-0.005,0.862,-0.212
+[22:24:21.092] proxy moved: ax=x dx=0.0043 pos=-0.001,0.862,-0.212
+[22:24:21.097] proxy moved: ax=x dx=0.0022 pos=0.001,0.862,-0.212
+[22:24:21.324] proxy moved: ax=x dx=-0.0022 pos=-0.001,0.862,-0.212
+[22:24:21.330] proxy moved: ax=x dx=-0.0022 pos=-0.003,0.862,-0.212
+[22:24:21.340] proxy moved: ax=x dx=-0.0022 pos=-0.005,0.862,-0.212
+[22:24:21.350] proxy moved: ax=x dx=-0.0022 pos=-0.007,0.862,-0.212
+[22:24:21.358] proxy moved: ax=x dx=-0.0022 pos=-0.010,0.862,-0.212
+[22:24:21.364] proxy moved: ax=x dx=-0.0022 pos=-0.012,0.862,-0.212
+[22:24:21.372] proxy moved: ax=x dx=-0.0022 pos=-0.014,0.862,-0.212
+[22:24:21.380] proxy moved: ax=x dx=-0.0022 pos=-0.016,0.862,-0.212
+[22:24:21.386] proxy moved: ax=x dx=-0.0022 pos=-0.018,0.862,-0.212
+[22:24:21.391] proxy moved: ax=x dx=-0.0022 pos=-0.020,0.862,-0.212
+[22:24:21.397] proxy moved: ax=x dx=-0.0022 pos=-0.023,0.862,-0.212
+[22:24:21.402] proxy moved: ax=x dx=-0.0022 pos=-0.025,0.862,-0.212
+[22:24:21.407] proxy moved: ax=x dx=-0.0043 pos=-0.029,0.862,-0.212
+[22:24:21.412] proxy moved: ax=x dx=-0.0022 pos=-0.031,0.862,-0.212
+[22:24:21.417] proxy moved: ax=x dx=-0.0022 pos=-0.033,0.862,-0.212
+[22:24:21.422] proxy moved: ax=x dx=-0.0022 pos=-0.035,0.862,-0.212
+[22:24:21.428] proxy moved: ax=x dx=-0.0022 pos=-0.038,0.862,-0.212
+[22:24:21.433] proxy moved: ax=x dx=-0.0022 pos=-0.040,0.862,-0.212
+[22:24:21.438] proxy moved: ax=x dx=-0.0022 pos=-0.042,0.862,-0.212
+[22:24:21.444] proxy moved: ax=x dx=-0.0022 pos=-0.044,0.862,-0.212
+[22:24:21.448] proxy moved: ax=x dx=-0.0022 pos=-0.046,0.862,-0.212
+[22:24:21.453] proxy moved: ax=x dx=-0.0022 pos=-0.048,0.862,-0.212
+[22:24:21.459] proxy moved: ax=x dx=-0.0022 pos=-0.050,0.862,-0.212
+[22:24:21.464] proxy moved: ax=x dx=-0.0022 pos=-0.053,0.862,-0.212
+[22:24:21.469] proxy moved: ax=x dx=-0.0022 pos=-0.055,0.862,-0.212
+[22:24:21.474] proxy moved: ax=x dx=-0.0022 pos=-0.057,0.862,-0.212
+[22:24:21.479] proxy moved: ax=x dx=-0.0022 pos=-0.059,0.862,-0.212
+[22:24:21.484] proxy moved: ax=x dx=-0.0022 pos=-0.061,0.862,-0.212
+[22:24:21.492] proxy moved: ax=x dx=-0.0022 pos=-0.063,0.862,-0.212
+[22:24:21.497] proxy moved: ax=x dx=-0.0022 pos=-0.066,0.862,-0.212
+[22:24:21.502] proxy moved: ax=x dx=-0.0022 pos=-0.068,0.862,-0.212
+[22:24:21.508] proxy moved: ax=x dx=-0.0022 pos=-0.070,0.862,-0.212
+[22:24:21.514] proxy moved: ax=x dx=-0.0022 pos=-0.072,0.862,-0.212
+[22:24:21.519] proxy moved: ax=x dx=-0.0022 pos=-0.074,0.862,-0.212
+[22:24:21.525] proxy moved: ax=x dx=-0.0022 pos=-0.076,0.862,-0.212
+[22:24:21.532] proxy moved: ax=x dx=-0.0022 pos=-0.078,0.862,-0.212
+[22:24:21.538] proxy moved: ax=x dx=-0.0022 pos=-0.081,0.862,-0.212
+[22:24:21.543] proxy moved: ax=x dx=-0.0022 pos=-0.083,0.862,-0.212
+[22:24:21.548] proxy moved: ax=x dx=-0.0022 pos=-0.085,0.862,-0.212
+[22:24:21.553] proxy moved: ax=x dx=-0.0022 pos=-0.087,0.862,-0.212
+[22:24:21.558] proxy moved: ax=x dx=-0.0022 pos=-0.089,0.862,-0.212
+[22:24:21.564] proxy moved: ax=x dx=-0.0022 pos=-0.091,0.862,-0.212
+[22:24:21.569] proxy moved: ax=x dx=-0.0022 pos=-0.094,0.862,-0.212
+[22:24:21.578] proxy moved: ax=x dx=-0.0022 pos=-0.096,0.862,-0.212
+[22:24:21.586] proxy moved: ax=x dx=-0.0022 pos=-0.098,0.862,-0.212
+[22:24:21.591] proxy moved: ax=x dx=-0.0022 pos=-0.100,0.862,-0.212
+[22:24:21.598] proxy moved: ax=x dx=-0.0022 pos=-0.102,0.862,-0.212
+[22:24:21.606] proxy moved: ax=x dx=-0.0022 pos=-0.104,0.862,-0.212
+[22:24:21.612] proxy moved: ax=x dx=-0.0022 pos=-0.106,0.862,-0.212
+[22:24:21.618] proxy moved: ax=x dx=-0.0022 pos=-0.109,0.862,-0.212
+[22:24:21.626] proxy moved: ax=x dx=-0.0022 pos=-0.111,0.862,-0.212
+[22:24:21.632] proxy moved: ax=x dx=-0.0022 pos=-0.113,0.862,-0.212
+[22:24:21.637] proxy moved: ax=x dx=-0.0043 pos=-0.117,0.862,-0.212
+[22:24:21.642] proxy moved: ax=x dx=-0.0022 pos=-0.119,0.862,-0.212
+[22:24:21.648] proxy moved: ax=x dx=-0.0022 pos=-0.122,0.862,-0.212
+[22:24:21.654] proxy moved: ax=x dx=-0.0022 pos=-0.124,0.862,-0.212
+[22:24:21.660] proxy moved: ax=x dx=-0.0022 pos=-0.126,0.862,-0.212
+[22:24:21.665] proxy moved: ax=x dx=-0.0022 pos=-0.128,0.862,-0.212
+[22:24:21.672] proxy moved: ax=x dx=-0.0022 pos=-0.130,0.862,-0.212
+[22:24:21.686] proxy moved: ax=x dx=-0.0022 pos=-0.132,0.862,-0.212
+[22:24:21.692] proxy moved: ax=x dx=-0.0022 pos=-0.134,0.862,-0.212
+[22:24:21.710] proxy moved: ax=x dx=-0.0022 pos=-0.137,0.862,-0.212
+[22:24:21.724] proxy moved: ax=x dx=-0.0022 pos=-0.139,0.862,-0.212
+[22:24:21.746] proxy moved: ax=x dx=-0.0022 pos=-0.141,0.862,-0.212
+[22:24:21.758] proxy moved: ax=x dx=-0.0022 pos=-0.143,0.862,-0.212
+[22:24:21.766] proxy moved: ax=x dx=-0.0022 pos=-0.145,0.862,-0.212
+[22:24:21.778] proxy moved: ax=x dx=-0.0022 pos=-0.147,0.862,-0.212
+[22:24:21.788] proxy moved: ax=x dx=-0.0022 pos=-0.150,0.862,-0.212
+[22:24:21.798] proxy moved: ax=x dx=-0.0022 pos=-0.152,0.862,-0.212
+[22:24:21.804] proxy moved: ax=x dx=-0.0022 pos=-0.154,0.862,-0.212
+[22:24:21.808] proxy moved: ax=x dx=0.0000 pos=-0.154,0.862,-0.212
+[22:24:21.814] proxy moved: ax=x dx=-0.0022 pos=-0.156,0.862,-0.212
+[22:24:21.834] proxy moved: ax=x dx=-0.0022 pos=-0.158,0.862,-0.212
+[22:24:21.846] proxy moved: ax=x dx=-0.0022 pos=-0.160,0.862,-0.212
+[22:24:21.852] proxy moved: ax=x dx=-0.0022 pos=-0.162,0.862,-0.212
+[22:24:21.857] proxy moved: ax=x dx=0.0000 pos=-0.162,0.862,-0.212
+[22:24:21.863] proxy moved: ax=x dx=-0.0022 pos=-0.165,0.862,-0.212
+[22:24:21.870] proxy moved: ax=x dx=-0.0022 pos=-0.167,0.862,-0.212
+[22:24:21.882] proxy moved: ax=x dx=-0.0022 pos=-0.169,0.862,-0.212
+[22:24:21.888] proxy moved: ax=x dx=-0.0022 pos=-0.171,0.862,-0.212
+[22:24:21.898] proxy moved: ax=x dx=-0.0022 pos=-0.173,0.862,-0.212
+[22:24:21.914] proxy moved: ax=x dx=-0.0022 pos=-0.175,0.862,-0.212
+[22:24:21.928] proxy moved: ax=x dx=-0.0022 pos=-0.177,0.862,-0.212
+[22:24:21.933] proxy moved: ax=x dx=-0.0022 pos=-0.180,0.862,-0.212
+[22:24:21.942] proxy moved: ax=x dx=-0.0022 pos=-0.182,0.862,-0.212
+[22:24:21.952] proxy moved: ax=x dx=-0.0022 pos=-0.184,0.862,-0.212
+[22:24:21.957] proxy moved: ax=x dx=0.0000 pos=-0.184,0.862,-0.212
+[22:24:21.962] proxy moved: ax=x dx=-0.0043 pos=-0.188,0.862,-0.212
+[22:24:21.967] proxy moved: ax=x dx=-0.0022 pos=-0.190,0.862,-0.212
+[22:24:21.974] proxy moved: ax=x dx=-0.0022 pos=-0.193,0.862,-0.212
+[22:24:21.980] proxy moved: ax=x dx=-0.0022 pos=-0.195,0.862,-0.212
+[22:24:21.985] proxy moved: ax=x dx=-0.0022 pos=-0.197,0.862,-0.212
+[22:24:21.990] proxy moved: ax=x dx=-0.0022 pos=-0.199,0.862,-0.212
+[22:24:21.998] proxy moved: ax=x dx=-0.0022 pos=-0.201,0.862,-0.212
+[22:24:22.008] proxy moved: ax=x dx=-0.0022 pos=-0.203,0.862,-0.212
+[22:24:22.014] proxy moved: ax=x dx=-0.0022 pos=-0.205,0.862,-0.212
+[22:24:22.019] proxy moved: ax=x dx=-0.0022 pos=-0.208,0.862,-0.212
+[22:24:22.025] proxy moved: ax=x dx=0.0000 pos=-0.208,0.862,-0.212
+[22:24:22.030] proxy moved: ax=x dx=-0.0022 pos=-0.210,0.862,-0.212
+[22:24:22.035] proxy moved: ax=x dx=-0.0022 pos=-0.212,0.862,-0.212
+[22:24:22.042] proxy moved: ax=x dx=-0.0022 pos=-0.214,0.862,-0.212
+[22:24:22.048] proxy moved: ax=x dx=-0.0022 pos=-0.216,0.862,-0.212
+[22:24:22.053] proxy moved: ax=x dx=-0.0022 pos=-0.218,0.862,-0.212
+[22:24:22.060] proxy moved: ax=x dx=-0.0022 pos=-0.221,0.862,-0.212
+[22:24:22.065] proxy moved: ax=x dx=-0.0022 pos=-0.223,0.862,-0.212
+[22:24:22.071] proxy moved: ax=x dx=-0.0022 pos=-0.225,0.862,-0.212
+[22:24:22.075] proxy moved: ax=x dx=-0.0022 pos=-0.227,0.862,-0.212
+[22:24:22.080] proxy moved: ax=x dx=-0.0022 pos=-0.229,0.862,-0.212
+[22:24:22.088] proxy moved: ax=x dx=-0.0022 pos=-0.231,0.862,-0.212
+[22:24:22.093] proxy moved: ax=x dx=-0.0022 pos=-0.233,0.862,-0.212
+[22:24:22.098] proxy moved: ax=x dx=0.0000 pos=-0.233,0.862,-0.212
+[22:24:22.103] proxy moved: ax=x dx=-0.0022 pos=-0.236,0.862,-0.212
+[22:24:22.112] proxy moved: ax=x dx=-0.0022 pos=-0.238,0.862,-0.212
+[22:24:22.154] proxy moved: ax=x dx=-0.0022 pos=-0.240,0.862,-0.212
+[22:24:22.246] proxy moved: ax=x dx=0.0022 pos=-0.238,0.862,-0.212
+[22:24:22.252] proxy moved: ax=x dx=0.0022 pos=-0.236,0.862,-0.212
+[22:24:22.262] proxy moved: ax=x dx=0.0022 pos=-0.233,0.862,-0.212
+[22:24:22.267] proxy moved: ax=x dx=0.0022 pos=-0.231,0.862,-0.212
+[22:24:22.276] proxy moved: ax=x dx=0.0022 pos=-0.229,0.862,-0.212
+[22:24:22.286] proxy moved: ax=x dx=0.0022 pos=-0.227,0.862,-0.212
+[22:24:22.294] proxy moved: ax=x dx=0.0022 pos=-0.225,0.862,-0.212
+[22:24:22.299] proxy moved: ax=x dx=0.0022 pos=-0.223,0.862,-0.212
+[22:24:22.304] proxy moved: ax=x dx=0.0000 pos=-0.223,0.862,-0.212
+[22:24:22.312] proxy moved: ax=x dx=0.0022 pos=-0.221,0.862,-0.212
+[22:24:22.320] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.326] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.332] proxy moved: ax=x dx=0.0022 pos=-0.218,0.862,-0.212
+[22:24:22.338] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.343] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.348] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.353] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.358] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.364] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.368] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.374] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.379] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.384] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.389] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.395] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.399] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.406] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.414] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.418] proxy moved: ax=x dx=-0.0022 pos=-0.221,0.862,-0.212
+[22:24:22.423] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.429] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.434] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.439] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.444] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.449] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.459] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.470] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.491] proxy moved: ax=x dx=0.0000 pos=-0.221,0.862,-0.212
+[22:24:22.618] proxy moved: ax=x dx=0.0022 pos=-0.218,0.862,-0.212
+[22:24:22.721] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.728] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.734] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.740] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.746] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.752] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.758] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.764] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.770] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.775] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.781] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.787] proxy moved: ax=x dx=0.0000 pos=-0.218,0.862,-0.212
+[22:24:22.792] proxy moved: ax=x dx=0.0022 pos=-0.216,0.862,-0.212
+[22:24:22.798] proxy moved: ax=x dx=0.0000 pos=-0.216,0.862,-0.212
+[22:24:22.804] proxy moved: ax=x dx=0.0000 pos=-0.216,0.862,-0.212
+[22:24:22.812] proxy moved: ax=x dx=0.0022 pos=-0.214,0.862,-0.212
+[22:24:22.817] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.823] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.828] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.833] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.839] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.844] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.850] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.855] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.860] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.866] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:22.871] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:23.044] proxy moved: ax=x dx=0.0000 pos=-0.214,0.862,-0.212
+[22:24:23.070] proxy moved: ax=x dx=-0.0022 pos=-0.216,0.862,-0.212
+[22:24:23.090] proxy moved: ax=x dx=-0.0022 pos=-0.218,0.862,-0.212
+[22:24:23.228] proxy moved: ax=x dx=0.0022 pos=-0.216,0.862,-0.212
+[22:24:23.234] proxy moved: ax=x dx=0.0022 pos=-0.214,0.862,-0.212
+[22:24:23.242] proxy moved: ax=x dx=0.0022 pos=-0.212,0.862,-0.212
+[22:24:23.250] proxy moved: ax=x dx=0.0022 pos=-0.210,0.862,-0.212
+[22:24:23.260] proxy moved: ax=x dx=0.0022 pos=-0.208,0.862,-0.212
+[22:24:23.265] proxy moved: ax=x dx=0.0022 pos=-0.205,0.862,-0.212
+[22:24:23.271] proxy moved: ax=x dx=0.0022 pos=-0.203,0.862,-0.212
+[22:24:23.276] proxy moved: ax=x dx=0.0022 pos=-0.201,0.862,-0.212
+[22:24:23.281] proxy moved: ax=x dx=0.0022 pos=-0.199,0.862,-0.212
+[22:24:23.286] proxy moved: ax=x dx=0.0022 pos=-0.197,0.862,-0.212
+[22:24:23.291] proxy moved: ax=x dx=0.0022 pos=-0.195,0.862,-0.212
+[22:24:23.297] proxy moved: ax=x dx=0.0022 pos=-0.193,0.862,-0.212
+[22:24:23.302] proxy moved: ax=x dx=0.0022 pos=-0.190,0.862,-0.212
+[22:24:23.307] proxy moved: ax=x dx=0.0022 pos=-0.188,0.862,-0.212
+[22:24:23.313] proxy moved: ax=x dx=0.0022 pos=-0.186,0.862,-0.212
+[22:24:23.326] proxy moved: ax=x dx=0.0022 pos=-0.184,0.862,-0.212
+[22:24:23.334] proxy moved: ax=x dx=0.0022 pos=-0.182,0.862,-0.212
+[22:24:23.340] proxy moved: ax=x dx=0.0022 pos=-0.180,0.862,-0.212
+[22:24:23.346] proxy moved: ax=x dx=0.0022 pos=-0.177,0.862,-0.212
+[22:24:23.356] proxy moved: ax=x dx=0.0022 pos=-0.175,0.862,-0.212
+[22:24:23.365] proxy moved: ax=x dx=0.0022 pos=-0.173,0.862,-0.212
+[22:24:23.370] proxy moved: ax=x dx=0.0022 pos=-0.171,0.862,-0.212
+[22:24:23.374] proxy moved: ax=x dx=0.0022 pos=-0.169,0.862,-0.212
+[22:24:23.384] proxy moved: ax=x dx=0.0022 pos=-0.167,0.862,-0.212
+[22:24:23.392] proxy moved: ax=x dx=0.0022 pos=-0.165,0.862,-0.212
+[22:24:23.398] proxy moved: ax=x dx=0.0022 pos=-0.162,0.862,-0.212
+[22:24:23.403] proxy moved: ax=x dx=0.0022 pos=-0.160,0.862,-0.212
+[22:24:23.418] proxy moved: ax=x dx=0.0022 pos=-0.158,0.862,-0.212
+[22:24:23.434] proxy moved: ax=x dx=0.0022 pos=-0.156,0.862,-0.212
+[22:24:23.501] proxy moved: ax=x dx=0.0022 pos=-0.154,0.862,-0.212
+[22:24:23.777] proxy moved: ax=x dx=0.0022 pos=-0.152,0.862,-0.212
+[22:24:23.794] proxy moved: ax=x dx=0.0022 pos=-0.150,0.862,-0.212
+[22:24:23.836] proxy moved: ax=x dx=0.0022 pos=-0.147,0.862,-0.212
+[22:24:23.924] proxy moved: ax=x dx=0.0022 pos=-0.145,0.862,-0.212
+[22:24:24.280] proxy moved: ax=x dx=-0.0022 pos=-0.147,0.862,-0.212
+[22:24:24.390] proxy moved: ax=x dx=-0.0022 pos=-0.150,0.862,-0.212
+[22:24:24.484] proxy moved: ax=x dx=-0.0022 pos=-0.152,0.862,-0.212
+[22:24:24.526] proxy moved: ax=x dx=-0.0022 pos=-0.154,0.862,-0.212
+[22:24:25.134] proxy moved: ax=x dx=0.0022 pos=-0.152,0.862,-0.212
+[22:24:30.341] proxy drag START: sel=0 ax=None
+[22:29:23.713] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] ready_count=18
+[22:29:23.830] _do_update_models_panel END: ready=18 loading=2 failed=0
+[22:29:23.892] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] ready_count=18
+[22:29:24.036] _do_update_models_panel END: ready=18 loading=2 failed=0
+[22:29:24.091] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] ready_count=18
+[22:29:24.233] _do_update_models_panel END: ready=18 loading=2 failed=0
+[22:29:24.288] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] ready_count=18
+[22:29:24.437] _do_update_models_panel END: ready=18 loading=2 failed=0
+[22:29:24.493] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] ready_count=18
+[22:29:24.641] _do_update_models_panel END: ready=18 loading=2 failed=0
+[22:29:24.647] parse diag alicebackpack_f.p3d: dll_nf=4582 good=8894 base_limit=0.0240 robust=0.0240 em=50.0 uv=1.5
+[22:29:24.647] [parse  ] alicebackpack_f.p3d: nf=4582 good=8894 base=0.0240 robust=0.0240
+[22:29:24.648] parse diag alicebackpack_g.p3d: dll_nf=4654 good=9037 base_limit=0.0242 robust=0.0242 em=50.0 uv=1.5
+[22:29:24.648] [parse  ] alicebackpack_g.p3d: nf=4654 good=9037 base=0.0242 robust=0.0242
+[22:29:24.650] subproc files for alicebackpack_f.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_18_963663_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_18_963663_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_18_963663_uvs.npy'
+[22:29:24.650] [subproc] alicebackpack_f.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_18_963663_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_18_963663_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_18_963663_uvs.npy'
+[22:29:24.680] apply mesh: alicebackpack_f.p3d pts=7752 tris=8894 uvs=7752 nrms=7752
+[22:29:24.680] [apply  ] alicebackpack_f.p3d: pts=7752 tris=8894 uvs=7752 nrms=7752
+[22:29:24.686] [uv     ] alicebackpack_f.p3d: U=[-0.0977,0.9949] V=[0.0000,1.1403] uniq_U=899 uniq_V=835 pts=7752 tris=8894
+[22:29:24.687] raw check alicebackpack_f.p3d: best_tris=8894 pts=7752 base_limit=0.0240 robust=0.0240
+[22:29:24.691] subproc files for alicebackpack_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_19_963666_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_19_963666_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_19_963666_uvs.npy'
+[22:29:24.691] [subproc] alicebackpack_g.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_19_963666_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_19_963666_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_19_963666_uvs.npy'
+[22:29:24.698] apply mesh: alicebackpack_g.p3d pts=7972 tris=9037 uvs=7972 nrms=7972
+[22:29:24.698] [apply  ] alicebackpack_g.p3d: pts=7972 tris=9037 uvs=7972 nrms=7972
+[22:29:24.704] [uv     ] alicebackpack_g.p3d: U=[-0.0977,0.9949] V=[0.0000,1.1403] uniq_U=900 uniq_V=832 pts=7972 tris=9037
+[22:29:24.704] raw check alicebackpack_g.p3d: best_tris=9037 pts=7972 base_limit=0.0242 robust=0.0242
+[22:29:24.708] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] ready_count=20
+[22:29:24.864] _do_update_models_panel END: ready=20 loading=0 failed=0
+[22:29:25.852] _close_mod_all START: mod='Aid_Set_Traveler' models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+[22:29:25.852] _close_model START: idx=17 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+[22:29:25.855] _close_model: deleted 17, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19]
+[22:29:26.493] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:26.493] DLL loaded OK
+[22:29:26.494] load_mesh: pts=52992 tris=67366
+[22:29:26.494] load_mesh SKIPPED: idx=0 already loaded
+[22:29:26.494] _recompute_mats SKIPPED: same model idx=0
+[22:29:26.494] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:26.495] Reading face/points/normals/UV tables...
+[22:29:26.495]   nf=1352  face_ptr=1810864646624
+[22:29:26.495]   pts=1870
+[22:29:26.495]   nrms=1870
+[22:29:26.496]   uvs=1870
+[22:29:26.497] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:26.498]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:26.498]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:26.498]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:26.498]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:26.498] Reading material list...
+[22:29:26.498]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:26.500] Strategy A: LodFace struct probe
+[22:29:26.500]     _safe_read lodface_probe: ptr=1810864646624 bytes=2880
+[22:29:26.500]     _safe_read OK (2880 bytes)
+[22:29:26.500] Strategy C: p3d_get_item (info only)
+[22:29:26.500]   item_ptr=None n=0
+[22:29:26.500] flagbits=0x00000000
+[22:29:26.500]   sec_ptr=1810870430928 n=1
+[22:29:26.501] Analysis done. solved=False  writing dll_sections.txt
+[22:29:26.543] _close_model: switched=True, calling _do_update_models_panel
+[22:29:26.544] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19] ready_count=19
+[22:29:26.549] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:26.749] _do_update_models_panel END: ready=19 loading=0 failed=0
+[22:29:26.749] _close_model: _do_update_models_panel OK
+[22:29:26.749] _close_model END
+[22:29:26.749] _close_model START: idx=16 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19]
+[22:29:26.750] _close_model: deleted 16, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19]
+[22:29:27.329] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:27.329] DLL loaded OK
+[22:29:27.331] Reading face/points/normals/UV tables...
+[22:29:27.331]   nf=1352  face_ptr=1812135367024
+[22:29:27.331]   pts=1870
+[22:29:27.332]   nrms=1870
+[22:29:27.332]   uvs=1870
+[22:29:27.333] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:27.335]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:27.335]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:27.335]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:27.335]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:27.335] Reading material list...
+[22:29:27.335]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:27.337] Strategy A: LodFace struct probe
+[22:29:27.337]     _safe_read lodface_probe: ptr=1812135367024 bytes=2880
+[22:29:27.337]     _safe_read OK (2880 bytes)
+[22:29:27.337] Strategy C: p3d_get_item (info only)
+[22:29:27.337]   item_ptr=None n=0
+[22:29:27.337] flagbits=0x00000000
+[22:29:27.337]   sec_ptr=1810870430096 n=1
+[22:29:27.337] Analysis done. solved=False  writing dll_sections.txt
+[22:29:27.337] load_mesh: pts=52992 tris=67366
+[22:29:27.337] load_mesh SKIPPED: idx=0 already loaded
+[22:29:27.337] _recompute_mats SKIPPED: same model idx=0
+[22:29:27.337] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:27.376] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:27.380] _close_model: switched=True, calling _do_update_models_panel
+[22:29:27.380] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19] ready_count=18
+[22:29:27.591] _do_update_models_panel END: ready=18 loading=0 failed=0
+[22:29:27.591] _close_model: _do_update_models_panel OK
+[22:29:27.592] _close_model END
+[22:29:27.592] _close_model START: idx=15 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 18, 19]
+[22:29:27.593] _close_model: deleted 15, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 18, 19]
+[22:29:28.123] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:28.124] DLL loaded OK
+[22:29:28.126] Reading face/points/normals/UV tables...
+[22:29:28.126]   nf=1352  face_ptr=1810869501232
+[22:29:28.126]   pts=1870
+[22:29:28.127]   nrms=1870
+[22:29:28.127]   uvs=1870
+[22:29:28.129] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:28.131]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:28.131]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:28.131]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:28.131] load_mesh: pts=52992 tris=67366
+[22:29:28.144]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:28.144] load_mesh SKIPPED: idx=0 already loaded
+[22:29:28.144] Reading material list...
+[22:29:28.144] _recompute_mats SKIPPED: same model idx=0
+[22:29:28.144]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:28.144] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:28.146] Strategy A: LodFace struct probe
+[22:29:28.146]     _safe_read lodface_probe: ptr=1810869501232 bytes=2880
+[22:29:28.147]     _safe_read OK (2880 bytes)
+[22:29:28.147] Strategy C: p3d_get_item (info only)
+[22:29:28.147]   item_ptr=None n=0
+[22:29:28.147] flagbits=0x00000000
+[22:29:28.147]   sec_ptr=1810870424896 n=1
+[22:29:28.147] Analysis done. solved=False  writing dll_sections.txt
+[22:29:28.200] _close_model: switched=True, calling _do_update_models_panel
+[22:29:28.201] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 18, 19] ready_count=17
+[22:29:28.219] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:28.305] _do_update_models_panel END: ready=17 loading=0 failed=0
+[22:29:28.305] _close_model: _do_update_models_panel OK
+[22:29:28.305] _close_model END
+[22:29:28.305] _close_model START: idx=14 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 18, 19]
+[22:29:28.306] _close_model: deleted 14, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19]
+[22:29:28.937] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:28.938] DLL loaded OK
+[22:29:28.940] Reading face/points/normals/UV tables...
+[22:29:28.940]   nf=1352  face_ptr=1810868854816
+[22:29:28.940]   pts=1870
+[22:29:28.941]   nrms=1870
+[22:29:28.941]   uvs=1870
+[22:29:28.943] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:28.944]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:28.945]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:28.945] load_mesh: pts=52992 tris=67366
+[22:29:28.945]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:28.945] load_mesh SKIPPED: idx=0 already loaded
+[22:29:28.945]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:28.945] _recompute_mats SKIPPED: same model idx=0
+[22:29:28.945] Reading material list...
+[22:29:28.945] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:28.945]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:28.947] Strategy A: LodFace struct probe
+[22:29:28.947]     _safe_read lodface_probe: ptr=1810868854816 bytes=2880
+[22:29:28.947]     _safe_read OK (2880 bytes)
+[22:29:28.947] Strategy C: p3d_get_item (info only)
+[22:29:28.947]   item_ptr=None n=0
+[22:29:28.947] flagbits=0x00000000
+[22:29:28.947]   sec_ptr=1810870429056 n=1
+[22:29:28.947] Analysis done. solved=False  writing dll_sections.txt
+[22:29:29.004] _close_model: switched=True, calling _do_update_models_panel
+[22:29:29.005] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19] ready_count=16
+[22:29:29.032] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:29.105] _do_update_models_panel END: ready=16 loading=0 failed=0
+[22:29:29.105] _close_model: _do_update_models_panel OK
+[22:29:29.105] _close_model END
+[22:29:29.105] _close_model START: idx=13 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 18, 19]
+[22:29:29.106] _close_model: deleted 13, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18, 19]
+[22:29:29.895] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:29.895] DLL loaded OK
+[22:29:29.897] load_mesh: pts=52992 tris=67366
+[22:29:29.897] load_mesh SKIPPED: idx=0 already loaded
+[22:29:29.897] _recompute_mats SKIPPED: same model idx=0
+[22:29:29.897] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:29.897] Reading face/points/normals/UV tables...
+[22:29:29.897]   nf=1352  face_ptr=1810874286464
+[22:29:29.898]   pts=1870
+[22:29:29.898]   nrms=1870
+[22:29:29.899]   uvs=1870
+[22:29:29.900] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:29.902]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:29.902]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:29.902]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:29.902]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:29.902] Reading material list...
+[22:29:29.902]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:29.904] Strategy A: LodFace struct probe
+[22:29:29.904]     _safe_read lodface_probe: ptr=1810874286464 bytes=2880
+[22:29:29.904]     _safe_read OK (2880 bytes)
+[22:29:29.904] Strategy C: p3d_get_item (info only)
+[22:29:29.904]   item_ptr=None n=0
+[22:29:29.904] flagbits=0x00000000
+[22:29:29.904]   sec_ptr=1810864225184 n=1
+[22:29:29.904] Analysis done. solved=False  writing dll_sections.txt
+[22:29:29.956] _close_model: switched=True, calling _do_update_models_panel
+[22:29:29.956] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18, 19] ready_count=15
+[22:29:29.987] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:30.057] _do_update_models_panel END: ready=15 loading=0 failed=0
+[22:29:30.058] _close_model: _do_update_models_panel OK
+[22:29:30.058] _close_model END
+[22:29:30.058] _close_model START: idx=12 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 18, 19]
+[22:29:30.075] _close_model: deleted 12, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18, 19]
+[22:29:30.848] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:30.848] DLL loaded OK
+[22:29:30.851] load_mesh: pts=52992 tris=67366
+[22:29:30.851] load_mesh SKIPPED: idx=0 already loaded
+[22:29:30.851] _recompute_mats SKIPPED: same model idx=0
+[22:29:30.851] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:30.851] Reading face/points/normals/UV tables...
+[22:29:30.851]   nf=1352  face_ptr=1812143959056
+[22:29:30.852]   pts=1870
+[22:29:30.852]   nrms=1870
+[22:29:30.853]   uvs=1870
+[22:29:30.854] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:30.856]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:30.856]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:30.856]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:30.856]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:30.856] Reading material list...
+[22:29:30.856]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:30.858] Strategy A: LodFace struct probe
+[22:29:30.858]     _safe_read lodface_probe: ptr=1812143959056 bytes=2880
+[22:29:30.858]     _safe_read OK (2880 bytes)
+[22:29:30.858] Strategy C: p3d_get_item (info only)
+[22:29:30.858]   item_ptr=None n=0
+[22:29:30.858] flagbits=0x00000000
+[22:29:30.858]   sec_ptr=1810864223936 n=1
+[22:29:30.858] Analysis done. solved=False  writing dll_sections.txt
+[22:29:30.915] _close_model: switched=True, calling _do_update_models_panel
+[22:29:30.915] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18, 19] ready_count=14
+[22:29:30.943] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:31.013] _do_update_models_panel END: ready=14 loading=0 failed=0
+[22:29:31.013] _close_model: _do_update_models_panel OK
+[22:29:31.013] _close_model END
+[22:29:31.013] _close_model START: idx=11 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 18, 19]
+[22:29:31.014] _close_model: deleted 11, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 18, 19]
+[22:29:31.641] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:31.642] DLL loaded OK
+[22:29:31.644] Reading face/points/normals/UV tables...
+[22:29:31.644]   nf=1352  face_ptr=1812138713440
+[22:29:31.644]   pts=1870
+[22:29:31.644]   nrms=1870
+[22:29:31.645] load_mesh: pts=52992 tris=67366
+[22:29:31.645]   uvs=1870
+[22:29:31.645] load_mesh SKIPPED: idx=0 already loaded
+[22:29:31.647] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:31.647] _recompute_mats SKIPPED: same model idx=0
+[22:29:31.648]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:31.648] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:31.648]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:31.648]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:31.648]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:31.648] Reading material list...
+[22:29:31.648]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:31.650] Strategy A: LodFace struct probe
+[22:29:31.650]     _safe_read lodface_probe: ptr=1812138713440 bytes=2880
+[22:29:31.650]     _safe_read OK (2880 bytes)
+[22:29:31.650] Strategy C: p3d_get_item (info only)
+[22:29:31.650]   item_ptr=None n=0
+[22:29:31.650] flagbits=0x00000000
+[22:29:31.650]   sec_ptr=1810864220400 n=1
+[22:29:31.650] Analysis done. solved=False  writing dll_sections.txt
+[22:29:31.714] _close_model: switched=True, calling _do_update_models_panel
+[22:29:31.714] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 18, 19] ready_count=13
+[22:29:31.739] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:31.816] _do_update_models_panel END: ready=13 loading=0 failed=0
+[22:29:31.816] _close_model: _do_update_models_panel OK
+[22:29:31.816] _close_model END
+[22:29:31.816] _close_model START: idx=10 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 18, 19]
+[22:29:31.817] _close_model: deleted 10, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 18, 19]
+[22:29:32.606] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:32.606] DLL loaded OK
+[22:29:32.608] Reading face/points/normals/UV tables...
+[22:29:32.608]   nf=1352  face_ptr=1812134054432
+[22:29:32.609]   pts=1870
+[22:29:32.609]   nrms=1870
+[22:29:32.609] load_mesh: pts=52992 tris=67366
+[22:29:32.610]   uvs=1870
+[22:29:32.610] load_mesh SKIPPED: idx=0 already loaded
+[22:29:32.611] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:32.611] _recompute_mats SKIPPED: same model idx=0
+[22:29:32.613]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:32.613] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:32.613]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:32.613]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:32.613]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:32.613] Reading material list...
+[22:29:32.613]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:32.615] Strategy A: LodFace struct probe
+[22:29:32.615]     _safe_read lodface_probe: ptr=1812134054432 bytes=2880
+[22:29:32.615]     _safe_read OK (2880 bytes)
+[22:29:32.615] Strategy C: p3d_get_item (info only)
+[22:29:32.615]   item_ptr=None n=0
+[22:29:32.615] flagbits=0x00000000
+[22:29:32.615]   sec_ptr=1810864222480 n=1
+[22:29:32.615] Analysis done. solved=False  writing dll_sections.txt
+[22:29:32.663] _close_model: switched=True, calling _do_update_models_panel
+[22:29:32.663] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 18, 19] ready_count=12
+[22:29:32.689] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:32.760] _do_update_models_panel END: ready=12 loading=0 failed=0
+[22:29:32.760] _close_model: _do_update_models_panel OK
+[22:29:32.760] _close_model END
+[22:29:32.760] _close_model START: idx=9 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 18, 19]
+[22:29:32.761] _close_model: deleted 9, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19]
+[22:29:33.550] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:33.550] DLL loaded OK
+[22:29:33.553] Reading face/points/normals/UV tables...
+[22:29:33.553]   nf=1352  face_ptr=1810876848176
+[22:29:33.553]   pts=1870
+[22:29:33.554]   nrms=1870
+[22:29:33.554]   uvs=1870
+[22:29:33.556] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:33.557]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:33.557]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:33.557]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:33.557]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:33.557] Reading material list...
+[22:29:33.557]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:33.559] load_mesh: pts=52992 tris=67366
+[22:29:33.559] load_mesh SKIPPED: idx=0 already loaded
+[22:29:33.559] _recompute_mats SKIPPED: same model idx=0
+[22:29:33.559] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:33.559] Strategy A: LodFace struct probe
+[22:29:33.559]     _safe_read lodface_probe: ptr=1810876848176 bytes=2880
+[22:29:33.559]     _safe_read OK (2880 bytes)
+[22:29:33.559] Strategy C: p3d_get_item (info only)
+[22:29:33.559]   item_ptr=None n=0
+[22:29:33.559] flagbits=0x00000000
+[22:29:33.559]   sec_ptr=1810865187840 n=1
+[22:29:33.560] Analysis done. solved=False  writing dll_sections.txt
+[22:29:33.610] _close_model: switched=True, calling _do_update_models_panel
+[22:29:33.610] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19] ready_count=11
+[22:29:33.638] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:33.700] _do_update_models_panel END: ready=11 loading=0 failed=0
+[22:29:33.701] _close_model: _do_update_models_panel OK
+[22:29:33.701] _close_model END
+[22:29:33.701] _close_model START: idx=8 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 8, 18, 19]
+[22:29:33.702] _close_model: deleted 8, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 7, 18, 19]
+[22:29:34.488] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:34.488] DLL loaded OK
+[22:29:34.491] Reading face/points/normals/UV tables...
+[22:29:34.491]   nf=1352  face_ptr=1810878326432
+[22:29:34.491]   pts=1870
+[22:29:34.492]   nrms=1870
+[22:29:34.492]   uvs=1870
+[22:29:34.494] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:34.496]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:34.496]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:34.496]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:34.496]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:34.496] Reading material list...
+[22:29:34.496] load_mesh: pts=52992 tris=67366
+[22:29:34.496]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:34.496] load_mesh SKIPPED: idx=0 already loaded
+[22:29:34.498] _recompute_mats SKIPPED: same model idx=0
+[22:29:34.498] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:34.498] Strategy A: LodFace struct probe
+[22:29:34.498]     _safe_read lodface_probe: ptr=1810878326432 bytes=2880
+[22:29:34.498]     _safe_read OK (2880 bytes)
+[22:29:34.498] Strategy C: p3d_get_item (info only)
+[22:29:34.498]   item_ptr=None n=0
+[22:29:34.498] flagbits=0x00000000
+[22:29:34.498]   sec_ptr=1810865190752 n=1
+[22:29:34.498] Analysis done. solved=False  writing dll_sections.txt
+[22:29:34.537] _close_model: switched=True, calling _do_update_models_panel
+[22:29:34.537] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 7, 18, 19] ready_count=10
+[22:29:34.563] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:34.631] _do_update_models_panel END: ready=10 loading=0 failed=0
+[22:29:34.632] _close_model: _do_update_models_panel OK
+[22:29:34.632] _close_model END
+[22:29:34.632] _close_model START: idx=7 active=0 models=[0, 1, 2, 3, 4, 5, 6, 7, 18, 19]
+[22:29:34.633] _close_model: deleted 7, was_active=False, models now=[0, 1, 2, 3, 4, 5, 6, 18, 19]
+[22:29:35.421] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:35.422] DLL loaded OK
+[22:29:35.424] Reading face/points/normals/UV tables...
+[22:29:35.424]   nf=1352  face_ptr=1812134581296
+[22:29:35.424]   pts=1870
+[22:29:35.425]   nrms=1870
+[22:29:35.425] load_mesh: pts=52992 tris=67366
+[22:29:35.425] load_mesh SKIPPED: idx=0 already loaded
+[22:29:35.425]   uvs=1870
+[22:29:35.425] _recompute_mats SKIPPED: same model idx=0
+[22:29:35.427] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:35.427] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:35.428]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:35.428]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:35.428]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:35.428]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:35.428] Reading material list...
+[22:29:35.428]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:35.430] Strategy A: LodFace struct probe
+[22:29:35.430]     _safe_read lodface_probe: ptr=1812134581296 bytes=2880
+[22:29:35.430]     _safe_read OK (2880 bytes)
+[22:29:35.430] Strategy C: p3d_get_item (info only)
+[22:29:35.430]   item_ptr=None n=0
+[22:29:35.430] flagbits=0x00000000
+[22:29:35.430]   sec_ptr=1812146105392 n=1
+[22:29:35.430] Analysis done. solved=False  writing dll_sections.txt
+[22:29:35.482] _close_model: switched=True, calling _do_update_models_panel
+[22:29:35.482] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 6, 18, 19] ready_count=9
+[22:29:35.507] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:35.565] _do_update_models_panel END: ready=9 loading=0 failed=0
+[22:29:35.565] _close_model: _do_update_models_panel OK
+[22:29:35.565] _close_model END
+[22:29:35.565] _close_model START: idx=6 active=0 models=[0, 1, 2, 3, 4, 5, 6, 18, 19]
+[22:29:35.572] _close_model: deleted 6, was_active=False, models now=[0, 1, 2, 3, 4, 5, 18, 19]
+[22:29:36.363] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:36.364] DLL loaded OK
+[22:29:36.366] Reading face/points/normals/UV tables...
+[22:29:36.366]   nf=1352  face_ptr=1812068812720
+[22:29:36.366]   pts=1870
+[22:29:36.366]   nrms=1870
+[22:29:36.367]   uvs=1870
+[22:29:36.368] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:36.370]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:36.370]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:36.370] load_mesh: pts=52992 tris=67366
+[22:29:36.370]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:36.370] load_mesh SKIPPED: idx=0 already loaded
+[22:29:36.370]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:36.370] _recompute_mats SKIPPED: same model idx=0
+[22:29:36.370] Reading material list...
+[22:29:36.370] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:36.370]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:36.372] Strategy A: LodFace struct probe
+[22:29:36.372]     _safe_read lodface_probe: ptr=1812068812720 bytes=2880
+[22:29:36.372]     _safe_read OK (2880 bytes)
+[22:29:36.372] Strategy C: p3d_get_item (info only)
+[22:29:36.372]   item_ptr=None n=0
+[22:29:36.373] flagbits=0x00000000
+[22:29:36.373]   sec_ptr=1812146103312 n=1
+[22:29:36.373] Analysis done. solved=False  writing dll_sections.txt
+[22:29:36.427] _close_model: switched=True, calling _do_update_models_panel
+[22:29:36.427] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 5, 18, 19] ready_count=8
+[22:29:36.452] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:36.511] _do_update_models_panel END: ready=8 loading=0 failed=0
+[22:29:36.511] _close_model: _do_update_models_panel OK
+[22:29:36.511] _close_model END
+[22:29:36.511] _close_model START: idx=5 active=0 models=[0, 1, 2, 3, 4, 5, 18, 19]
+[22:29:36.515] _close_model: deleted 5, was_active=False, models now=[0, 1, 2, 3, 4, 18, 19]
+[22:29:37.311] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:37.311] DLL loaded OK
+[22:29:37.313] Reading face/points/normals/UV tables...
+[22:29:37.313]   nf=1352  face_ptr=1812065767104
+[22:29:37.314]   pts=1870
+[22:29:37.314]   nrms=1870
+[22:29:37.315]   uvs=1870
+[22:29:37.316] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:37.318]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:37.318]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:37.318]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:37.318]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:37.318] Reading material list...
+[22:29:37.318] load_mesh: pts=52992 tris=67366
+[22:29:37.318]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:37.318] load_mesh SKIPPED: idx=0 already loaded
+[22:29:37.319] _recompute_mats SKIPPED: same model idx=0
+[22:29:37.319] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:37.320] Strategy A: LodFace struct probe
+[22:29:37.320]     _safe_read lodface_probe: ptr=1812065767104 bytes=2880
+[22:29:37.320]     _safe_read OK (2880 bytes)
+[22:29:37.320] Strategy C: p3d_get_item (info only)
+[22:29:37.320]   item_ptr=None n=0
+[22:29:37.320] flagbits=0x00000000
+[22:29:37.320]   sec_ptr=1812131608624 n=1
+[22:29:37.320] Analysis done. solved=False  writing dll_sections.txt
+[22:29:37.376] _close_model: switched=True, calling _do_update_models_panel
+[22:29:37.376] _do_update_models_panel START: models=[0, 1, 2, 3, 4, 18, 19] ready_count=7
+[22:29:37.402] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:37.454] _do_update_models_panel END: ready=7 loading=0 failed=0
+[22:29:37.454] _close_model: _do_update_models_panel OK
+[22:29:37.454] _close_model END
+[22:29:37.454] _close_model START: idx=4 active=0 models=[0, 1, 2, 3, 4, 18, 19]
+[22:29:37.458] _close_model: deleted 4, was_active=False, models now=[0, 1, 2, 3, 18, 19]
+[22:29:38.233] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:38.234] DLL loaded OK
+[22:29:38.236] load_mesh: pts=52992 tris=67366
+[22:29:38.236] load_mesh SKIPPED: idx=0 already loaded
+[22:29:38.236] _recompute_mats SKIPPED: same model idx=0
+[22:29:38.236] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:38.237] Reading face/points/normals/UV tables...
+[22:29:38.237]   nf=1352  face_ptr=1812070956640
+[22:29:38.237]   pts=1870
+[22:29:38.238]   nrms=1870
+[22:29:38.238]   uvs=1870
+[22:29:38.240] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:38.241]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:38.241]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:38.241]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:38.241]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:38.241] Reading material list...
+[22:29:38.241]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:38.243] Strategy A: LodFace struct probe
+[22:29:38.243]     _safe_read lodface_probe: ptr=1812070956640 bytes=2880
+[22:29:38.243]     _safe_read OK (2880 bytes)
+[22:29:38.243] Strategy C: p3d_get_item (info only)
+[22:29:38.243]   item_ptr=None n=0
+[22:29:38.243] flagbits=0x00000000
+[22:29:38.243]   sec_ptr=1812131605504 n=1
+[22:29:38.243] Analysis done. solved=False  writing dll_sections.txt
+[22:29:38.294] _close_model: switched=True, calling _do_update_models_panel
+[22:29:38.294] _do_update_models_panel START: models=[0, 1, 2, 3, 18, 19] ready_count=6
+[22:29:38.321] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:38.379] _do_update_models_panel END: ready=6 loading=0 failed=0
+[22:29:38.379] _close_model: _do_update_models_panel OK
+[22:29:38.379] _close_model END
+[22:29:38.379] _close_model START: idx=3 active=0 models=[0, 1, 2, 3, 18, 19]
+[22:29:38.382] _close_model: deleted 3, was_active=False, models now=[0, 1, 2, 18, 19]
+[22:29:38.855] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:38.856] DLL loaded OK
+[22:29:38.858] Reading face/points/normals/UV tables...
+[22:29:38.858]   nf=1352  face_ptr=1812069873888
+[22:29:38.859]   pts=1870
+[22:29:38.859]   nrms=1870
+[22:29:38.860]   uvs=1870
+[22:29:38.861] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:38.863]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:38.863]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:38.863]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:38.863]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:38.863] Reading material list...
+[22:29:38.863] load_mesh: pts=52992 tris=67366
+[22:29:38.863]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:38.863] load_mesh SKIPPED: idx=0 already loaded
+[22:29:38.865] _recompute_mats SKIPPED: same model idx=0
+[22:29:38.865] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:38.865] Strategy A: LodFace struct probe
+[22:29:38.865]     _safe_read lodface_probe: ptr=1812069873888 bytes=2880
+[22:29:38.865]     _safe_read OK (2880 bytes)
+[22:29:38.865] Strategy C: p3d_get_item (info only)
+[22:29:38.865]   item_ptr=None n=0
+[22:29:38.865] flagbits=0x00000000
+[22:29:38.865]   sec_ptr=1812131607376 n=1
+[22:29:38.865] Analysis done. solved=False  writing dll_sections.txt
+[22:29:38.926] _close_model: switched=True, calling _do_update_models_panel
+[22:29:38.927] _do_update_models_panel START: models=[0, 1, 2, 18, 19] ready_count=5
+[22:29:38.947] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:38.999] _do_update_models_panel END: ready=5 loading=0 failed=0
+[22:29:38.999] _close_model: _do_update_models_panel OK
+[22:29:39.000] _close_model END
+[22:29:39.000] _close_model START: idx=2 active=0 models=[0, 1, 2, 18, 19]
+[22:29:39.001] _close_model: deleted 2, was_active=False, models now=[0, 1, 18, 19]
+[22:29:39.785] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:39.785] DLL loaded OK
+[22:29:39.788] Reading face/points/normals/UV tables...
+[22:29:39.788]   nf=1352  face_ptr=1810370430496
+[22:29:39.788]   pts=1870
+[22:29:39.789]   nrms=1870
+[22:29:39.789]   uvs=1870
+[22:29:39.791] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:39.792]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:39.793]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:39.793]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:39.793]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:39.793] Reading material list...
+[22:29:39.793] load_mesh: pts=52992 tris=67366
+[22:29:39.793]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:39.793] load_mesh SKIPPED: idx=0 already loaded
+[22:29:39.794] _recompute_mats SKIPPED: same model idx=0
+[22:29:39.794] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:39.795] Strategy A: LodFace struct probe
+[22:29:39.795]     _safe_read lodface_probe: ptr=1810370430496 bytes=2880
+[22:29:39.795]     _safe_read OK (2880 bytes)
+[22:29:39.795] Strategy C: p3d_get_item (info only)
+[22:29:39.795]   item_ptr=None n=0
+[22:29:39.795] flagbits=0x00000000
+[22:29:39.795]   sec_ptr=1812131602592 n=1
+[22:29:39.795] Analysis done. solved=False  writing dll_sections.txt
+[22:29:39.856] _close_model: switched=True, calling _do_update_models_panel
+[22:29:39.856] _do_update_models_panel START: models=[0, 1, 18, 19] ready_count=4
+[22:29:39.878] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:39.932] _do_update_models_panel END: ready=4 loading=0 failed=0
+[22:29:39.932] _close_model: _do_update_models_panel OK
+[22:29:39.932] _close_model END
+[22:29:39.932] _close_model START: idx=1 active=0 models=[0, 1, 18, 19]
+[22:29:39.932] _close_model: deleted 1, was_active=False, models now=[0, 18, 19]
+[22:29:40.699] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:40.700] DLL loaded OK
+[22:29:40.702] Reading face/points/normals/UV tables...
+[22:29:40.702]   nf=1352  face_ptr=1810371590656
+[22:29:40.702] load_mesh: pts=52992 tris=67366
+[22:29:40.703]   pts=1870
+[22:29:40.703] load_mesh SKIPPED: idx=0 already loaded
+[22:29:40.703]   nrms=1870
+[22:29:40.703] _recompute_mats SKIPPED: same model idx=0
+[22:29:40.704]   uvs=1870
+[22:29:40.704] _bind_textures_for_model SKIPPED: idx=0 already bound
+[22:29:40.705] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:40.707]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:40.707]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:40.707]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:40.707]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:40.707] Reading material list...
+[22:29:40.707]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:40.709] Strategy A: LodFace struct probe
+[22:29:40.709]     _safe_read lodface_probe: ptr=1810371590656 bytes=2880
+[22:29:40.709]     _safe_read OK (2880 bytes)
+[22:29:40.709] Strategy C: p3d_get_item (info only)
+[22:29:40.709]   item_ptr=None n=0
+[22:29:40.709] flagbits=0x00000000
+[22:29:40.709]   sec_ptr=1812071159584 n=1
+[22:29:40.709] Analysis done. solved=False  writing dll_sections.txt
+[22:29:40.771] _close_model: switched=True, calling _do_update_models_panel
+[22:29:40.771] _do_update_models_panel START: models=[0, 18, 19] ready_count=3
+[22:29:40.792] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:40.837] _do_update_models_panel END: ready=3 loading=0 failed=0
+[22:29:40.837] _close_model: _do_update_models_panel OK
+[22:29:40.838] _close_model END
+[22:29:40.838] _close_model START: idx=0 active=0 models=[0, 18, 19]
+[22:29:40.847] _close_model: deleted 0, was_active=True, models now=[18, 19]
+[22:29:40.847] _close_model: clearing active state...
+[22:29:40.864] load_mesh: empty pts, viewport cleared
+[22:29:40.878] _close_model: _update_mat_panel OK
+[22:29:41.966] load_mesh: pts=7752 tris=8894
+[22:29:41.980] load_mesh RUN: idx=18 pts=7752
+[22:29:41.989] recompute: uv=1.5 edge=50.0 robust=0.0240 limit=1.20 → 8894/8894 tris, 1 groups
+[22:29:41.989] [recompute] uv=1.5 edge=50.0 → 8894/8894 tris, 1 groups
+[22:29:42.007] proxy copied: chemlight.p3d
+[22:29:42.010] proxy copied: walkietalkie.p3d
+[22:29:42.023] proxy copied: backpack_1.p3d
+[22:29:42.320] _recompute_mats: s1=0 s2=0 swap=False two_split=False groups=1 tris=8894
+[22:29:42.443] _close_model: switched=True, calling _do_update_models_panel
+[22:29:42.443] _do_update_models_panel START: models=[18, 19] ready_count=2
+[22:29:42.487] _do_update_models_panel END: ready=2 loading=0 failed=0
+[22:29:42.487] _close_model: _do_update_models_panel OK
+[22:29:42.487] _close_model END
+[22:29:42.487] _do_update_models_panel START: models=[18, 19] ready_count=2
+[22:29:42.495] _do_update_models_panel END: ready=2 loading=0 failed=0
+[22:29:42.544] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\chemlight.p3d
+[22:29:42.545] DLL loaded OK
+[22:29:42.545] Reading face/points/normals/UV tables...
+[22:29:42.545]   nf=340  face_ptr=1810372165376
+[22:29:42.546]   pts=455
+[22:29:42.546]   nrms=455
+[22:29:42.546]   uvs=455
+[22:29:42.546] [uv     ] chemlight.p3d: U=[0.0172,0.9880] V=[0.0164,0.9935] uniq_U=116 uniq_V=52
+[22:29:42.547]   UV U range: [0.0172, 0.9880] uniq=116
+[22:29:42.547]   UV V range: [0.0164, 0.9935] uniq=52
+[22:29:42.547]   UV first12: [(0.14285147190093994, 0.47728055715560913), (0.8920320272445679, 0.15118861198425293), (0.9026976227760315, 0.1405276358127594), (0.08084316551685333, 0.47728055715560913), (0.9166220426559448, 0.13475728034973145), (0.9848371148109436, 0.47728055715560913), (0.018316393718123436, 0.47728055715560913), (0.2040746659040451, 0.47728055715560913), (0.8862549066543579, 0.16511498391628265), (0.9316871166229248, 0.13475728034973145), (0.9221177697181702, 0.47728055715560913), (0.2644238770008087, 0.47728055715560913)]
+[22:29:42.547]   UV last12:  [(0.7028074860572815, 0.01636815071105957), (0.771318793296814, 0.01636815071105957), (0.8398153185844421, 0.01636815071105957), (0.01776830293238163, 0.01636815071105957), (0.08627963066101074, 0.01636815071105957), (0.15477614104747772, 0.01636815071105957), (0.2232874631881714, 0.01636815071105957), (0.2917839586734772, 0.01636815071105957), (0.36029529571533203, 0.01636815071105957), (0.4287917912006378, 0.01636815071105957), (0.4973031282424927, 0.01636815071105957), (0.5657996535301208, 0.01636815071105957)]
+[22:29:42.547] Reading material list...
+[22:29:42.547]   mat_list (1): ['dz\\gear\\consumables\\data\\chemlight_ca.paa']
+[22:29:42.547] Strategy A: LodFace struct probe
+[22:29:42.547]     _safe_read lodface_probe: ptr=1810372165376 bytes=2880
+[22:29:42.547]     _safe_read OK (2880 bytes)
+[22:29:42.547] Strategy C: p3d_get_item (info only)
+[22:29:42.547]   item_ptr=None n=0
+[22:29:42.547] flagbits=0x00000000
+[22:29:42.547]   sec_ptr=1812071158752 n=1
+[22:29:42.547] Analysis done. solved=False  writing dll_sections.txt
+[22:29:42.557] proxy mesh loaded: chemlight.p3d (455 verts, 352 tris)
+[22:29:42.558] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\walkietalkie.p3d
+[22:29:42.558] DLL loaded OK
+[22:29:42.560] Reading face/points/normals/UV tables...
+[22:29:42.560]   nf=1352  face_ptr=1810376359392
+[22:29:42.560]   pts=1870
+[22:29:42.561]   nrms=1870
+[22:29:42.561]   uvs=1870
+[22:29:42.563] [uv     ] walkietalkie.p3d: U=[0.0030,0.9972] V=[0.0164,0.9909] uniq_U=641 uniq_V=583
+[22:29:42.565]   UV U range: [0.0030, 0.9972] uniq=641
+[22:29:42.565]   UV V range: [0.0164, 0.9909] uniq=583
+[22:29:42.565]   UV first12: [(0.27883508801460266, 0.9897595643997192), (0.5032603740692139, 0.9870384335517883), (0.2222774475812912, 0.990785539150238), (0.5598635673522949, 0.9892093539237976), (0.5606220960617065, 0.9430252909660339), (0.5048381686210632, 0.9408990144729614), (0.2802308201789856, 0.2669623792171478), (0.2943854033946991, 0.2669623792171478), (0.2940061390399933, 0.21194595098495483), (0.28150519728660583, 0.21178238093852997), (0.457701712846756, 0.48934778571128845), (0.4581720232963562, 0.5036966800689697)]
+[22:29:42.565]   UV last12:  [(0.8077584505081177, 0.8595192432403564), (0.695583701133728, 0.032473377883434296), (0.7928149700164795, 0.8592813611030579), (0.4778185188770294, 0.5051240921020508), (0.3069470524787903, 0.503577709197998), (0.32237598299980164, 0.496916264295578), (0.4632846415042877, 0.4977191984653473), (0.8073639869689941, 0.8838454484939575), (0.7195842862129211, 0.04063662886619568), (0.5045044422149658, 0.5434572100639343), (0.7924053072929382, 0.8835926651954651), (0.7197815179824829, 0.03333579748868942)]
+[22:29:42.565] Reading material list...
+[22:29:42.565]   mat_list (1): ['dz\\gear\\radio\\data\\walkie_talkie_co.paa']
+[22:29:42.566] Strategy A: LodFace struct probe
+[22:29:42.566]     _safe_read lodface_probe: ptr=1810376359392 bytes=2880
+[22:29:42.567]     _safe_read OK (2880 bytes)
+[22:29:42.567] Strategy C: p3d_get_item (info only)
+[22:29:42.567]   item_ptr=None n=0
+[22:29:42.567] flagbits=0x00000000
+[22:29:42.567]   sec_ptr=1812071155008 n=1
+[22:29:42.567] Analysis done. solved=False  writing dll_sections.txt
+[22:29:42.602] proxy mesh loaded: walkietalkie.p3d (1870 verts, 2442 tris)
+[22:29:42.609] _load_via_dll: O:\Users\KirrieD\Desktop\Dev_DoS\Cast_Prog\P3D_Viewer_v3.2.0\proxies\backpack_1.p3d
+[22:29:42.610] DLL loaded OK
+[22:29:42.610] Reading face/points/normals/UV tables...
+[22:29:42.610]   nf=201  face_ptr=1810376556528
+[22:29:42.610]   pts=275
+[22:29:42.611]   nrms=275
+[22:29:42.611]   uvs=275
+[22:29:42.611] [uv     ] backpack_1.p3d: U=[0.0050,0.9919] V=[0.0014,0.9940] uniq_U=228 uniq_V=226
+[22:29:42.611]   UV U range: [0.0050, 0.9919] uniq=228
+[22:29:42.611]   UV V range: [0.0014, 0.9940] uniq=226
+[22:29:42.611]   UV first12: [(0.3673963248729706, 0.765080988407135), (0.33959800004959106, 0.6920452117919922), (0.2791825830936432, 0.6446068286895752), (0.20414520800113678, 0.6336711645126343), (0.13371577858924866, 0.6611769199371338), (0.08626589179039001, 0.7200811505317688), (0.07471588999032974, 0.7946921586990356), (0.10155044496059418, 0.865092396736145), (0.15988776087760925, 0.9129700660705566), (0.23442821204662323, 0.9253597855567932), (0.30536961555480957, 0.8991111516952515), (0.35417479276657104, 0.8408430814743042)]
+[22:29:42.611]   UV last12:  [(0.45146891474723816, 0.4613964259624481), (0.39383935928344727, 0.4078691601753235), (0.816250205039978, 0.6305358409881592), (0.7327347993850708, 0.576811671257019), (0.5674206614494324, 0.4474920630455017), (0.5414294004440308, 0.4280744194984436), (0.4749453663825989, 0.48496416211128235), (0.3071465492248535, 0.48626673221588135), (0.1770998239517212, 0.5532136559486389), (0.5714112520217896, 0.17805340886116028), (0.7042889595031738, 0.39320749044418335), (0.6247490644454956, 0.49330979585647583)]
+[22:29:42.611] Reading material list...
+[22:29:42.611]   mat_list (0): []
+[22:29:42.612] Strategy A: LodFace struct probe
+[22:29:42.612]     _safe_read lodface_probe: ptr=1810376556528 bytes=2880
+[22:29:42.612]     _safe_read OK (2880 bytes)
+[22:29:42.612] Strategy C: p3d_get_item (info only)
+[22:29:42.612]   item_ptr=None n=0
+[22:29:42.612] flagbits=0x00000000
+[22:29:42.612]   sec_ptr=1812071160624 n=1
+[22:29:42.612] Analysis done. solved=False  writing dll_sections.txt
+[22:29:42.623] proxy mesh loaded: backpack_1.p3d (275 verts, 342 tris)
+[22:29:50.588] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:50.610] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:50.740] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:50.762] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:50.890] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:50.916] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:51.040] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:51.069] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:51.191] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:51.215] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:51.341] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:51.362] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:51.491] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:51.511] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:51.641] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:51.663] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:51.791] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:51.812] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:51.942] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:51.963] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:52.091] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:52.116] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:52.242] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:52.267] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:52.392] _do_update_models_panel START: models=[18, 19, 20] ready_count=2
+[22:29:52.416] _do_update_models_panel END: ready=2 loading=1 failed=0
+[22:29:52.493] parse diag Bag.p3d: dll_nf=67367 good=67366 base_limit=0.0022 robust=0.0022 em=150.0 uv=1.0
+[22:29:52.493] [parse  ] Bag.p3d: nf=67367 good=67366 base=0.0022 robust=0.0022
+[22:29:52.496] subproc files for Bag.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_20_990538_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_20_990538_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_20_990538_uvs.npy'
+[22:29:52.496] [subproc] Bag.p3d: pts='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_20_990538_pts.npy' tris='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_20_990538_tris.npy' uvs='O:\\Users\\KirrieD\\AppData\\Local\\Temp\\p3d_v23_3536_20_990538_uvs.npy'
+[22:29:52.560] apply mesh: Bag.p3d pts=52992 tris=67366 uvs=52992 nrms=52992
+[22:29:52.561] [apply  ] Bag.p3d: pts=52992 tris=67366 uvs=52992 nrms=52992
+[22:29:52.600] [uv     ] Bag.p3d: U=[0.0000,0.9981] V=[0.0000,0.9964] uniq_U=997 uniq_V=995 pts=52992 tris=67366
+[22:29:52.602] raw check Bag.p3d: best_tris=67367 pts=52992 base_limit=0.0022 robust=0.0022
+[22:29:52.607] _do_update_models_panel START: models=[18, 19, 20] ready_count=3
+[22:29:52.662] _do_update_models_panel END: ready=3 loading=0 failed=0
+[22:29:55.132] proxy selected: 0
+[22:29:55.132] proxy drag START: sel=0 ax=None
+[22:29:55.135] proxy moved: ax=None dx=0.0021 pos=-0.174,1.291,-0.104
+[22:29:55.141] proxy moved: ax=None dx=0.0021 pos=-0.172,1.291,-0.104
+[22:29:55.148] proxy moved: ax=None dx=0.0043 pos=-0.168,1.291,-0.104
+[22:29:55.154] proxy moved: ax=None dx=0.0021 pos=-0.166,1.291,-0.106
+[22:29:55.161] proxy moved: ax=None dx=0.0043 pos=-0.161,1.291,-0.106
+[22:29:55.167] proxy moved: ax=None dx=0.0021 pos=-0.159,1.291,-0.106
+[22:29:55.173] proxy moved: ax=None dx=0.0064 pos=-0.153,1.291,-0.106
+[22:29:55.179] proxy moved: ax=None dx=0.0021 pos=-0.151,1.291,-0.106
+[22:29:55.185] proxy moved: ax=None dx=0.0043 pos=-0.146,1.291,-0.106
+[22:29:55.191] proxy moved: ax=None dx=0.0043 pos=-0.142,1.291,-0.108
+[22:29:55.199] proxy moved: ax=None dx=0.0107 pos=-0.132,1.291,-0.108
+[22:29:55.205] proxy moved: ax=None dx=0.0064 pos=-0.125,1.291,-0.108
+[22:29:55.212] proxy moved: ax=None dx=0.0043 pos=-0.121,1.291,-0.108
+[22:29:55.218] proxy moved: ax=None dx=0.0021 pos=-0.119,1.291,-0.108
+[22:29:55.224] proxy moved: ax=None dx=0.0043 pos=-0.115,1.291,-0.108
+[22:29:55.230] proxy moved: ax=None dx=0.0043 pos=-0.110,1.291,-0.108
+[22:29:55.235] proxy moved: ax=None dx=0.0021 pos=-0.108,1.291,-0.108
+[22:29:55.241] proxy moved: ax=None dx=0.0021 pos=-0.106,1.291,-0.108
+[22:29:55.247] proxy moved: ax=None dx=0.0021 pos=-0.104,1.291,-0.108
+[22:29:55.253] proxy moved: ax=None dx=0.0021 pos=-0.102,1.291,-0.108
+[22:29:55.260] proxy moved: ax=None dx=0.0021 pos=-0.100,1.291,-0.108
+[22:29:55.266] proxy moved: ax=None dx=0.0043 pos=-0.095,1.291,-0.108
+[22:29:55.271] proxy moved: ax=None dx=0.0021 pos=-0.093,1.291,-0.108
+[22:29:55.277] proxy moved: ax=None dx=0.0000 pos=-0.093,1.291,-0.110
+[22:29:55.282] proxy moved: ax=None dx=0.0021 pos=-0.091,1.291,-0.110
+[22:29:55.292] proxy moved: ax=None dx=0.0021 pos=-0.089,1.291,-0.110
+[22:29:55.301] proxy moved: ax=None dx=0.0021 pos=-0.087,1.291,-0.110
+[22:29:55.313] proxy moved: ax=None dx=0.0021 pos=-0.085,1.291,-0.110
+[22:29:55.335] proxy moved: ax=None dx=0.0021 pos=-0.083,1.291,-0.110
+[22:29:55.355] proxy moved: ax=None dx=0.0021 pos=-0.080,1.291,-0.112
+[22:29:55.375] proxy moved: ax=None dx=0.0021 pos=-0.078,1.291,-0.112
+[22:29:55.389] proxy moved: ax=None dx=0.0021 pos=-0.076,1.291,-0.112
+[22:29:55.588] proxy moved: ax=None dx=-0.0021 pos=-0.078,1.291,-0.112
+[22:29:55.603] proxy moved: ax=None dx=-0.0021 pos=-0.080,1.291,-0.112
+[22:29:55.621] proxy moved: ax=None dx=-0.0021 pos=-0.083,1.291,-0.112
+[22:29:55.637] proxy moved: ax=None dx=-0.0021 pos=-0.085,1.291,-0.112
+[22:29:55.659] proxy moved: ax=None dx=-0.0021 pos=-0.087,1.291,-0.112
+[22:29:55.665] proxy moved: ax=None dx=-0.0021 pos=-0.089,1.291,-0.112
+[22:29:55.687] proxy moved: ax=None dx=-0.0021 pos=-0.091,1.291,-0.112
+[22:29:55.703] proxy moved: ax=None dx=-0.0021 pos=-0.093,1.291,-0.112
+[22:29:55.719] proxy moved: ax=None dx=-0.0021 pos=-0.095,1.291,-0.112
+[22:29:55.726] proxy moved: ax=None dx=-0.0021 pos=-0.097,1.291,-0.112
+[22:29:55.740] proxy moved: ax=None dx=-0.0021 pos=-0.100,1.291,-0.112
+[22:29:55.751] proxy moved: ax=None dx=-0.0021 pos=-0.102,1.291,-0.112
+[22:29:55.759] proxy moved: ax=None dx=-0.0021 pos=-0.104,1.291,-0.112
+[22:29:55.765] proxy moved: ax=None dx=-0.0021 pos=-0.106,1.291,-0.112
+[22:29:55.772] proxy moved: ax=None dx=-0.0021 pos=-0.108,1.291,-0.112
+[22:29:55.787] proxy moved: ax=None dx=-0.0021 pos=-0.110,1.291,-0.112
+[22:29:55.825] proxy moved: ax=None dx=-0.0021 pos=-0.112,1.291,-0.112
+[22:29:55.857] proxy moved: ax=None dx=-0.0021 pos=-0.115,1.291,-0.112
+[22:29:55.876] proxy moved: ax=None dx=-0.0021 pos=-0.117,1.291,-0.112
+[22:29:55.909] proxy moved: ax=None dx=-0.0021 pos=-0.119,1.291,-0.112
+[22:29:55.943] proxy moved: ax=None dx=-0.0021 pos=-0.121,1.291,-0.112
+[22:29:55.952] proxy moved: ax=None dx=-0.0021 pos=-0.123,1.291,-0.112
+[22:29:55.975] proxy moved: ax=None dx=-0.0021 pos=-0.125,1.291,-0.112
+[22:29:55.997] proxy moved: ax=None dx=-0.0021 pos=-0.127,1.291,-0.112
+[22:29:56.027] proxy moved: ax=None dx=-0.0021 pos=-0.129,1.291,-0.112
+[22:29:56.033] proxy moved: ax=None dx=-0.0021 pos=-0.132,1.291,-0.112
+[22:29:56.038] proxy moved: ax=None dx=-0.0021 pos=-0.134,1.291,-0.112
+[22:29:56.063] proxy moved: ax=None dx=-0.0021 pos=-0.136,1.291,-0.112
+[22:29:56.077] proxy moved: ax=None dx=-0.0021 pos=-0.138,1.291,-0.112
+[22:29:56.083] proxy moved: ax=None dx=-0.0021 pos=-0.140,1.291,-0.112
+[22:29:56.101] proxy moved: ax=None dx=-0.0021 pos=-0.142,1.291,-0.112
+[22:29:56.115] proxy moved: ax=None dx=-0.0021 pos=-0.144,1.291,-0.112
+[22:29:56.125] proxy moved: ax=None dx=-0.0021 pos=-0.146,1.291,-0.112
+[22:29:56.131] proxy moved: ax=None dx=-0.0021 pos=-0.149,1.291,-0.112
+[22:29:56.143] proxy moved: ax=None dx=-0.0021 pos=-0.151,1.291,-0.112
+[22:29:56.149] proxy moved: ax=None dx=0.0000 pos=-0.151,1.291,-0.114
+[22:29:56.155] proxy moved: ax=None dx=-0.0021 pos=-0.153,1.291,-0.114
+[22:29:56.171] proxy moved: ax=None dx=-0.0021 pos=-0.155,1.291,-0.114
+[22:29:56.203] proxy moved: ax=None dx=-0.0021 pos=-0.157,1.291,-0.114
+[22:29:56.225] proxy moved: ax=None dx=-0.0021 pos=-0.159,1.291,-0.114
+[22:29:56.247] proxy moved: ax=None dx=-0.0021 pos=-0.161,1.291,-0.114
+[22:29:56.267] proxy moved: ax=None dx=-0.0021 pos=-0.164,1.291,-0.114
+[22:29:56.285] proxy moved: ax=None dx=-0.0021 pos=-0.166,1.291,-0.114
+[22:29:56.292] proxy moved: ax=None dx=-0.0021 pos=-0.168,1.291,-0.114
+[22:29:56.307] proxy moved: ax=None dx=-0.0021 pos=-0.170,1.291,-0.114
+[22:29:56.329] proxy moved: ax=None dx=-0.0021 pos=-0.172,1.291,-0.112
+[22:29:56.361] proxy moved: ax=None dx=-0.0021 pos=-0.174,1.291,-0.112
+[22:29:56.368] proxy moved: ax=None dx=0.0000 pos=-0.174,1.291,-0.110
+[22:29:56.374] proxy moved: ax=None dx=-0.0021 pos=-0.176,1.291,-0.110
+[22:29:56.412] proxy moved: ax=None dx=0.0000 pos=-0.176,1.291,-0.108
+[22:29:56.447] proxy moved: ax=None dx=-0.0021 pos=-0.178,1.291,-0.108
+[22:29:56.467] proxy moved: ax=None dx=0.0000 pos=-0.178,1.291,-0.106
+[22:29:56.485] proxy moved: ax=None dx=-0.0021 pos=-0.181,1.291,-0.104
+[22:29:56.507] proxy moved: ax=None dx=0.0000 pos=-0.181,1.291,-0.102
+[22:29:56.521] proxy moved: ax=None dx=-0.0021 pos=-0.183,1.291,-0.102
+[22:29:56.537] proxy moved: ax=None dx=-0.0021 pos=-0.185,1.291,-0.102
+[22:29:56.545] proxy moved: ax=None dx=0.0000 pos=-0.185,1.291,-0.099
+[22:29:56.565] proxy moved: ax=None dx=0.0000 pos=-0.185,1.291,-0.097
+[22:29:56.578] proxy moved: ax=None dx=0.0000 pos=-0.185,1.291,-0.095
+[22:29:56.585] proxy moved: ax=None dx=-0.0021 pos=-0.187,1.291,-0.095
+[22:29:56.603] proxy moved: ax=None dx=0.0000 pos=-0.187,1.291,-0.093
+[22:29:56.621] proxy moved: ax=None dx=-0.0021 pos=-0.189,1.291,-0.093
+[22:29:56.631] proxy moved: ax=None dx=0.0000 pos=-0.189,1.291,-0.091
+[22:29:56.659] proxy moved: ax=None dx=0.0000 pos=-0.189,1.291,-0.089
+[22:29:56.667] proxy moved: ax=None dx=0.0000 pos=-0.189,1.291,-0.087
+[22:29:56.723] proxy moved: ax=None dx=0.0000 pos=-0.189,1.291,-0.085
+[22:29:56.741] proxy moved: ax=None dx=0.0000 pos=-0.189,1.291,-0.082
+[22:29:56.791] proxy moved: ax=None dx=0.0000 pos=-0.189,1.291,-0.080
+[22:29:56.865] proxy moved: ax=None dx=0.0000 pos=-0.189,1.291,-0.078
+[22:29:56.939] proxy moved: ax=None dx=0.0021 pos=-0.187,1.291,-0.078
+[22:29:57.043] proxy moved: ax=None dx=0.0021 pos=-0.185,1.291,-0.078
+[22:29:57.075] proxy moved: ax=None dx=0.0021 pos=-0.183,1.291,-0.078
+[22:29:57.167] proxy moved: ax=None dx=0.0021 pos=-0.181,1.291,-0.078
+[22:29:57.257] proxy moved: ax=None dx=0.0021 pos=-0.178,1.291,-0.078
+[22:29:57.317] proxy moved: ax=None dx=0.0021 pos=-0.176,1.291,-0.078
+[22:29:57.336] proxy moved: ax=None dx=0.0021 pos=-0.174,1.291,-0.078
+[22:29:57.363] proxy moved: ax=None dx=0.0021 pos=-0.172,1.291,-0.078
+[22:29:57.391] proxy moved: ax=None dx=0.0021 pos=-0.170,1.291,-0.080
+[22:29:57.415] proxy moved: ax=None dx=0.0021 pos=-0.168,1.291,-0.080
+[22:29:57.423] proxy moved: ax=None dx=0.0021 pos=-0.166,1.291,-0.080
+[22:29:57.437] proxy moved: ax=None dx=0.0021 pos=-0.164,1.291,-0.080
+[22:29:57.443] proxy moved: ax=None dx=0.0000 pos=-0.164,1.291,-0.082
+[22:29:57.450] proxy moved: ax=None dx=0.0021 pos=-0.161,1.291,-0.082
+[22:29:57.459] proxy moved: ax=None dx=0.0000 pos=-0.161,1.291,-0.085
+[22:29:57.464] proxy moved: ax=None dx=0.0021 pos=-0.159,1.291,-0.085
+[22:29:57.470] proxy moved: ax=None dx=0.0021 pos=-0.157,1.291,-0.085
+[22:29:57.477] proxy moved: ax=None dx=0.0000 pos=-0.157,1.291,-0.087
+[22:29:57.483] proxy moved: ax=None dx=0.0021 pos=-0.155,1.291,-0.087
+[22:29:57.489] proxy moved: ax=None dx=0.0000 pos=-0.155,1.291,-0.089
+[22:29:57.499] proxy moved: ax=None dx=0.0021 pos=-0.153,1.291,-0.089
+[22:29:57.505] proxy moved: ax=None dx=0.0000 pos=-0.153,1.291,-0.091
+[22:29:57.511] proxy moved: ax=None dx=0.0021 pos=-0.151,1.291,-0.091
+[22:29:57.517] proxy moved: ax=None dx=0.0000 pos=-0.151,1.291,-0.093
+[22:29:57.553] proxy moved: ax=None dx=0.0000 pos=-0.151,1.291,-0.095
+[22:29:57.569] proxy moved: ax=None dx=0.0021 pos=-0.149,1.291,-0.095
+[22:29:57.589] proxy moved: ax=None dx=0.0021 pos=-0.146,1.291,-0.095
+[22:29:57.595] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.097
+[22:29:57.607] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.099
+[22:29:57.615] proxy moved: ax=None dx=0.0021 pos=-0.144,1.291,-0.099
+[22:29:57.622] proxy moved: ax=None dx=0.0000 pos=-0.144,1.291,-0.102
+[22:29:57.637] proxy moved: ax=None dx=0.0000 pos=-0.144,1.291,-0.104
+[22:29:57.644] proxy moved: ax=None dx=0.0021 pos=-0.142,1.291,-0.104
+[22:29:57.661] proxy moved: ax=None dx=0.0000 pos=-0.142,1.291,-0.106
+[22:29:57.879] proxy moved: ax=None dx=0.0000 pos=-0.142,1.291,-0.104
+[22:29:57.907] proxy moved: ax=None dx=0.0000 pos=-0.142,1.291,-0.102
+[22:29:57.921] proxy moved: ax=None dx=-0.0021 pos=-0.144,1.291,-0.102
+[22:29:57.933] proxy moved: ax=None dx=0.0000 pos=-0.144,1.291,-0.099
+[22:29:57.963] proxy moved: ax=None dx=-0.0021 pos=-0.146,1.291,-0.099
+[22:29:57.981] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.097
+[22:29:57.997] proxy moved: ax=None dx=-0.0021 pos=-0.149,1.291,-0.097
+[22:29:58.073] proxy moved: ax=None dx=-0.0021 pos=-0.151,1.291,-0.097
+[22:29:58.387] proxy moved: ax=None dx=0.0000 pos=-0.151,1.291,-0.099
+[22:29:58.411] proxy moved: ax=None dx=0.0000 pos=-0.151,1.291,-0.102
+[22:29:58.453] proxy moved: ax=None dx=0.0000 pos=-0.151,1.291,-0.104
+[22:29:58.480] proxy moved: ax=None dx=0.0000 pos=-0.151,1.291,-0.106
+[22:29:58.513] proxy moved: ax=None dx=0.0021 pos=-0.149,1.291,-0.106
+[22:29:58.555] proxy moved: ax=None dx=0.0000 pos=-0.149,1.291,-0.108
+[22:29:58.587] proxy moved: ax=None dx=0.0021 pos=-0.146,1.291,-0.108
+[22:29:58.651] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.110
+[22:29:58.853] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.112
+[22:29:58.859] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.114
+[22:29:58.869] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.116
+[22:29:58.887] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.119
+[22:29:58.901] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.121
+[22:29:58.910] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.123
+[22:29:58.923] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.125
+[22:29:58.933] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.127
+[22:29:58.939] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.129
+[22:29:58.946] proxy moved: ax=None dx=0.0000 pos=-0.146,1.291,-0.131
+[22:29:58.952] proxy moved: ax=None dx=0.0021 pos=-0.144,1.291,-0.134
+[22:29:58.959] proxy moved: ax=None dx=0.0000 pos=-0.144,1.291,-0.136
+[22:29:58.967] proxy moved: ax=None dx=0.0000 pos=-0.144,1.291,-0.138
+[22:29:58.973] proxy moved: ax=None dx=0.0000 pos=-0.144,1.291,-0.140
+[22:29:58.980] proxy moved: ax=None dx=0.0021 pos=-0.142,1.291,-0.140
+[22:29:58.986] proxy moved: ax=None dx=0.0000 pos=-0.142,1.291,-0.142
+[22:29:58.992] proxy moved: ax=None dx=0.0000 pos=-0.142,1.291,-0.144
+[22:29:58.998] proxy moved: ax=None dx=0.0000 pos=-0.142,1.291,-0.146
+[22:29:59.009] proxy moved: ax=None dx=0.0000 pos=-0.142,1.291,-0.148
+[22:29:59.083] proxy moved: ax=None dx=0.0021 pos=-0.140,1.291,-0.148
+[22:29:59.229] proxy moved: ax=None dx=-0.0021 pos=-0.142,1.291,-0.148
+[22:29:59.241] proxy moved: ax=None dx=-0.0021 pos=-0.144,1.291,-0.148
+[22:29:59.261] proxy moved: ax=None dx=-0.0021 pos=-0.146,1.291,-0.148
+[22:29:59.269] proxy moved: ax=None dx=-0.0021 pos=-0.149,1.291,-0.148
+[22:29:59.323] proxy moved: ax=None dx=-0.0021 pos=-0.151,1.291,-0.148
+[22:29:59.353] proxy moved: ax=None dx=-0.0021 pos=-0.153,1.291,-0.148
+[22:29:59.393] proxy moved: ax=None dx=0.0000 pos=-0.153,1.291,-0.151
+[22:29:59.417] proxy moved: ax=None dx=-0.0021 pos=-0.155,1.291,-0.151
+[22:29:59.459] proxy moved: ax=None dx=-0.0021 pos=-0.157,1.291,-0.151
+[22:29:59.469] proxy moved: ax=None dx=0.0000 pos=-0.157,1.291,-0.153
+[22:29:59.479] proxy moved: ax=None dx=-0.0021 pos=-0.159,1.291,-0.153
+[22:29:59.533] proxy moved: ax=None dx=-0.0021 pos=-0.161,1.291,-0.153
+[22:29:59.607] proxy moved: ax=None dx=-0.0021 pos=-0.164,1.291,-0.153
+[22:29:59.639] proxy moved: ax=None dx=-0.0021 pos=-0.166,1.291,-0.153
+[22:29:59.661] proxy moved: ax=None dx=-0.0021 pos=-0.168,1.291,-0.153
+[22:29:59.669] proxy moved: ax=None dx=0.0000 pos=-0.168,1.291,-0.155
+[22:29:59.685] proxy moved: ax=None dx=-0.0021 pos=-0.170,1.291,-0.155
+[22:29:59.711] proxy moved: ax=None dx=-0.0021 pos=-0.172,1.291,-0.155
+[22:29:59.729] proxy moved: ax=None dx=-0.0021 pos=-0.174,1.291,-0.155
+[22:29:59.737] proxy moved: ax=None dx=-0.0021 pos=-0.176,1.291,-0.155
+[22:29:59.754] proxy moved: ax=None dx=-0.0021 pos=-0.178,1.291,-0.155
+[22:29:59.769] proxy moved: ax=None dx=-0.0021 pos=-0.181,1.291,-0.155
+[22:29:59.785] proxy moved: ax=None dx=-0.0021 pos=-0.183,1.291,-0.155
+[22:29:59.799] proxy moved: ax=None dx=-0.0021 pos=-0.185,1.291,-0.155
+[22:29:59.825] proxy moved: ax=None dx=-0.0021 pos=-0.187,1.291,-0.155
+[22:29:59.839] proxy moved: ax=None dx=-0.0021 pos=-0.189,1.291,-0.155
+[22:29:59.845] proxy moved: ax=None dx=0.0000 pos=-0.189,1.291,-0.153
+[22:29:59.869] proxy moved: ax=None dx=-0.0021 pos=-0.191,1.291,-0.153
+[22:29:59.880] proxy moved: ax=None dx=-0.0021 pos=-0.193,1.291,-0.153
+[22:30:00.059] proxy moved: ax=None dx=-0.0021 pos=-0.195,1.291,-0.153
+[22:30:00.073] proxy moved: ax=None dx=0.0000 pos=-0.195,1.291,-0.151
+[22:30:00.109] proxy moved: ax=None dx=0.0000 pos=-0.195,1.291,-0.148
+[22:30:00.116] proxy moved: ax=None dx=-0.0021 pos=-0.198,1.291,-0.148
+[22:30:00.121] proxy moved: ax=None dx=0.0000 pos=-0.198,1.291,-0.146
+[22:30:00.139] proxy moved: ax=None dx=0.0000 pos=-0.198,1.291,-0.144
+[22:30:00.146] proxy moved: ax=None dx=-0.0021 pos=-0.200,1.291,-0.144
+[22:30:00.155] proxy moved: ax=None dx=0.0000 pos=-0.200,1.291,-0.142
+[22:30:00.171] proxy moved: ax=None dx=-0.0021 pos=-0.202,1.291,-0.142
+[22:30:00.179] proxy moved: ax=None dx=0.0000 pos=-0.202,1.291,-0.140
+[22:30:00.189] proxy moved: ax=None dx=0.0000 pos=-0.202,1.291,-0.138
+[22:30:00.207] proxy moved: ax=None dx=-0.0021 pos=-0.204,1.291,-0.138
+[22:30:00.213] proxy moved: ax=None dx=0.0000 pos=-0.204,1.291,-0.136
+[22:30:00.235] proxy moved: ax=None dx=-0.0021 pos=-0.206,1.291,-0.136
+[22:30:00.241] proxy moved: ax=None dx=0.0000 pos=-0.206,1.291,-0.134
+[22:30:00.257] proxy moved: ax=None dx=-0.0021 pos=-0.208,1.291,-0.134
+[22:30:00.263] proxy moved: ax=None dx=0.0000 pos=-0.208,1.291,-0.131
+[22:30:00.271] proxy moved: ax=None dx=0.0000 pos=-0.208,1.291,-0.129
+[22:30:00.295] proxy moved: ax=None dx=-0.0021 pos=-0.210,1.291,-0.129
+[22:30:00.317] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.127
+[22:30:00.481] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.125
+[22:30:00.501] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.123
+[22:30:00.509] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.121
+[22:30:00.523] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.119
+[22:30:00.533] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.116
+[22:30:00.552] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.114
+[22:30:00.558] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.112
+[22:30:00.579] proxy moved: ax=None dx=0.0000 pos=-0.210,1.291,-0.110
+[22:30:00.587] proxy moved: ax=None dx=0.0021 pos=-0.208,1.291,-0.110
+[22:30:00.595] proxy moved: ax=None dx=0.0000 pos=-0.208,1.291,-0.108
+[22:30:00.626] proxy moved: ax=None dx=0.0000 pos=-0.208,1.291,-0.106
+[22:30:00.632] proxy moved: ax=None dx=0.0000 pos=-0.208,1.291,-0.104
+[22:30:00.873] proxy moved: ax=None dx=0.0021 pos=-0.206,1.291,-0.104
+[22:30:01.041] proxy moved: ax=None dx=0.0021 pos=-0.204,1.291,-0.104
+[22:30:01.059] proxy moved: ax=None dx=0.0000 pos=-0.204,1.291,-0.102
+[22:30:01.111] proxy moved: ax=None dx=0.0021 pos=-0.202,1.291,-0.102
+[22:30:01.229] proxy moved: ax=None dx=0.0000 pos=-0.202,1.291,-0.099
+[22:30:01.235] proxy moved: ax=None dx=0.0021 pos=-0.200,1.291,-0.099
+[22:30:01.297] proxy moved: ax=None dx=0.0000 pos=-0.200,1.291,-0.097
+[22:30:01.321] proxy moved: ax=None dx=0.0021 pos=-0.198,1.291,-0.097
+[22:30:01.657] proxy moved: ax=None dx=0.0021 pos=-0.195,1.291,-0.097
+[22:30:01.928] proxy moved: ax=None dx=0.0021 pos=-0.193,1.291,-0.097
+[22:30:02.178] proxy moved: ax=None dx=0.0021 pos=-0.191,1.291,-0.097
+[22:30:02.263] proxy moved: ax=None dx=0.0000 pos=-0.191,1.291,-0.099
+[22:30:02.318] proxy moved: ax=None dx=0.0000 pos=-0.191,1.291,-0.102
+[22:30:02.399] proxy moved: ax=None dx=0.0000 pos=-0.191,1.291,-0.104
+[22:30:02.439] proxy moved: ax=None dx=0.0000 pos=-0.191,1.291,-0.106
+[22:30:04.650] proxy drag START: sel=0 ax=None
+[22:30:13.689] proxy drag START: sel=0 ax=None
+[22:30:17.415] proxy drag START: sel=1 ax=None
+[22:30:22.232] proxy drag START: sel=1 ax=None
+[22:30:22.337] proxy moved: ax=None dx=0.0000 pos=0.000,0.000,-0.004
+[22:30:22.350] proxy moved: ax=None dx=-0.0036 pos=-0.004,0.000,-0.014
+[22:30:22.361] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.018
+[22:30:22.374] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.036
+[22:30:22.385] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.051
+[22:30:22.396] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.058
+[22:30:22.407] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.072
+[22:30:22.418] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.076
+[22:30:22.429] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.079
+[22:30:22.440] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.083
+[22:30:22.452] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.087
+[22:30:22.464] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.090
+[22:30:22.485] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.094
+[22:30:22.621] proxy moved: ax=None dx=0.0000 pos=-0.004,0.000,-0.090
+[22:30:22.635] proxy moved: ax=None dx=0.0036 pos=0.000,0.000,-0.083
+[22:30:22.647] proxy moved: ax=None dx=0.0072 pos=0.007,0.000,-0.065
+[22:30:22.659] proxy moved: ax=None dx=0.0036 pos=0.011,0.000,-0.036
+[22:30:22.677] proxy moved: ax=None dx=0.0036 pos=0.014,0.000,-0.011
+[22:30:22.690] proxy moved: ax=None dx=0.0000 pos=0.014,0.000,0.014
+[22:30:22.702] proxy moved: ax=None dx=0.0036 pos=0.018,0.000,0.036
+[22:30:22.713] proxy moved: ax=None dx=0.0036 pos=0.022,0.000,0.043
+[22:30:22.726] proxy moved: ax=None dx=0.0000 pos=0.022,0.000,0.051
+[22:30:22.737] proxy moved: ax=None dx=0.0000 pos=0.022,0.000,0.054
+[22:30:22.748] proxy moved: ax=None dx=0.0000 pos=0.022,0.000,0.058
+[22:30:22.759] proxy moved: ax=None dx=0.0000 pos=0.022,0.000,0.065
+[22:30:22.772] proxy moved: ax=None dx=0.0000 pos=0.022,0.000,0.069
+[22:30:22.784] proxy moved: ax=None dx=0.0000 pos=0.022,0.000,0.076
+[22:30:22.796] proxy moved: ax=None dx=0.0000 pos=0.022,0.000,0.087
+[22:30:22.808] proxy moved: ax=None dx=0.0036 pos=0.025,0.000,0.101
+[22:30:22.821] proxy moved: ax=None dx=0.0000 pos=0.025,0.000,0.115
+[22:30:22.832] proxy moved: ax=None dx=0.0000 pos=0.025,0.000,0.137
+[22:30:22.843] proxy moved: ax=None dx=0.0000 pos=0.025,0.000,0.152
+[22:30:22.855] proxy moved: ax=None dx=0.0036 pos=0.029,0.000,0.162
+[22:30:22.867] proxy moved: ax=None dx=0.0000 pos=0.029,0.000,0.173
+[22:30:22.880] proxy moved: ax=None dx=0.0000 pos=0.029,0.000,0.184
+[22:30:22.891] proxy moved: ax=None dx=0.0000 pos=0.029,0.000,0.188

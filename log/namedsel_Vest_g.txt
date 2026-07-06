@@ -1,0 +1,13 @@
+face_data_end=310445  nf=9192  n_mats=1
+n_sel_hdr=1 at 310445
+  sel "vest" n=9192 skip=0 first=0 last=9154
+  str "aid_set_traveler\data\vest_co.paa" n=1 → no valid face array found
+  str "aid_set_traveler\data\vest.rvmat" n=20 → no valid face array found
+  str "aid_set_traveler\data\vest_nohq.paa" n=1 → no valid face array found
+  sel "#(argb,8,8,3)color(0.5,0.5,0.5,1,dt)" n=2 skip=0 first=768 last=0
+  sel "#(argb,8,8,3)color(0,0,0,0,mc)" n=3 skip=0 first=768 last=0
+  sel "aid_set_traveler\data\vest_smdi.paa" n=5 skip=35 first=41 last=0
+  sel "#(ai,64,64,1)fresnel(1.82,0.71)" n=6 skip=32 first=97 last=8960
+  str "dz\data\data\env_land_co.paa" n=7 → no valid face array found
+found_sels count=5
+  ASSIGNED "vest" → "aid_set_traveler\data\vest_co.paa" (9192 faces)
