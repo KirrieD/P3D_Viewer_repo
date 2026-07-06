@@ -16,7 +16,7 @@
     "alpha": false,
     "alpha_mats": {},
     "brightness": 1.0,
-    "geometry": "1920x1027+16+-21",
+    "geometry": "1920x1027+-233+114",
     "sidebar_width": 450,
     "section_models": true,
     "section_browser": true,
