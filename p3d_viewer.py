@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.20'
+VERSION    = 'v0.1.21'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -4058,16 +4058,16 @@ class App:
                     # Canvas not yet laid out — use parent width minus scrollbar
                     w = max(100, panel_outer.winfo_width() - 6)
                 self._side_canvas.itemconfig(self._side_win_id, width=w)
-                # v0.1.20: canvas window height = max(ch, content_h) — иначе
-                # scrollframe невидим. Дополнительно scrollregion = content_h
-                # (НЕ ch), и sash на нижней границе контента.
+                # v0.1.21: canvas window height = ch (canvas height), НЕ max
+                # с content_h. Иначе при sash вверх scrollframe остаётся большой
+                # и "вылезает" за уменьшенный canvas. Scrollregion = content_h
+                # для нормального скролла.
                 bbox = self._side_canvas.bbox('all')
                 content_h = (bbox[3] - bbox[1]) if bbox else 0
                 ch = self._side_canvas.winfo_height()
-                win_h = max(ch, content_h)
-                if win_h > 2:
-                    self._side_canvas.itemconfig(self._side_win_id, height=win_h)
-                # scrollregion по content_h — sash будет на нижней границе
+                if ch > 2:
+                    self._side_canvas.itemconfig(self._side_win_id, height=ch)
+                # scrollregion по content_h — если контента больше canvas, скролл
                 self._side_canvas.configure(
                     scrollregion=self._side_canvas.bbox('all') or (0, 0, w, max(content_h, ch)))
             except Exception:
