@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v3.2.0'
+VERSION    = 'v0.0.7'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -1043,16 +1043,16 @@ PRESET_THEMES = {
         'bg_side':    '#0d1018',
         'bg_widget':  '#1a2030',
         'bg_sep':     '#1e2838',
-        'fg_text':    '#9fcfba',
-        'fg_label':   '#1d9e75',
-        'fg_muted':   '#2a4840',
+        'fg_text':    '#ffffff',
+        'fg_label':   '#3b82f6',
+        'fg_muted':   '#6b7280',
         'btn_bg':     '#1a2030',
-        'btn_fg':     '#9fcfba',
+        'btn_fg':     '#ffffff',
         'btn_hover':  '#1e2838',
-        'accent_bg':  '#1d9e75',
-        'accent_fg':  '#e1f5ee',
-        'accent_hov': '#0f6e56',
-        'c_ok':       '#5dcaa5',
+        'accent_bg':  '#3b82f6',
+        'accent_fg':  '#ffffff',
+        'accent_hov': '#2563eb',
+        'c_ok':       '#3b82f6',
         'c_warn':     '#f9e2af',
         'c_err':      '#f38ba8',
         'gl_bg':      '#080c10',
