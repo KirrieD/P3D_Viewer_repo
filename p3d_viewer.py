@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.16'
+VERSION    = 'v0.1.18'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -3892,6 +3892,13 @@ class App:
             if prev in self._icon_btn_outers:
                 self._icon_btn_outers[prev].config(bg=T['bg_main'])
 
+        # v0.1.18: "Выключено" должно быть только в модуле "Моды".
+        # Если предыдущая вкладка была mods, но мы переключаемся на другую — скрыть _disabled_frame из PanedWindow
+        if prev == 'mods' and key != 'mods' and hasattr(self, '_side_paned'):
+            try:
+                self._side_paned.forget(self._disabled_frame)
+            except Exception: pass
+
         # Второй клик на ту же иконку — сворачиваем
         if prev == key:
             self._active_icon[0] = None
@@ -3906,6 +3913,13 @@ class App:
         if key in self._icon_panels:
             # v2.9: адаптивный layout — панель растягивается во все стороны
             self._icon_panels[key].pack(fill=tk.BOTH, expand=True)
+            # v0.1.18: при возврате на mods — снова показать _disabled_frame в PanedWindow
+            if key == 'mods' and hasattr(self, '_side_paned') and hasattr(self, '_disabled_frame'):
+                try:
+                    panes = self._side_paned.panes()
+                    if self._disabled_frame not in panes:
+                        self._side_paned.add(self._disabled_frame, minsize=80, stretch='always')
+                except Exception: pass
         try:
             self._side_canvas.yview_moveto(0)
         except Exception:
