@@ -4010,15 +4010,14 @@ class App:
         self._side_canvas = tk.Canvas(
             self._side_paned, bg=T['bg_side'], bd=0, highlightthickness=0)
         self._side_paned.add(self._side_canvas, minsize=80, stretch='always')
-        # v0.1.12: при перетягивании sash scrollregion должен обновиться
+        # v0.1.13: при перетягивании sash scrollregion должен обновиться
         def _on_side_pane_configure(_e=None):
             try:
-                self._side_canvas.configure(
-                    scrollregion=self._side_canvas.bbox('all'))
-                self._side_canvas.itemconfig(self._side_win_id,
-                                              width=self._side_canvas.winfo_width())
+                if getattr(self, '_refresh_canvas', None):
+                    self._refresh_canvas()
             except Exception: pass
-        self._side_canvas.bind('<Configure>', _on_side_pane_configure)
+        self._side_paned.bind('<ButtonRelease-1>', lambda e: self.root.after(20, _on_side_pane_configure))
+        self._side_paned.bind('<B1-Motion>', lambda e: self.root.after(20, _on_side_pane_configure))
 
         # bottom (выключено) — отдельная панель со своим scroll
         self._disabled_frame = tk.Frame(self._side_paned, bg=T['bg_side'])
