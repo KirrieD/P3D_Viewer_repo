@@ -3934,26 +3934,27 @@ class App:
         self._side_outer = side_outer
         self._tw_frames.append((side_outer, 'bg_side'))
 
-        self._icon_strip_visible = True
+        self._sidebar_visible = True
 
-        def _toggle_icon_strip():
-            if self._icon_strip_visible:
-                icon_strip.pack_forget()
-                self._icon_strip_visible = False
-                icon_toggle_btn.config(text='▶')
+        def _toggle_sidebar():
+            # v0.1.3: скрывает только "Доступные моды" (panel_outer), icon_strip остаётся
+            if self._sidebar_visible:
+                panel_outer.pack_forget()
+                self._sidebar_visible = False
+                toggle_btn.config(text='▶ Моды')
             else:
-                icon_strip.pack(side=tk.LEFT, fill=tk.Y, before=panel_outer)
-                self._icon_strip_visible = True
-                icon_toggle_btn.config(text='◀')
+                panel_outer.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, after=icon_strip)
+                self._sidebar_visible = True
+                toggle_btn.config(text='◀ Моды')
 
-        icon_toggle_btn = tk.Button(toolbar_frame, text='◀', relief='flat',
-                                    bg=T['bg_main'], fg=T['fg_label'],
-                                    font=(T['font_fam'], T['font_sz'] - 1),
-                                    padx=6, pady=0, bd=0,
-                                    command=_toggle_icon_strip)
-        icon_toggle_btn.pack(side=tk.LEFT, padx=(6, 0), pady=0)
-        self._tw_buttons.append((icon_toggle_btn, 'normal'))
-        self._icon_toggle_btn = icon_toggle_btn
+        toggle_btn = tk.Button(toolbar_frame, text='◀ Моды', relief='flat',
+                               bg=T['bg_main'], fg=T['fg_label'],
+                               font=(T['font_fam'], T['font_sz'] - 1),
+                               padx=6, pady=0, bd=0,
+                               command=_toggle_sidebar)
+        toggle_btn.pack(side=tk.LEFT, padx=(6, 0), pady=0)
+        self._tw_buttons.append((toggle_btn, 'normal'))
+        self._toggle_btn = toggle_btn
 
         # v0.1.2: toggle для right_panel (Загружено) — справа в toolbar
         self._right_panel_visible = True
