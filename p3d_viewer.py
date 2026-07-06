@@ -4252,6 +4252,15 @@ class App:
         self._vp_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self._tw_frames.append((self._vp_frame, 'gl_bg'))
 
+        # v0.1.0: right panel — "Загружено" панель (Tactical Gear style)
+        rp_w = self._app_settings.get('right_panel_width', 320)
+        self._right_panel = tk.Frame(self._main_frame, bg=T['bg_side'], width=rp_w)
+        self._right_panel.pack(side=tk.LEFT, fill=tk.Y)
+        self._right_panel.pack_propagate(False)
+        self._tw_frames.append((self._right_panel, 'bg_side'))
+        self._loaded_outer = tk.Frame(self._right_panel, bg=T['bg_side'])
+        self._loaded_outer.pack(fill=tk.BOTH, expand=True)
+
         if USE_GL:
             self.viewport = Viewport(self._vp_frame, width=880, height=680, takefocus=1)
             self.viewport.pack(fill=tk.BOTH, expand=True)
@@ -8714,6 +8723,8 @@ class App:
     def _build_mods_panel(self, parent):
         """Объединённая панель: список модов + загруженные модели + кнопки."""
         T = self._T()
+        # v0.1.0: "Загружено" строится в правой панели, а не в sidebar
+        loaded_parent = getattr(self, '_loaded_outer', parent)
 
         if not hasattr(self, '_models_search_var'):
             self._models_search_var = tk.StringVar()
@@ -8742,11 +8753,11 @@ class App:
                       font=(T['font_fam'], T['font_sz'] - 1), padx=6, pady=2,
                       command=_pick).pack(padx=12, anchor='w', pady=(0, 8))
             # Создаём секцию "Загружено" и выходим
-            tk.Frame(parent, bg=T['bg_sep'], height=1).pack(fill=tk.X, padx=8, pady=(4, 2))
-            tk.Label(parent, text='Загружено:',
+            tk.Frame(loaded_parent, bg=T['bg_sep'], height=1).pack(fill=tk.X, padx=8, pady=(4, 2))
+            tk.Label(loaded_parent, text='Загружено:',
                      bg=T['bg_side'], fg=T['fg_label'],
                      font=(T['font_fam'], T['font_sz'] - 1)).pack(anchor='w', padx=12)
-            _lsf = tk.Frame(parent, bg=T['bg_side'])
+            _lsf = tk.Frame(loaded_parent, bg=T['bg_side'])
             _lsf.pack(fill=tk.X, padx=8, pady=(2, 2))
             tk.Label(_lsf, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
                      font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
@@ -8757,7 +8768,7 @@ class App:
             # v2.6: scrollable список моделей (Canvas + Scrollbar + inner Frame)
             # Решает проблему: фиксированная высота + скролл когда много моделей + нет моргания
             # Контейнер чтобы canvas и scrollbar были рядом
-            _ml_container = tk.Frame(parent, bg=T['bg_side'])
+            _ml_container = tk.Frame(loaded_parent, bg=T['bg_side'])
             # v2.9: адаптивный — растягивается когда окно увеличивается
             _ml_container.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 6))
             # v3.1.9: _models_scroll (Scrollbar widget) удалён — KirrieD: быть не должно визуально.
@@ -9233,11 +9244,11 @@ class App:
                   command=_open_blender).pack(side=tk.LEFT)
 
         # ── Список загруженных моделей (скроллируемый холст) ─────────────────────
-        tk.Frame(parent, bg=T['bg_sep'], height=1).pack(fill=tk.X, padx=8, pady=(4, 0))
-        tk.Label(parent, text='Загружено:',
+        tk.Frame(loaded_parent, bg=T['bg_sep'], height=1).pack(fill=tk.X, padx=8, pady=(4, 0))
+        tk.Label(loaded_parent, text='Загружено:',
                  bg=T['bg_side'], fg=T['fg_label'],
                  font=(T['font_fam'], T['font_sz'] - 1)).pack(anchor='w', padx=12, pady=(4, 2))
-        _lsf2 = tk.Frame(parent, bg=T['bg_side'])
+        _lsf2 = tk.Frame(loaded_parent, bg=T['bg_side'])
         _lsf2.pack(fill=tk.X, padx=8, pady=(0, 2))
         tk.Label(_lsf2, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
                  font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
@@ -9246,7 +9257,7 @@ class App:
                  insertbackground=T['fg_text'], relief='flat',
                  font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(4, 0))
 
-        loaded_outer = tk.Frame(parent, bg=T['bg_side'])
+        loaded_outer = tk.Frame(loaded_parent, bg=T['bg_side'])
         # v3.1.4: expand=True → растягивается на всё свободное место (50/50 с доступные моды)
         loaded_outer.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 6))
         loaded_outer.pack_propagate(False)
