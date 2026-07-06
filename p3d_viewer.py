@@ -4036,16 +4036,17 @@ class App:
         # Fix: update canvas window width and scrollregion reliably
         def _refresh_canvas():
             try:
+                # v0.1.12: process pending events first, чтобы bbox('all') вернул
+                # реальный размер контента
+                try: self._side_canvas.update_idletasks()
+                except Exception: pass
                 w = self._side_canvas.winfo_width()
                 if w < 2:
                     # Canvas not yet laid out — use parent width minus scrollbar
                     w = max(100, panel_outer.winfo_width() - 6)
                 self._side_canvas.itemconfig(self._side_win_id, width=w)
-                # v2.9: явно задаём высоту canvas window равной высоте canvas,
-                # чтобы mods_panel.pack(fill=BOTH, expand=True) мог растянуться
-                ch = self._side_canvas.winfo_height()
-                if ch > 2:
-                    self._side_canvas.itemconfig(self._side_win_id, height=ch)
+                # v0.1.12: НЕ задаём height — иначе canvas window = canvas и scroll не работает
+                # scrollregion bbox('all') правильно отдаст реальную высоту контента
                 self._side_canvas.configure(
                     scrollregion=self._side_canvas.bbox('all') or (0, 0, w, 400))
             except Exception:
@@ -4059,6 +4060,9 @@ class App:
                 except: pass
             self._configure_job = self.root.after(30, _refresh_canvas)
         self._side.bind('<Configure>', _on_side_configure)
+        # v0.1.12: bind на canvas чтобы обновить scrollregion при ресайзе (sash drag)
+        self._side_canvas.bind('<Configure>',
+            lambda e: self.root.after(30, _refresh_canvas))
 
         def _on_canvas_configure(e):
             try:
