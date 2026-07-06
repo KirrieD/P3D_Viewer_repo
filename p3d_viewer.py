@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.21'
+VERSION    = 'v0.1.23'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8037,6 +8037,24 @@ class App:
             if self._section_vis.get(name, True) and name in self._section_frames:
                 self._section_frames[name].pack(fill=tk.X)
 
+    def _reorder_icon_strip_widgets(self):
+        """v0.1.23: live apply icon_strip — перепаковать btn_outer в новом порядке (НЕ destroy)."""
+        order = self._app_settings.get('icon_strip_order',
+                                       ['mods', 'mats', 'textures', 'file', 'proxy'])
+        for k in ('mods', 'mats', 'textures', 'file', 'proxy'):
+            if k not in order:
+                order.append(k)
+        for k in list(self._icon_btn_outers.keys()):
+            try:
+                self._icon_btn_outers[k].pack_forget()
+            except Exception: pass
+        for k in order:
+            if k in self._icon_btn_outers:
+                try:
+                    self._icon_btn_outers[k].pack(fill=tk.X, pady=1)
+                except Exception: pass
+        self._icon_strip_order = order
+
     def _show_section(self, name, visible):
         self._section_vis[name] = visible
         self._reorder_sections()
@@ -8189,12 +8207,12 @@ class App:
                 row += 1
 
         # ═══════════════════════════════════════════
-        # SECTION 2: РАСПОЛОЖЕНИЕ СЕКЦИЙ
+        # v0.1.23: SECTION 2: ПОРЯДОК ИКОНОК SIDEBAR (drag + Up/Down, live apply)
         # ═══════════════════════════════════════════
-        section_header(body, 'Расположение секций')
+        section_header(body, 'Порядок иконок')
 
         order_hint = tk.Label(body,
-            text='Перетащи секции чтобы изменить порядок в боковой панели',
+            text='Перетащи иконки или используй ↑↓ чтобы изменить порядок в боковой панели',
             bg=T['bg_main'], fg=T['fg_label'],
             font=(T['font_fam'], 8), justify=tk.LEFT)
         order_hint.pack(anchor='w', padx=20, pady=(0, 6))
@@ -8204,19 +8222,20 @@ class App:
         order_inner.pack(fill=tk.X, padx=8, pady=8)
 
         SECTION_DISPLAY_NAMES = {
-            'Моды':        'Моды (браузер файлов)',
-            'Материалы':   'Материалы',
-            'Текстуры':    'Текстуры',
-            # v3.1.8: 'Вид' удалён — Освещение/Яркость внутри Текстуры
-            'ФАЙЛ':        'Файл',
-            'КОНВЕРТАЦИЯ': 'Конвертация',
+            'mods':     '⊞ Моды',
+            'mats':     '◈ Материалы',
+            'textures': '▦ Текстуры',
+            'file':     '⊡ Файл',
+            'proxy':    '⊕ Прокси',
         }
+        DEFAULT_ICON_KEYS = ['mods', 'mats', 'textures', 'file', 'proxy']
 
-        # Current order from settings (stored as display names)
-        current_order = self._app_settings.get('section_order_names',
-            list(SECTION_DISPLAY_NAMES.keys()))
-        # Ensure all sections present
-        for k in SECTION_DISPLAY_NAMES:
+        # Current order from settings (icon_strip_order — реальные ключи icon_strip)
+        current_order = list(self._app_settings.get('icon_strip_order', DEFAULT_ICON_KEYS))
+        # фильтруем только валидные
+        current_order = [k for k in current_order if k in SECTION_DISPLAY_NAMES]
+        # добавляем недостающие
+        for k in DEFAULT_ICON_KEYS:
             if k not in current_order:
                 current_order.append(k)
 
@@ -8243,11 +8262,11 @@ class App:
                                    cursor='fleur', padx=10, pady=6)
                 handle.pack(side=tk.LEFT)
 
-                # Section name
+                # Section name — v0.1.23: anchor='w' для выравнивания по левому краю
                 tk.Label(row_frame, text=display,
                          bg=T['bg_widget'], fg=T['fg_text'],
                          font=(T['font_fam'], 9),
-                         pady=6).pack(side=tk.LEFT, fill=tk.X, expand=True)
+                         padx=12, pady=6, anchor='w').pack(side=tk.LEFT, fill=tk.X, expand=True)
 
                 # Up/Down arrows
                 btn_frame = tk.Frame(row_frame, bg=T['bg_widget'])
@@ -8315,64 +8334,8 @@ class App:
 
         rebuild_order_list()
 
-        # ═══════════════════════════════════════════
-        # v0.1.16: SECTION 2.5: ПОРЯДОК ИКОНОК SIDEBAR (mods/mats/textures/file/proxy)
-        # ═══════════════════════════════════════════
-        section_header(body, 'Иконки сайдбара')
-        icon_order_hint = tk.Label(body,
-            text='Порядок иконок слева в sidebar',
-            bg=T['bg_main'], fg=T['fg_label'],
-            font=(T['font_fam'], 8), justify=tk.LEFT)
-        icon_order_hint.pack(anchor='w', padx=20, pady=(0, 6))
-
-        icon_order_card = card(body)
-        icon_order_inner = tk.Frame(icon_order_card, bg=T['bg_side'])
-        icon_order_inner.pack(fill=tk.X, padx=8, pady=8)
-
-        ICON_LABELS = {
-            'mods':     '⊞ Моды',
-            'mats':     '◈ Материалы',
-            'textures': '▦ Текстуры',
-            'file':     '⊡ Файл',
-            'proxy':    '⊕ Прокси',
-        }
-        icon_order_state = {'items': list(self._icon_strip_order)}
-
-        def rebuild_icon_order():
-            for w in icon_order_inner.winfo_children():
-                w.destroy()
-            for i, k in enumerate(icon_order_state['items']):
-                row = tk.Frame(icon_order_inner, bg=T['bg_widget'],
-                               highlightbackground=T['bg_sep'],
-                               highlightthickness=1)
-                row.pack(fill=tk.X, pady=2, padx=4)
-                tk.Label(row, text=ICON_LABELS.get(k, k),
-                         bg=T['bg_widget'], fg=T['fg_text'],
-                         font=(T['font_fam'], 9),
-                         padx=10, pady=6).pack(side=tk.LEFT, fill=tk.X, expand=True)
-                bf = tk.Frame(row, bg=T['bg_widget'])
-                bf.pack(side=tk.RIGHT, padx=6)
-                def mk_up(idx=i):
-                    def go():
-                        if idx > 0:
-                            lst = icon_order_state['items']
-                            lst[idx-1], lst[idx] = lst[idx], lst[idx-1]
-                            rebuild_icon_order()
-                    return go
-                def mk_dn(idx=i):
-                    def go():
-                        lst = icon_order_state['items']
-                        if idx < len(lst)-1:
-                            lst[idx], lst[idx+1] = lst[idx+1], lst[idx]
-                            rebuild_icon_order()
-                    return go
-                tk.Button(bf, text='↑', relief='flat', bg=T['bg_widget'], fg=T['fg_label'],
-                           font=(T['font_fam'], 9), padx=4, pady=2,
-                           command=mk_up(i)).pack(side=tk.LEFT)
-                tk.Button(bf, text='↓', relief='flat', bg=T['bg_widget'], fg=T['fg_label'],
-                           font=(T['font_fam'], 9), padx=4, pady=2,
-                           command=mk_dn(i)).pack(side=tk.LEFT)
-        rebuild_icon_order()
+        # v0.1.23: старая секция "Иконки сайдбара" (Up/Down) удалена — объединена
+# с секцией "Порядок иконок" выше (которая использует drag + Up/Down + live apply)
 
         # ═══════════════════════════════════════════
         # SECTION 3: ЦВЕТА ЭЛЕМЕНТОВ
@@ -8653,11 +8616,15 @@ class App:
                 self._clear_sidebar_gradient()
             self.theme = new_theme
             self._app_settings['theme_name'] = name
-            self._app_settings['section_order_names'] = list(order_state['items'])
-            self._app_settings['icon_strip_order'] = list(icon_order_state['items'])
+            # v0.1.23: используем icon_strip_order (тот же order_state) для icon_strip
+            self._app_settings['icon_strip_order'] = list(order_state['items'])
             self._app_settings['custom_colors'] = dict(custom_colors)
             self._app_settings['font_fam'] = font_fam_var.get()
             self._app_settings['font_sz'] = font_var.get()
+            # v0.1.23: live apply — перепаковать icon_btns в новом порядке (НЕ destroy)
+            try:
+                self._reorder_icon_strip_widgets()
+            except Exception: pass
             # Сохраняем стили текста
             new_ts = {}
             for lvl, vars_d in text_style_vars.items():
