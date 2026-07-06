@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.0.7'
+VERSION    = 'v0.1.8'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -3993,11 +3993,20 @@ class App:
         panel_outer = tk.Frame(side_outer, bg=T['bg_side'])
         panel_outer.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        # v3.1.8: scrollbar убран — KirrieD починил раскрытие секций, scroll больше не нужен.
-        # canvas оставлен для совместимости со ссылками _side_canvas в коде.
+        # v0.1.8: фиксированный header (версия) сверху
+        self._header_frame = tk.Frame(panel_outer, bg=T['bg_side'])
+        self._header_frame.pack(side=tk.TOP, fill=tk.X)
+        self._tw_frames.append((self._header_frame, 'bg_side'))
+
+        # scrollable середина
         self._side_canvas = tk.Canvas(
             panel_outer, bg=T['bg_side'], bd=0, highlightthickness=0)
-        self._side_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        self._side_canvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
+
+        # v0.1.8: фиксированный footer (Загрузить+Blender) снизу
+        self._footer_frame = tk.Frame(panel_outer, bg=T['bg_side'])
+        self._footer_frame.pack(side=tk.BOTTOM, fill=tk.X)
+        self._tw_frames.append((self._footer_frame, 'bg_side'))
 
         self._side = tk.Frame(self._side_canvas, bg=T['bg_side'])
         self._side_win_id = self._side_canvas.create_window(
@@ -4147,8 +4156,8 @@ class App:
             self._tw_frames.append((f, 'bg_side'))
             return f
 
-        # Версия + автор (мини-хедер вверху контентной зоны, всегда виден)
-        ver_bar = tk.Frame(self._side, bg=T['bg_side'])
+        # Версия + автор (v0.1.8: фиксированный хедер — НЕ скроллится)
+        ver_bar = tk.Frame(self._header_frame, bg=T['bg_side'])
         ver_bar.pack(fill=tk.X, padx=8, pady=(10, 2))
         self._tw_frames.append((ver_bar, 'bg_side'))
 
@@ -9265,7 +9274,7 @@ class App:
         _rebuild_disabled_section()
 
         # ── Кнопки действий ──────────────────────────────────────────────────
-        btn_frame = tk.Frame(parent, bg=T['bg_side'])
+        btn_frame = tk.Frame(getattr(self, '_footer_frame', parent), bg=T['bg_side'])
         btn_frame.pack(fill=tk.X, padx=8, pady=(2, 4))
 
         def _load_selected():
