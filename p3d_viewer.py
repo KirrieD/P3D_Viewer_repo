@@ -4283,6 +4283,23 @@ class App:
             except Exception:
                 pass
             self._switch_icon_panel('mods')
+            # v0.1.9: auto-picker если _unpacked не найдена — диалог выбора папки
+            try:
+                if not self._mods_unpacked:
+                    d = filedialog.askdirectory(
+                        title='Выберите папку с модами (содержит _unpacked или мод-папки)')
+                    if d and os.path.isdir(d):
+                        self._mods_unpacked = d
+                        self._app_settings['unpacked_dir'] = d
+                        self._save_app_settings()
+                        # перестроить mods panel с новой папкой
+                        mods_panel_local = self._icon_panels.get('mods')
+                        if mods_panel_local:
+                            for w in mods_panel_local.winfo_children():
+                                w.destroy()
+                            self._build_mods_panel(mods_panel_local)
+            except Exception as _e:
+                _dbg(f'_startup auto-picker ERROR: {_e}')
             # v3.1.9: Dev Tools — discover widgets + apply custom_labels
             try:
                 self._discover_widgets()
