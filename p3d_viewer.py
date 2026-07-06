@@ -4138,7 +4138,8 @@ class App:
 
         # ПАНЕЛЬ: Моды
         mods_panel = _make_panel('mods')
-        self._build_mods_panel(mods_panel)
+        # v0.1.0: _build_mods_panel отложен — вызывается ПОСЛЕ создания right_panel
+        # (см. ниже)
 
         # ПАНЕЛЬ: Материалы
         mats_panel = _make_panel('mats')
@@ -4260,6 +4261,9 @@ class App:
         self._tw_frames.append((self._right_panel, 'bg_side'))
         self._loaded_outer = tk.Frame(self._right_panel, bg=T['bg_side'])
         self._loaded_outer.pack(fill=tk.BOTH, expand=True)
+
+        # v0.1.0: теперь строим mods panel — self._loaded_outer готов
+        self._build_mods_panel(mods_panel)
 
         if USE_GL:
             self.viewport = Viewport(self._vp_frame, width=880, height=680, takefocus=1)
