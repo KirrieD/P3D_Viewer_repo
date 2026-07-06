@@ -4156,12 +4156,31 @@ class App:
 
             return _click
 
-        _make_icon_btn('mods',     '⊞', 'Моды')
-        _make_icon_btn('mats',     '◈', 'Материалы')
-        _make_icon_btn('textures', '▦', 'Текстуры')
-        # v3.1.8: 'view' удалён — секция ВИД перенесена в Текстуры
-        _make_icon_btn('file',     '⊡', 'Файл')
-        _make_icon_btn('proxy',    '⊕', 'Прокси')
+        # v0.1.16: применяем icon_strip_order из settings (если есть)
+        _default_icon_order = ['mods', 'mats', 'textures', 'file', 'proxy']
+        _icon_strip_order = self._app_settings.get('icon_strip_order', _default_icon_order)
+        # фильтруем — оставляем только валидные ключи
+        _icon_strip_order = [k for k in _icon_strip_order if k in ('mods','mats','textures','file','proxy')]
+        for k in _default_icon_order:
+            if k not in _icon_strip_order:
+                _icon_strip_order.append(k)
+        _icon_icons = {
+            'mods':     '⊞',
+            'mats':     '◈',
+            'textures': '▦',
+            'file':     '⊡',
+            'proxy':    '⊕',
+        }
+        _icon_names = {
+            'mods':     'Моды',
+            'mats':     'Материалы',
+            'textures': 'Текстуры',
+            'file':     'Файл',
+            'proxy':    'Прокси',
+        }
+        for k in _icon_strip_order:
+            _make_icon_btn(k, _icon_icons[k], _icon_names[k])
+        self._icon_strip_order = _icon_strip_order
 
         # Разделитель + настройки внизу
         spacer = tk.Frame(icon_strip, bg=T['bg_main'])
@@ -8282,6 +8301,65 @@ class App:
         rebuild_order_list()
 
         # ═══════════════════════════════════════════
+        # v0.1.16: SECTION 2.5: ПОРЯДОК ИКОНОК SIDEBAR (mods/mats/textures/file/proxy)
+        # ═══════════════════════════════════════════
+        section_header(body, 'Иконки сайдбара')
+        icon_order_hint = tk.Label(body,
+            text='Порядок иконок слева в sidebar',
+            bg=T['bg_main'], fg=T['fg_label'],
+            font=(T['font_fam'], 8), justify=tk.LEFT)
+        icon_order_hint.pack(anchor='w', padx=20, pady=(0, 6))
+
+        icon_order_card = card(body)
+        icon_order_inner = tk.Frame(icon_order_card, bg=T['bg_side'])
+        icon_order_inner.pack(fill=tk.X, padx=8, pady=8)
+
+        ICON_LABELS = {
+            'mods':     '⊞ Моды',
+            'mats':     '◈ Материалы',
+            'textures': '▦ Текстуры',
+            'file':     '⊡ Файл',
+            'proxy':    '⊕ Прокси',
+        }
+        icon_order_state = {'items': list(self._icon_strip_order)}
+
+        def rebuild_icon_order():
+            for w in icon_order_inner.winfo_children():
+                w.destroy()
+            for i, k in enumerate(icon_order_state['items']):
+                row = tk.Frame(icon_order_inner, bg=T['bg_widget'],
+                               highlightbackground=T['bg_sep'],
+                               highlightthickness=1)
+                row.pack(fill=tk.X, pady=2, padx=4)
+                tk.Label(row, text=ICON_LABELS.get(k, k),
+                         bg=T['bg_widget'], fg=T['fg_text'],
+                         font=(T['font_fam'], 9),
+                         padx=10, pady=6).pack(side=tk.LEFT, fill=tk.X, expand=True)
+                bf = tk.Frame(row, bg=T['bg_widget'])
+                bf.pack(side=tk.RIGHT, padx=6)
+                def mk_up(idx=i):
+                    def go():
+                        if idx > 0:
+                            lst = icon_order_state['items']
+                            lst[idx-1], lst[idx] = lst[idx], lst[idx-1]
+                            rebuild_icon_order()
+                    return go
+                def mk_dn(idx=i):
+                    def go():
+                        lst = icon_order_state['items']
+                        if idx < len(lst)-1:
+                            lst[idx], lst[idx+1] = lst[idx+1], lst[idx]
+                            rebuild_icon_order()
+                    return go
+                tk.Button(bf, text='↑', relief='flat', bg=T['bg_widget'], fg=T['fg_label'],
+                           font=(T['font_fam'], 9), padx=4, pady=2,
+                           command=mk_up(i)).pack(side=tk.LEFT)
+                tk.Button(bf, text='↓', relief='flat', bg=T['bg_widget'], fg=T['fg_label'],
+                           font=(T['font_fam'], 9), padx=4, pady=2,
+                           command=mk_dn(i)).pack(side=tk.LEFT)
+        rebuild_icon_order()
+
+        # ═══════════════════════════════════════════
         # SECTION 3: ЦВЕТА ЭЛЕМЕНТОВ
         # ═══════════════════════════════════════════
         section_header(body, 'Цвета элементов')
@@ -8561,6 +8639,7 @@ class App:
             self.theme = new_theme
             self._app_settings['theme_name'] = name
             self._app_settings['section_order_names'] = list(order_state['items'])
+            self._app_settings['icon_strip_order'] = list(icon_order_state['items'])
             self._app_settings['custom_colors'] = dict(custom_colors)
             self._app_settings['font_fam'] = font_fam_var.get()
             self._app_settings['font_sz'] = font_var.get()
