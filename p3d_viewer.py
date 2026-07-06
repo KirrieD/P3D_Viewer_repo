@@ -9038,45 +9038,41 @@ class App:
             mod_var = tk.BooleanVar(value=False)
             child_var_list = []
 
-            # v0.0.9: card layout — bg_widget, subtle border, padding между карточками
-            mod_container = tk.Frame(target_frame,
-                                     bg=T.get('bg_widget', '#1f2235'),
-                                     highlightbackground=T.get('bg_sep', '#2a2a40'),
-                                     highlightthickness=1)
-            mod_container.pack(fill=tk.X, padx=4, pady=3)
-            # v3.1.6: refs для поиска — [name, container, toggle_fn, expand_lbl]
+            # v0.1.10: компактный плоский список — убрали card border и padding,
+            # чтобы больше модов помещалось на экране
+            mod_container = tk.Frame(target_frame, bg=T['bg_side'])
+            mod_container.pack(fill=tk.X, padx=2, pady=0)
             _mod_row_refs.append([mn, mod_container, None, None])
 
-            mod_row = tk.Frame(mod_container, bg=T.get('bg_widget', '#1f2235'))
-            mod_row.pack(fill=tk.X, padx=2, pady=2)
+            mod_row = tk.Frame(mod_container, bg=T['bg_side'])
+            mod_row.pack(fill=tk.X)
 
             expand_lbl = tk.Label(mod_row, text='▶',
-                                  bg=T.get('bg_widget', '#1f2235'), fg=T['fg_muted'],
+                                  bg=T['bg_side'], fg=T['fg_muted'],
                                   font=(T['font_fam'], T['font_sz'] - 2),
                                   cursor='hand2', width=2)
-            expand_lbl.pack(side=tk.LEFT, padx=(4, 0))
+            expand_lbl.pack(side=tk.LEFT, padx=(2, 0))
 
             mod_cb_ref = [None]
             mod_cb = tk.Checkbutton(mod_row,
                                     text=f'{mn}  (...)',
                                     variable=mod_var,
-                                    bg=T.get('bg_widget', '#1f2235'), fg=T['fg_text'],
-                                    selectcolor=T.get('bg_main', '#161821'),
-                                    activebackground=T.get('bg_widget', '#1f2235'),
-                                    # v0.0.9: bold mod name (Tactical Gear style)
-                                    font=(T['font_fam'], T['font_sz'], 'bold'),
+                                    bg=T['bg_side'], fg=T['fg_text'],
+                                    selectcolor=T.get('bg_widget', '#1f2235'),
+                                    activebackground=T['bg_side'],
+                                    font=(T['font_fam'], T['font_sz'] - 1),
                                     anchor='w')
             mod_cb.pack(side=tk.LEFT, fill=tk.X, expand=True)
             mod_cb_ref[0] = mod_cb
 
             # Disable button (×)
-            dis_btn = tk.Label(mod_row, text='×', bg=T.get('bg_widget', '#1f2235'), fg=T['fg_muted'],
-                               font=(T['font_fam'], T['font_sz']), cursor='hand2',
+            dis_btn = tk.Label(mod_row, text='×', bg=T['bg_side'], fg=T['fg_muted'],
+                               font=(T['font_fam'], T['font_sz'] - 1), cursor='hand2',
                                padx=4)
             dis_btn.pack(side=tk.RIGHT, padx=(0, 4))
             dis_btn.bind('<Button-1>', lambda e, _mn=mn, _mc=mod_container: _disable_mod(_mn, _mc))
 
-            children_frame = tk.Frame(mod_container, bg=T.get('bg_widget', '#1f2235'))
+            children_frame = tk.Frame(mod_container, bg=T['bg_side'])
             expand_state = [False]
             scan_done    = [False]
             files_ref    = [[]]
