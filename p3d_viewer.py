@@ -977,9 +977,10 @@ DEFAULT_THEME = {
     'btn_bg':     '#313244',   # кнопки: фон
     'btn_fg':     '#cdd6f4',   # кнопки: текст
     'btn_hover':  '#45475a',   # кнопки: hover
-    'accent_bg':  '#89b4fa',   # акцент: фон
-    'accent_fg':  '#1e1e2e',   # акцент: текст
-    'accent_hov': '#74c7ec',   # акцент: hover
+    'accent_bg':  '#3b82f6',   # акцент: фон (electric blue, как на Tactical Gear Edition)
+    'accent_fg':  '#ffffff',   # акцент: текст
+    'accent_hov': '#2563eb',   # акцент: hover (darker blue)
+    'accent_dim': '#1e3a8a',   # акцент: dim/disabled
     'c_ok':       '#a6e3a1',   # статус: успех
     'c_warn':     '#f9e2af',   # статус: предупреждение
     'c_err':      '#f38ba8',   # статус: ошибка
