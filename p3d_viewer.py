@@ -3934,16 +3934,23 @@ class App:
         self._side_outer = side_outer
         self._tw_frames.append((side_outer, 'bg_side'))
 
+        # v0.1.4: icon_strip выносим в _main_frame (теперь не внутри side_outer),
+        # чтобы toggle мог скрывать только side_outer (моды), оставляя иконки видимыми
+        icon_strip = tk.Frame(self._main_frame, bg=T['bg_main'], width=44)
+        icon_strip.pack(side=tk.LEFT, fill=tk.Y, before=side_outer)
+        icon_strip.pack_propagate(False)
+        self._tw_frames.append((icon_strip, 'bg_main'))
+
         self._sidebar_visible = True
 
         def _toggle_sidebar():
-            # v0.1.3: скрывает только "Доступные моды" (panel_outer), icon_strip остаётся
+            # v0.1.4: скрывает side_outer (только моды), icon_strip в _main_frame остаётся
             if self._sidebar_visible:
-                panel_outer.pack_forget()
+                side_outer.pack_forget()
                 self._sidebar_visible = False
                 toggle_btn.config(text='▶ Моды')
             else:
-                panel_outer.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, after=icon_strip)
+                side_outer.pack(side=tk.LEFT, fill=tk.Y, before=self._vp_frame)
                 self._sidebar_visible = True
                 toggle_btn.config(text='◀ Моды')
 
@@ -3967,11 +3974,7 @@ class App:
         self._tw_buttons.append((rp_toggle_btn, 'normal'))
         self._rp_toggle_btn = rp_toggle_btn
 
-        # ── Иконочная полоска (левая, узкая) ──────────────────────────────────
-        icon_strip = tk.Frame(side_outer, bg=T['bg_main'], width=44)
-        icon_strip.pack(side=tk.LEFT, fill=tk.Y)
-        icon_strip.pack_propagate(False)
-        self._tw_frames.append((icon_strip, 'bg_main'))
+        # v0.1.4: icon_strip создаётся РАНЬШЕ (в _main_frame), см. выше
 
         # v3.1.9: 1px sidebar divider убран (KirrieD: белая полоса была видна)
 
