@@ -9179,8 +9179,8 @@ class App:
             if not paths:
                 self._status('Выберите модели для загрузки', '#f9e2af')
                 return
-            for p in paths:
-                self._load_p3d(p)
+            # v0.0.5: single-file subprocess + semaphore (max 3 параллельно)
+            self._load_paths_parallel(paths, max_concurrent=3)
 
         def _open_blender():
             paths = self._mods_collect_selected()
@@ -10407,6 +10407,46 @@ class App:
         if self._load_poll_after is None:
             self._poll_load_progress()
 
+    def _load_paths_parallel(self, paths, max_concurrent=3):
+        """v0.0.5: запускает max_concurrent subprocess'ов параллельно.
+        Когда один завершается — берёт следующий из queue. Main UI не блокируется."""
+        import threading as _th
+        if not paths:
+            return
+        self._load_pending_paths = list(paths)
+        self._load_concurrency_limit = _th.Semaphore(max_concurrent)
+        for _ in range(min(max_concurrent, len(paths))):
+            self._launch_next_path()
+
+    def _launch_next_path(self):
+        """v0.0.5: берёт следующий путь из queue и запускает subprocess (если есть слот)."""
+        if not getattr(self, '_load_pending_paths', None):
+            return
+        if not self._load_pending_paths:
+            return
+        if not self._load_concurrency_limit.acquire(blocking=False):
+            return
+        path = self._load_pending_paths.pop(0)
+        try:
+            self._load_p3d(path)
+        except Exception as e:
+            _dbg(f'_launch_next_path error: {e}')
+            try:
+                self._load_concurrency_limit.release()
+            except Exception:
+                pass
+
+    def _on_subprocess_finished(self):
+        """v0.0.5: после завершения subprocess — release slot + launch next."""
+        try:
+            self._load_concurrency_limit.release()
+        except Exception:
+            pass
+        try:
+            self._launch_next_path()
+        except Exception:
+            pass
+
     def _poll_load_progress(self):
         """Периодически проверяет завершение subprocess-загрузок.
 
@@ -10483,6 +10523,12 @@ class App:
                 pass
 
         # Продолжаем опрос, пока есть живые процессы
+        # v0.0.5: вызываем _on_subprocess_finished для каждого завершённого
+        for _ in finished:
+            try:
+                self._on_subprocess_finished()
+            except Exception:
+                pass
         if self._load_procs:
             self._load_poll_after = self.root.after(150, self._poll_load_progress)
         else:
