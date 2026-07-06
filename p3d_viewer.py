@@ -9140,10 +9140,33 @@ class App:
                     body_state[0] = True
             hdr_lbl.bind('<Button-1>', _toggle_dis)
 
+            # v0.0.6: search Entry в "Выключено" — фильтрует моды по имени
+            _dis_search_var = tk.StringVar(value='')
+            _dis_search_entry = tk.Entry(
+                ds, textvariable=_dis_search_var,
+                bg=T.get('bg_widget', '#1e1e2e'),
+                fg=T['fg_text'],
+                insertbackground=T['fg_text'],
+                relief='flat', font=(T['font_fam'], T['font_sz'] - 1))
+            _dis_search_entry.pack(fill=tk.X, padx=8, pady=(2, 4))
+            def _on_dis_search(*_):
+                term = _dis_search_var.get().lower().strip()
+                for mn, w in _dis_row_refs[0]:
+                    try:
+                        if not term or term in mn.lower():
+                            w.pack(fill=tk.X)
+                        else:
+                            w.pack_forget()
+                    except Exception:
+                        pass
+            _dis_search_var.trace_add('write', _on_dis_search)
+            _dis_row_refs = [[]]
+
             # 1. Полностью выключенные моды (как раньше, одной строкой с ↩)
             for mn in dis_now:
                 row = tk.Frame(body, bg=T['bg_side'])
                 row.pack(fill=tk.X)
+                _dis_row_refs[0].append((mn, row))
                 tk.Label(row, text=mn, bg=T['bg_side'], fg=T['fg_muted'],
                          font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, padx=14)
                 en_btn = tk.Label(row, text='↩', bg=T['bg_side'], fg=T['fg_label'],
@@ -9153,8 +9176,11 @@ class App:
 
             # 2. v3.1: мод с частично выключенными файлами — заголовок + список
             for mn in sorted(items_by_mod.keys()):
+                if mn in dis_now:
+                    continue  # уже выше показано
                 mod_row = tk.Frame(body, bg=T['bg_side'])
                 mod_row.pack(fill=tk.X, pady=(4, 0))
+                _dis_row_refs[0].append((mn, mod_row))
                 tk.Label(mod_row, text=mn, bg=T['bg_side'], fg=T['fg_label'],
                          font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, padx=14)
                 for fn in sorted(items_by_mod[mn]):
