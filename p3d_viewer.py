@@ -3954,7 +3954,18 @@ class App:
                 self._sidebar_visible = True
                 toggle_btn.config(text='◀ Моды')
 
-        toggle_btn = tk.Button(toolbar_frame, text='◀ Моды', relief='flat',
+        def _toggle_sidebar():
+            # v0.1.4: скрывает side_outer (только моды), icon_strip в _main_frame остаётся
+            if self._sidebar_visible:
+                side_outer.pack_forget()
+                self._sidebar_visible = False
+                toggle_btn.config(text='▶')
+            else:
+                side_outer.pack(side=tk.LEFT, fill=tk.Y, before=self._vp_frame)
+                self._sidebar_visible = True
+                toggle_btn.config(text='◀')
+
+        toggle_btn = tk.Button(toolbar_frame, text='◀', relief='flat',
                                bg=T['bg_main'], fg=T['fg_label'],
                                font=(T['font_fam'], T['font_sz'] - 1),
                                padx=6, pady=0, bd=0,
