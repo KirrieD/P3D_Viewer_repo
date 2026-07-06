@@ -16,8 +16,8 @@
     "alpha": false,
     "alpha_mats": {},
     "brightness": 1.0,
-    "geometry": "1920x1027+-233+114",
-    "sidebar_width": 450,
+    "geometry": "1920x1027+-15+3",
+    "sidebar_width": 400,
     "section_models": true,
     "section_browser": true,
     "section_mats": true,
@@ -61,8 +61,30 @@
     "gradient_enabled": false,
     "gradient_color2": "#080c0a",
     "font_fam": "Segoe UI",
-    "custom_colors": {},
-    "section_order_names": [],
+    "custom_colors": {
+        "bg_main": "#111520",
+        "bg_side": "#0d1018",
+        "bg_widget": "#1a2030",
+        "bg_sep": "#1e2838",
+        "fg_text": "#ffffff",
+        "fg_label": "#3b82f6",
+        "fg_muted": "#6b7280",
+        "accent_bg": "#3b82f6",
+        "accent_fg": "#ffffff",
+        "btn_bg": "#1a2030",
+        "btn_fg": "#ffffff",
+        "gl_bg": "#080c10",
+        "c_ok": "#3b82f6",
+        "c_warn": "#f9e2af",
+        "c_err": "#f38ba8"
+    },
+    "section_order_names": [
+        "Моды",
+        "Материалы",
+        "Текстуры",
+        "ФАЙЛ",
+        "КОНВЕРТАЦИЯ"
+    ],
     "text_styles": {
         "h1": {
             "bold": true,
@@ -84,5 +106,6 @@
             "italic": false,
             "underline": false
         }
-    }
+    },
+    "font_sz": 9
 }
