@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.18'
+VERSION    = 'v0.1.19'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -4058,17 +4058,15 @@ class App:
                     # Canvas not yet laid out — use parent width minus scrollbar
                     w = max(100, panel_outer.winfo_width() - 6)
                 self._side_canvas.itemconfig(self._side_win_id, width=w)
-                # v0.1.13: задаём высоту canvas window равной максимуму из
-                # canvas_height и bbox('all') высоты — иначе при scrollregion > canvas
-                # содержимое обрезается
-                ch = self._side_canvas.winfo_height()
+                # v0.1.19: точно по высоте контента (НЕ max с canvas height),
+                # иначе sash находится ВНУТРИ scroll области и моды "заходят" за sash
                 bbox = self._side_canvas.bbox('all')
                 content_h = (bbox[3] - bbox[1]) if bbox else 0
-                win_h = max(ch, content_h)
-                if win_h > 2:
-                    self._side_canvas.itemconfig(self._side_win_id, height=win_h)
+                ch = self._side_canvas.winfo_height()
+                # scrollregion = content_h (НЕ win_h = max(ch, content_h))
+                # sash будет на нижней границе content_h, не внутри
                 self._side_canvas.configure(
-                    scrollregion=self._side_canvas.bbox('all') or (0, 0, w, win_h))
+                    scrollregion=self._side_canvas.bbox('all') or (0, 0, w, max(content_h, ch)))
             except Exception:
                 pass
         self._refresh_canvas = _refresh_canvas
