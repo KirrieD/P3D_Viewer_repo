@@ -967,27 +967,27 @@ def _load_embedded_for_model(model_name):
 THEME_FILE = os.path.join(os.path.expanduser('~'), '.p3dviewer_theme.json')
 
 DEFAULT_THEME = {
-    'bg_main':    '#1e1e2e',   # фон окна
-    'bg_side':    '#2a2a3e',   # боковая панель
-    'bg_widget':  '#313244',   # фон виджетов / кнопки
-    'bg_sep':     '#3a3a4e',   # разделители
-    'fg_text':    '#cdd6f4',   # основной текст
-    'fg_label':   '#6c7086',   # заголовки секций
-    'fg_muted':   '#45475a',   # приглушённый текст
-    'btn_bg':     '#313244',   # кнопки: фон
-    'btn_fg':     '#cdd6f4',   # кнопки: текст
-    'btn_hover':  '#45475a',   # кнопки: hover
-    'accent_bg':  '#3b82f6',   # акцент: фон (electric blue, как на Tactical Gear Edition)
-    'accent_fg':  '#ffffff',   # акцент: текст
-    'accent_hov': '#2563eb',   # акцент: hover (darker blue)
+    'bg_main':    '#0f1019',   # v0.1.25: фон окна (глубже)
+    'bg_side':    '#131520',   # v0.1.25: боковая панель
+    'bg_widget':  '#1d1f2e',   # v0.1.25: фон виджетов / кнопки
+    'bg_sep':     '#2a2d3e',   # v0.1.25: разделители (мягче)
+    'fg_text':    '#e8eaf0',   # v0.1.25: основной текст
+    'fg_label':   '#9ca0b0',   # v0.1.25: заголовки секций (мягче)
+    'fg_muted':   '#5a5e72',   # v0.1.25: приглушённый текст
+    'btn_bg':     '#1d1f2e',   # v0.1.25: кнопки: фон
+    'btn_fg':     '#e8eaf0',   # v0.1.25: кнопки: текст
+    'btn_hover':  '#2a2d3e',   # v0.1.25: кнопки: hover
+    'accent_bg':  '#3b82f6',   # акцент: фон (electric blue)
+    'accent_fg':  '#ffffff',   # акцент: текст (белый)
+    'accent_hov': '#2563eb',   # акцент: hover
     'accent_dim': '#1e3a8a',   # акцент: dim/disabled
-    'c_ok':       '#a6e3a1',   # статус: успех
-    'c_warn':     '#f9e2af',   # статус: предупреждение
-    'c_err':      '#f38ba8',   # статус: ошибка
-    'gl_bg':      '#1c1c24',   # фон 3D вьюпорта
+    'c_ok':       '#4ade80',   # v0.1.25: статус: успех (ярче)
+    'c_warn':     '#fbbf24',   # v0.1.25: статус: предупреждение
+    'c_err':      '#f87171',   # v0.1.25: статус: ошибка
+    'gl_bg':      '#08090e',   # v0.1.25: фон 3D вьюпорта (глубже)
     'btn_relief': 'flat',      # стиль кнопок
-    'font_fam':   'Segoe UI',  # шрифт
-    'font_sz':    9,           # размер шрифта
+    'font_fam':   'Segoe UI Variable',  # шрифт
+    'font_sz':    10,          # v0.1.25: размер шрифта 9→10
     'side_w':     235,         # ширина боковой панели
 }
 
