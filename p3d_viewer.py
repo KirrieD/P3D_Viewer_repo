@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.37'
+VERSION    = 'v0.1.38'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8987,17 +8987,17 @@ class App:
         # Вместо 500-1000 виджетов tk рендерит только ~15 видимых строк
         import tkinter.ttk as ttk
         # v0.1.37: takefocus=0 — Treeview не получает фокус, обводка (focus ring) не рисуется
-        # Также добавили column 'off' для toggle disabled (⊘)
+        # Также добавили column 'off' для toggle disabled (⛔)
         tree_cols = ('load', 'off')
         self._mods_tree = ttk.Treeview(
             list_outer, columns=tree_cols, show='tree headings',
             selectmode='extended', height=15, takefocus=0)
         self._mods_tree.heading('#0', text='Мод / Файл', anchor='w')
         self._mods_tree.heading('load', text='✓')
-        self._mods_tree.heading('off', text='⊘')
-        self._mods_tree.column('#0', width=220, anchor='w', stretch=True)
+        self._mods_tree.heading('off', text='⛔')  # v0.1.38: больше и понятнее чем ⊘
+        self._mods_tree.column('#0', width=210, anchor='w', stretch=True)
         self._mods_tree.column('load', width=24, anchor='center', stretch=False)
-        self._mods_tree.column('off', width=24, anchor='center', stretch=False)
+        self._mods_tree.column('off', width=36, anchor='center', stretch=False)  # v0.1.38: 36 px (было 24)
         self._mods_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         # v0.1.34-36: убрать focus ring + border (серая обводка вокруг Treeview/selected row)
         try:
@@ -9063,14 +9063,14 @@ class App:
             for fpath in files[:MAX_CHILDREN]:
                 fname = os.path.basename(fpath)
                 item_key = f'{mod_name}/{fname}'
-                is_disabled = item_key in disabled_set
+                # v0.1.38: disabled файлы НЕ вставляем в основной список (появляются в "Выключено")
+                if item_key in disabled_set:
+                    continue
                 child_var = tk.BooleanVar(value=False)
                 iid = item_key
-                # v0.1.37: disabled файлы показываем с ⊘ (чтобы можно было включить обратно)
                 tree.insert(mod_name, 'end', iid=iid,
                             text=f'      {fname}',
-                            values=('☐', '⊘' if is_disabled else ''),
-                            tags=('disabled',) if is_disabled else ())
+                            values=('☐', ''))
                 self._mods_data['files'][iid] = {
                     'var': child_var, 'path': fpath, 'mod': mod_name, 'fname': fname
                 }
@@ -9184,13 +9184,10 @@ class App:
             mod_var = tk.BooleanVar(value=False)
             child_var_list = []
             tree = self._mods_tree
-            # v0.1.37: показать ⊘ если мод уже disabled
-            is_mod_disabled = mn in self._app_settings.get('disabled_mods', [])
             # v0.1.27: вставляем parent row + placeholder child чтобы Treeview показал chevron ▶
             tree.insert('', 'end', iid=mn,
                         text=f'  {mn}  (…)',
-                        values=('☐', '⊘' if is_mod_disabled else ''),
-                        tags=('disabled',) if is_mod_disabled else ())
+                        values=('☐', ''))
             tree.insert(mn, 'end', iid=f'__loading_{mn}', text='  ⏳ загрузка...', values=(' ',))
             _mod_row_refs.append([mn, None, None, None])
             self._mods_data[mn] = {'var': mod_var, 'files': [], 'children': [], 'iid': mn}
@@ -9314,114 +9311,131 @@ class App:
         dis_section_ref = [None]
 
         def _rebuild_disabled_section():
-                    if dis_section_ref[0]:
-                        try: dis_section_ref[0].destroy()
-                        except Exception: pass
-                    dis_now = self._app_settings.get('disabled_mods', [])
-                    dis_items = self._app_settings.get('disabled_items', [])
-                    items_by_mod = {}
-                    for k in dis_items:
-                        if '/' in k:
-                            mn, fn = k.split('/', 1)
-                            items_by_mod.setdefault(mn, []).append(fn)
-                    total_count = len(dis_now) + len(dis_items)
-                    # v0.1.11: даже если 0 — очищаем disabled_frame (он теперь отдельная панель)
-                    # и добавляем заголовок "Выключено (0)" чтобы был виден разделитель
-                    target = getattr(self, '_disabled_frame', None)
-                    if target is None:
-                        return
-                    # destroy все старые children
-                    for w in target.winfo_children():
-                        w.destroy()
-                    # Header "Выключено" с лейблом-счётчиком (всегда виден, поверх scroll)
-                    hdr_frame = tk.Frame(target, bg=T['bg_side'])
-                    hdr_frame.pack(side=tk.TOP, fill=tk.X, padx=8, pady=(6, 2))
-                    hdr_lbl = tk.Label(hdr_frame,
-                                       text=f'▼  Выключено ({total_count})',
-                                       bg=T['bg_side'], fg=T['fg_label'],
-                                       font=(T['font_fam'], T['font_sz'] - 1))
-                    hdr_lbl.pack(side=tk.LEFT)
-                    # Search box
-                    _dis_search_var = tk.StringVar(value='')
-                    srch = tk.Frame(target, bg=T['bg_side'])
-                    srch.pack(side=tk.TOP, fill=tk.X, padx=8, pady=(0, 4))
-                    tk.Label(srch, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
-                             font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
-                    tk.Entry(srch, textvariable=_dis_search_var,
-                             bg=T.get('bg_widget', '#1f2235'), fg=T['fg_text'],
-                             insertbackground=T['fg_text'], relief='flat',
-                             font=(T['font_fam'], T['font_sz'] - 1)
-                             ).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(4, 0))
-                    if total_count == 0:
-                        # показать "пусто" hint
-                        empty = tk.Label(target, text='  нет выключенных модов',
-                                         bg=T['bg_side'], fg=T['fg_muted'],
-                                         font=(T['font_fam'], T['font_sz'] - 2))
-                        empty.pack(anchor='w', padx=12)
-                        return
-                    # Canvas для скролла выключенных items
-                    dis_canvas = tk.Canvas(target, bg=T['bg_side'],
-                                            bd=0, highlightthickness=0)
-                    dis_canvas.pack(side=tk.TOP, fill=tk.BOTH, expand=True)
-                    dis_canvas.bind('<MouseWheel>',
-                        lambda e: dis_canvas.yview_scroll(-1*(e.delta//120) if e.delta else -1, 'units'))
-                    dis_inner = tk.Frame(dis_canvas, bg=T['bg_side'])
-                    dis_cw = dis_canvas.create_window((0, 0), window=dis_inner, anchor='nw')
-                    dis_inner.bind('<Configure>',
-                        lambda e: dis_canvas.configure(scrollregion=dis_canvas.bbox('all')))
-                    dis_canvas.bind('<Configure>',
-                        lambda e: dis_canvas.itemconfig(dis_cw, width=e.width))
-        # контейнер-обёртка для rows (compat с предыдущим API)
-                    ds = dis_inner
-                    dis_section_ref[0] = ds
+            """v0.1.38: Treeview с expandable — моды как parent rows, файлы как children.
+            Клик на chevron раскрывает/закрывает. Колонка 'on' (↩) включает обратно.
+            """
+            if dis_section_ref[0]:
+                try: dis_section_ref[0].destroy()
+                except Exception: pass
+            dis_now = self._app_settings.get('disabled_mods', [])
+            dis_items = self._app_settings.get('disabled_items', [])
+            items_by_mod = {}
+            for k in dis_items:
+                if '/' in k:
+                    mn, fn = k.split('/', 1)
+                    items_by_mod.setdefault(mn, []).append(fn)
+            # собираем моды: полностью disabled + частично disabled
+            all_mods = list(dis_now) + [m for m in sorted(items_by_mod.keys()) if m not in dis_now]
+            total_count = len(dis_now) + len(dis_items)
 
-                    # v0.1.11: search filter для выключено
-                    _dis_search_var = tk.StringVar(value='')
-                    _dis_row_refs = [[]]
+            target = getattr(self, '_disabled_frame', None)
+            if target is None:
+                return
+            # destroy все старые children
+            for w in target.winfo_children():
+                w.destroy()
 
-                    def _on_dis_search(*_):
-                        term = _dis_search_var.get().lower().strip()
-                        for mn, w in _dis_row_refs[0]:
-                            try:
-                                if not term or term in mn.lower():
-                                    w.pack(fill=tk.X)
-                                else:
-                                    w.pack_forget()
-                            except Exception:
-                                pass
-                    _dis_search_var.trace_add('write', _on_dis_search)
+            # Header
+            hdr_frame = tk.Frame(target, bg=T['bg_side'])
+            hdr_frame.pack(side=tk.TOP, fill=tk.X, padx=8, pady=(6, 2))
+            hdr_lbl = tk.Label(hdr_frame,
+                               text=f'Выключено ({total_count})',
+                               bg=T['bg_side'], fg=T['fg_label'],
+                               font=(T['font_fam'], T['font_sz'] - 1, 'bold'))
+            hdr_lbl.pack(side=tk.LEFT)
 
-                    # 1. Полностью выключенные моды
-                    for mn in dis_now:
-                        row = tk.Frame(ds, bg=T['bg_side'])
-                        row.pack(fill=tk.X)
-                        _dis_row_refs[0].append((mn, row))
-                        tk.Label(row, text=mn, bg=T['bg_side'], fg=T['fg_muted'],
-                                 font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, padx=14)
-                        en_btn = tk.Label(row, text='↩', bg=T['bg_side'], fg=T['fg_label'],
-                                          font=(T['font_fam'], T['font_sz']), cursor='hand2', padx=4)
-                        en_btn.pack(side=tk.RIGHT, padx=(0, 4))
-                        en_btn.bind('<Button-1>', lambda e, _mn=mn: _enable_mod(_mn, None))
+            # Search box
+            _dis_search_var = tk.StringVar(value='')
+            srch = tk.Frame(target, bg=T['bg_side'])
+            srch.pack(side=tk.TOP, fill=tk.X, padx=8, pady=(0, 4))
+            tk.Label(srch, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
+                     font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
+            tk.Entry(srch, textvariable=_dis_search_var,
+                     bg=T.get('bg_widget', '#1f2235'), fg=T['fg_text'],
+                     insertbackground=T['fg_text'], relief='flat',
+                     font=(T['font_fam'], T['font_sz'] - 1)
+                     ).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(4, 0))
 
-                    # 2. мод с частично выключенными файлами
-                    for mn in sorted(items_by_mod.keys()):
-                        if mn in dis_now:
-                            continue
-                        mod_row = tk.Frame(ds, bg=T['bg_side'])
-                        mod_row.pack(fill=tk.X, pady=(4, 0))
-                        _dis_row_refs[0].append((mn, mod_row))
-                        tk.Label(mod_row, text=mn, bg=T['bg_side'], fg=T['fg_label'],
-                                 font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, padx=14)
-                        for fn in sorted(items_by_mod[mn]):
-                            f_row = tk.Frame(ds, bg=T['bg_side'])
-                            f_row.pack(fill=tk.X)
-                            tk.Label(f_row, text='    ├ ' + fn, bg=T['bg_side'], fg=T['fg_muted'],
-                                     font=(T['font_fam'], T['font_sz'] - 2)).pack(side=tk.LEFT, padx=22)
-                            en_btn = tk.Label(f_row, text='↩', bg=T['bg_side'], fg=T['fg_label'],
-                                              font=(T['font_fam'], T['font_sz']), cursor='hand2', padx=4)
-                            en_btn.pack(side=tk.RIGHT, padx=(0, 4))
-                            en_btn.bind('<Button-1>',
-                                        lambda e, _mn=mn, _fn=fn: _enable_item(_mn, _fn))
+            if total_count == 0:
+                empty = tk.Label(target, text='  нет выключенных модов',
+                                 bg=T['bg_side'], fg=T['fg_muted'],
+                                 font=(T['font_fam'], T['font_sz'] - 2))
+                empty.pack(anchor='w', padx=12)
+                return
+
+            # v0.1.38: Treeview для collapsible disabled items
+            import tkinter.ttk as _ttk
+            dis_tree = _ttk.Treeview(target, columns=('on',), show='tree headings',
+                                     selectmode='browse', height=8, takefocus=0)
+            dis_tree.heading('#0', text='Мод / Файл', anchor='w')
+            dis_tree.heading('on', text='↩')
+            dis_tree.column('#0', width=180, anchor='w', stretch=True)
+            dis_tree.column('on', width=32, anchor='center', stretch=False)
+            dis_tree.column('#0', minwidth=120)
+            dis_tree.pack(side=tk.TOP, fill=tk.BOTH, expand=True, padx=8, pady=(0, 4))
+            # стиль под bg_side (аналогично основному Treeview)
+            try:
+                _ts = _ttk.Style()
+                _ts.theme_use('clam')
+                _ts.configure('Treeview',
+                    background=T.get('bg_side', '#131520'),
+                    foreground=T.get('fg_muted', '#6b7280'),
+                    fieldbackground=T.get('bg_side', '#131520'),
+                    borderwidth=0, rowheight=20)
+                _ts.configure('Treeview.Heading',
+                    background=T.get('bg_widget', '#1d1f2e'),
+                    foreground=T.get('fg_label', '#9ca0b0'),
+                    relief='flat')
+            except Exception:
+                pass
+            dis_tree.bind('<MouseWheel>',
+                lambda e: dis_tree.yview_scroll(-1*(e.delta//120) if e.delta else -1, 'units'))
+
+            # fill: parent mods (closed by default), files (children)
+            def _dis_click(event):
+                col = dis_tree.identify_column(event.x)
+                item = dis_tree.identify_row(event.y)
+                if not item or col != '#1':
+                    return
+                if item.startswith('__file__'):
+                    # file row: iid = '__file__mod/file'
+                    parts = item.replace('__file__', '', 1).split('/', 1)
+                    if len(parts) == 2:
+                        _enable_item(parts[0], parts[1])
+                else:
+                    # mod row: iid = mod_name
+                    _enable_mod(item, None)
+
+            dis_tree.bind('<Button-1>', _dis_click)
+
+            # fill rows
+            for mn in all_mods:
+                count = len(items_by_mod.get(mn, [])) if mn not in dis_now else 0
+                label = f'  {mn}  ({count})' if count else f'  {mn}'
+                dis_tree.insert('', 'end', iid=mn, text=label, values=('↩',))
+                if mn in items_by_mod:
+                    # добавляем файлы как children
+                    for fn in sorted(items_by_mod[mn]):
+                        dis_tree.insert(mn, 'end', iid=f'__file__{mn}/{fn}',
+                                        text=f'      {fn}', values=('↩',))
+
+            # search filter — раскрывает parents с совпадением, прячет остальные
+            def _on_dis_search(*_):
+                term = _dis_search_var.get().lower().strip()
+                for mn in all_mods:
+                    try:
+                        if not term or term in mn.lower():
+                            dis_tree.reattach(mn, '', 'end')
+                            if mn in items_by_mod:
+                                for fn in sorted(items_by_mod[mn]):
+                                    dis_tree.reattach(f'__file__{mn}/{fn}', mn, 'end')
+                        else:
+                            dis_tree.detach(mn)
+                    except Exception:
+                        pass
+            _dis_search_var.trace_add('write', _on_dis_search)
+
+            dis_section_ref[0] = dis_tree
 
         _rebuild_disabled_section()
         # v0.1.37: сохранить ссылку для toggle через клик по ⊘ столбцу
@@ -9546,7 +9560,7 @@ class App:
 
         def _set_visual(iid, disabled):
             try:
-                tree.set(iid, 'off', '⊘' if disabled else '')
+                tree.set(iid, 'off', '⛔' if disabled else '')
                 tag = 'disabled' if disabled else ''
                 existing = tree.item(iid, 'tags')
                 if isinstance(existing, (list, tuple)):
