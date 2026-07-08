@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.32'
+VERSION    = 'v0.1.33'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
