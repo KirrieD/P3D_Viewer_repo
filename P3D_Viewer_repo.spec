@@ -5,7 +5,7 @@ a = Analysis(
     ['O:\\Users\\KirrieD\\Desktop\\Dev_DoS\\Cast_Prog\\P3D_Viewer_repo\\p3d_viewer.py'],
     pathex=[],
     binaries=[],
-    datas=[('embedded_configs.py', '.'), ('proxies', 'proxies')],
+    datas=[('embedded_configs.py', '.'), ('proxies', 'proxies'), ('cpp_parser.py', '.'), ('p3d_proxy_parser.py', '.'), ('proxy_index.py', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
