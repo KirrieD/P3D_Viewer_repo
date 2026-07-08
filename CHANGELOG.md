@@ -2,78 +2,67 @@
 
 P3D Viewer — release notes. Все версии семантические (см. git теги).
 
+## [v0.1.44] — 2026-07-09
+
+### UI fixes
+
+- **v0.1.44** — persist collapsed state папок модов в `app_settings` (между сессиями)
+- **v0.1.43** — collapsible папки модов в "Загружено" (клик на `▶`/`▼` сворачивает)
+- **v0.1.41–0.1.42** — алфавитная сортировка модов и файлов в обоих списках (включая insert на правильную позицию при enable)
+- **v0.1.40** — фикс дублей кнопок "Загрузить"/"Blender" при toggle enable/disable (чистые `_enable_mod_clean` / `_enable_item_clean` методы)
+- **v0.1.39** — фикс дублей секции "Загружено" + почистка orphan keys в `disabled_items` + авто-скрытие пустых модов
+- **v0.1.38** — значок `⛔` вместо `⊘` (шире 36px); disabled моды/файлы убираются из "Доступные моды" и появляются в "Выключено"; collapsible "Выключено" через Treeview
+- **v0.1.37** — добавлена колонка `⛔` для toggle disable модов и отдельных файлов
+- **v0.1.34–0.1.36** — убрана обводка/фокус-ring вокруг Treeview (`takefocus=0` + layout override + style)
+- **v0.1.32** — fix `KeyError: 'children'` в `_mods_collect_selected` (post-Treeview структура хранения)
+
+### Tools
+
+- **v0.1.33** — новая debug-категория `load` в DevTools → Категории логов (toggle для логов загрузки)
+- **v0.1.31b** — `_dbg()` → `dbg()` fix (функция называется `dbg`, не `_dbg` — была тихая потеря логов); try/except + traceback в `_load_selected`
+
 ## [v0.1.15] — 2026-07-06
 
-### UI реструктуризация (завершено)
+### UI реструктуризация
 
-Главный milestone сессии 2026-07-06 — переход от legacy v3.x layout к модульной sidebar.
+- **v0.1.15** — sash draggable + scroll sync для PanedWindow
+- **v0.1.11** — **PanedWindow sash между модами и "Выключено"** (draggable мышкой)
+- **v0.1.10** — compact mod list (убраны card border/padding)
+- **v0.1.9** — auto folder picker при старте если `_unpacked` не найден
+- **v0.1.8** — sticky header (version) + sticky footer (Load+Blender)
+- **v0.1.5** — restore `rp_toggle_btn` + убран "Моды" из текста toggle
+- **v0.1.4** — `icon_strip` перенесён в `_main_frame` (toggle не оставляет пустого места)
+- **v0.1.0** — **3-column layout**: `sidebar | viewport | right_panel`
 
-- **v0.1.15** — sash drag правильно обновляет scrollregion (bind на `B1-Motion`/`ButtonRelease-1` для PanedWindow → `_refresh_canvas`)
-- **v0.1.14** — canvas window height = `max(canvas_height, content_height)` (финальное исправление scroll — было сломано в v0.1.13)
-- **v0.1.13** — попытка убрать `height=ch` constraint (сломал scroll, откатил в v0.1.14)
-- **v0.1.12** — sash resize fix + `update_idletasks()` перед destroy в `_do_update_models_panel` (меньше моргания при "Загрузить")
-- **v0.1.11** — **PanedWindow sash между модами и выключено** (draggable мышкой). Каждая секция имеет свой scroll
-- **v0.1.10** — **compact mod list** (убрал card border/padding, мелкий шрифт — больше модов на экране)
-- **v0.1.9** — **auto folder picker**: если `_unpacked` не найдена при старте → диалог выбора папки + автосохранение в `app_settings`
-- **v0.1.8** — **sticky header** (версия v0.1.x) сверху + **sticky footer** (Load+Blender) снизу, не скроллятся
-- **v0.1.5** — restore `rp_toggle_btn` + убрал "Моды" из текста toggle
-- **v0.1.4** — `icon_strip` перенесён в `_main_frame` напрямую (toggle sidebar больше не оставляет пустого места)
-- **v0.1.3** — toggle `◀`/`▶` скрывает только панель модов, иконки + нижний toolbar остаются
-- **v0.1.2** — независимые toggle для icon_strip + right_panel, scroll fix
-- **v0.1.1** — fix порядка инициализации right_panel (`_build_mods_panel` отложен до создания `_loaded_outer`)
-- **v0.1.0** — **3-column layout**: `sidebar | viewport | right_panel` (Tactical Gear Edition style)
+### Визуальный стиль
 
-### Визуальный стиль (Tactical Gear Edition)
-
-- **v0.0.8** — Teal Dark theme → electric blue (`#3b82f6`) + VERSION sync (`v3.2.0` → `v0.x.x`)
-- **v0.0.7** — Default theme accent → electric blue (`#3b82f6`), `accent_hov` → darker blue (`#2563eb`), `accent_dim` → `#1e3a8a`
+- **v0.0.8** — Teal Dark theme → electric blue (`#3b82f6`)
+- **v0.0.7** — Default theme accent → electric blue
 
 ### Функциональность
 
 - **v0.0.6** — search filter в секции "Выключено"
-- **v0.0.9** — mod card layout (позже упрощён в v0.1.10)
-
-## [v0.0.5] — ранее
-
-- Single-file subprocess + semaphore `max_concurrent=3` (parallel loading, без DLL deadlock)
-- Vectorized batch `is_good` для материалов
-- `.gitignore` (исключает `_internal/`, cache, build artifacts)
-- EXE + bundled parsers (cpp_parser / p3d_proxy_parser / proxy_index) для v3.2.0 baseline
+- **v0.0.5** — single-file subprocess + semaphore `max_concurrent=3` (parallel loading)
 
 ## Архитектура
 
-### Layout (v0.1.15 финал)
+### Layout (v0.1.44 финал)
 
 ```
-panel_outer (sidebar content)
-├─ _header_frame (TOP) — version + author "d.x.b" (sticky, не скроллится)
+panel_outer (sidebar)
+├─ _header_frame (TOP, sticky) — version + author
 ├─ _side_paned (PanedWindow VERTICAL, draggable sash)
-│   ├─ TOP: _side_canvas (scroll) — моды
-│   └─ BOTTOM: _disabled_frame — "Выключено" с своим scroll
-└─ _footer_frame (BOTTOM) — Load+Blender (sticky, не скроллится)
+│   ├─ TOP: Treeview модов (collapsible parent rows)
+│   └─ BOTTOM: Treeview "Выключено" (collapsible)
+└─ _footer_frame (BOTTOM, sticky) — Load + Blender
+
+_right_panel
+├─ models search
+└─ models list (Treeview-style: parent mod → collapsible children)
 ```
 
-### Main window
+### Не сделано / запланировано
 
-```
-_main_frame
-├─ toolbar (◀ toggle Моды ... ▶ toggle Загружено)
-├─ icon_strip (44px, всегда видна)
-├─ side_outer (моды, скрывается по toggle ◀)
-├─ vp_frame (3D viewport)
-└─ right_panel (Загружено, скрывается по toggle ▶)
-```
-
-### Известные gotcha (learned the hard way)
-
-- **PanedWindow + Canvas scroll**: `<Configure>` на canvas child НЕ триггерится автоматически при sash drag → нужен явный bind на `paned.bind('<B1-Motion>', ...)` + `paned.bind('<ButtonRelease-1>', ...)` через `self.root.after(20, ...)`
-- **Canvas window height**: `height=ch` обрезает scroll (бесполезно); без height scroll items не видны; правильно `height = max(canvas_height, content_height_from_bbox)`
-- **Mousewheel scroll**: нужен Enter/Leave tracking иначе scroll теряется когда курсор уходит с widget
-
-## Не сделано / запланировано
-
-- **Virtual list** (ttk.Treeview) — для 100+ модов
-- **Visual cleanup** — убрать наследие v3.x Checkbutton'ов (Кирилл: "колхоз")
-- **Settings панель** — следующий слой по приоритету
-- **Модульный рефакторинг** (`render.py`, `parser.py`, `materials.py`, `ui.py`) — после явной команды
-- **Proxy meshes** — фундаментальный блокер, не чинить без команды (см. `p3d-viewer-state.md`)
+- **Модульный рефакторинг** — после явной команды
+- **Settings виртуальный список** для кастомных тем
+- **Proxy meshes** — фундаментальный блокер (см. `p3d-viewer-state.md`)
