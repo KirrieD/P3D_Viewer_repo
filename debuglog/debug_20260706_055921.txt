@@ -1,5 +1,0 @@
-=== P3D Viewer v3.2.0 session started ===
-[05:59:21.050] [render ] init flip uniforms: mirror_uv=False x=False y=False z=False
-[05:59:21.057] _do_update_models_panel START: models=[] ready_count=0
-[05:59:21.152] _do_update_models_panel END: ready=0 loading=0 failed=0
-[05:59:21.153] _discover_widgets: 39 entries

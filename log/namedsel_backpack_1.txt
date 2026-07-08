@@ -1,4 +1,0 @@
-face_data_end=2094  nf=201  n_mats=0
-n_sel_hdr=1 at 2094
-found_sels count=0
-Fallback: match by ORDER

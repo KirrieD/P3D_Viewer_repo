@@ -10,6 +10,7 @@
         "subproc": true,
         "render": true,
         "split": true,
+        "load": true,
         "errors": true
     },
     "lighting": true,
@@ -36,14 +37,14 @@
         "convert"
     ],
     "disabled_mods": [
-        "ai",
-        "ai_bliss",
-        "animals",
-        "animals_bliss",
-        "anims_anm_infected",
-        "anims_anm_player",
         "anims_cfg",
-        "anims_workspaces"
+        "animals",
+        "anims_workspaces",
+        "anims_anm_player",
+        "ai",
+        "animals_bliss",
+        "ai_bliss",
+        "anims_anm_infected"
     ],
     "disabled_items": [],
     "mods_list_height": 110,
