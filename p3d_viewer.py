@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.31b'
+VERSION    = 'v0.1.32'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -9472,24 +9472,30 @@ class App:
         self._update_models_panel()
 
     def _mods_collect_selected(self):
-        """Собирает список выбранных p3d путей из mods_data, исключая disabled_items и уже загруженные."""
+        """Собирает список выбранных p3d путей из mods_data['files'], исключая disabled_items и уже загруженные.
+        v0.1.31b: post-Treeview структура — все файлы в self._mods_data['files']={iid: {var, path, mod, fname}}.
+        """
         paths = []
         disabled_set = set(self._app_settings.get('disabled_items', []))
-        # v3.1: уже загруженные (ready или loading) — не дублируем при повторном выделении
         loaded_paths = {
             state['path'] for state in self._models.values()
             if state.get('path') and state.get('status') in ('ready', 'loading')
         }
-        for mod_name, data in getattr(self, '_mods_data', {}).items():
-            for fpath, var in data['children']:
-                fname = os.path.basename(fpath)
-                item_key = f'{mod_name}/{fname}'
-                if item_key in disabled_set:
-                    continue
-                if fpath in loaded_paths:
-                    continue
-                if var.get():
-                    paths.append(fpath)
+        files_map = getattr(self, '_mods_data', {}).get('files', {}) or {}
+        for iid, fdata in files_map.items():
+            var = fdata.get('var')
+            fpath = fdata.get('path')
+            fname = fdata.get('fname')
+            mod = fdata.get('mod')
+            if not (var and fpath and fname and mod):
+                continue
+            item_key = f'{mod}/{fname}'
+            if item_key in disabled_set:
+                continue
+            if fpath in loaded_paths:
+                continue
+            if var.get():
+                paths.append(fpath)
         return paths
 
     def _build_blender_panel(self, parent):
