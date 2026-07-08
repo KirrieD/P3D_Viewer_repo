@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.27'
+VERSION    = 'v0.1.28'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -9013,7 +9013,7 @@ class App:
         tree_style.map('Treeview',
             background=[('selected', T.get('accent_bg', '#3b82f6'))],
             foreground=[('selected', '#ffffff')])
-        self._mods_tree.configure(borderwidth=0, highlightthickness=0)
+        # ttk.Treeview использует style для border — widget-level borderwidth не поддерживается
         # backward-compat alias для _mods_collect_selected
         self._mods_scroll_frame = None  # больше не используется
         canvas = None
