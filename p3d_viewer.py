@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.26'
+VERSION    = 'v0.1.27'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8984,18 +8984,16 @@ class App:
         # v0.1.26: ttk.Treeview с нативным виртуальным рендерингом
         # Вместо 500-1000 виджетов tk рендерит только ~15 видимых строк
         import tkinter.ttk as ttk
-        tree_cols = ('load', 'count')
+        tree_cols = ('load',)
         self._mods_tree = ttk.Treeview(
             list_outer, columns=tree_cols, show='tree headings',
             selectmode='extended', height=15)
         self._mods_tree.heading('#0', text='Мод / Файл', anchor='w')
-        self._mods_tree.heading('load', text='☐')
-        self._mods_tree.heading('count', text='#')
-        self._mods_tree.column('#0', width=200, anchor='w', stretch=True)
+        self._mods_tree.heading('load', text='✓')
+        self._mods_tree.column('#0', width=240, anchor='w', stretch=True)
         self._mods_tree.column('load', width=24, anchor='center', stretch=False)
-        self._mods_tree.column('count', width=40, anchor='e', stretch=False)
         self._mods_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        # style — тёмная тема
+        # v0.1.27: убрать белый focus border вокруг Treeview
         tree_style = ttk.Style()
         try:
             tree_style.theme_use('clam')
@@ -9005,14 +9003,17 @@ class App:
             background=T.get('bg_side', '#131520'),
             foreground=T.get('fg_text', '#e8eaf0'),
             fieldbackground=T.get('bg_side', '#131520'),
-            borderwidth=0, rowheight=24)
+            borderwidth=0, highlightthickness=0, rowheight=22)
         tree_style.configure('Treeview.Heading',
             background=T.get('bg_widget', '#1d1f2e'),
             foreground=T.get('fg_label', '#9ca0b0'),
-            borderwidth=0, relief='flat')
+            borderwidth=0, relief='flat', highlightthickness=0)
+        tree_style.configure('Treeview.Item',
+            borderwidth=0, highlightthickness=0)
         tree_style.map('Treeview',
             background=[('selected', T.get('accent_bg', '#3b82f6'))],
             foreground=[('selected', '#ffffff')])
+        self._mods_tree.configure(borderwidth=0, highlightthickness=0)
         # backward-compat alias для _mods_collect_selected
         self._mods_scroll_frame = None  # больше не используется
         canvas = None
@@ -9052,21 +9053,34 @@ class App:
             n = len(self._mods_data[mod_name]['children'])
             tree.set(mod_name, 'count', str(n))
 
-        # v0.1.26: lazy expand — при <<TreeviewOpen>> сканируем файлы
+        # v0.1.26/27: lazy expand — при <<TreeviewOpen>> сканируем файлы
         def _on_tree_open(event):
             iid = self._mods_tree.focus()
             if not iid or iid not in self._mods_data:
                 return
             mn = iid
-            # уже загружено?
+            # пропустить placeholder child (iid начинается с __loading_)
             children = self._mods_tree.get_children(mn)
-            if children:
+            if children and not any(c.startswith('__loading_') for c in children):
                 return  # уже загружены
             def _load():
                 files = _get_mod_p3d_files(unpacked, mn)
                 def _update():
+                    # удаляем placeholder
+                    for c in list(self._mods_tree.get_children(mn)):
+                        if c.startswith('__loading_'):
+                            self._mods_tree.delete(c)
                     if files:
                         _build_children(mn, files)
+                        # обновить parent text с count
+                        n = sum(1 for c in self._mods_tree.get_children(mn)
+                                if not c.startswith('__loading_'))
+                        self._mods_tree.item(mn, text=f'  {mn}  ({n})')
+                    else:
+                        # нет файлов — пустой placeholder
+                        self._mods_tree.insert(mn, 'end', iid=f'__empty_{mn}',
+                                                 text='  нет .p3d файлов',
+                                                 values=(' ',))
                 try: self.root.after(0, _update)
                 except Exception: pass
             import threading as _th
@@ -9135,14 +9149,15 @@ class App:
             self._build_mods_panel(parent)
 
         def _add_mod_row(mn, target_frame):
-            """v0.1.26: Treeview-based mod row — native virtual rendering."""
+            """v0.1.26/27: Treeview-based mod row — native virtual rendering."""
             mod_var = tk.BooleanVar(value=False)
             child_var_list = []
             tree = self._mods_tree
-            # вставляем parent row с чекбоксом-текстом
+            # v0.1.27: вставляем parent row + placeholder child чтобы Treeview показал chevron ▶
             tree.insert('', 'end', iid=mn,
-                        text=f'  {mn}',
-                        values=('☐', ''))
+                        text=f'  {mn}  (…)',
+                        values=('☐',))
+            tree.insert(mn, 'end', iid=f'__loading_{mn}', text='  ⏳ загрузка...', values=(' ',))
             _mod_row_refs.append([mn, None, None, None])
             self._mods_data[mn] = {'var': mod_var, 'files': [], 'children': [], 'iid': mn}
             # клик на колонке 'load' → toggle
@@ -9175,17 +9190,6 @@ class App:
                             new_val = not file_data['var'].get()
                             file_data['var'].set(new_val)
                             tree.set(item, 'load', '☑' if new_val else '☐')
-                elif col == '#3':  # count (× delete button area)
-                    if item in self._mods_data:
-                        # parent — disable whole mod
-                        _disable_mod(item, None)
-                    else:
-                        # file — disable single file
-                        mn3, fn3 = item.rsplit('/', 1)
-                        file_path = self._mods_data.get('files', {}).get(item, {}).get('path')
-                        if file_path:
-                            _disable_item(mn3, file_path, None)
-                            tree.delete(item)
             tree.bind('<Button-1>', _on_click)
             # v3.1.6: фоновый scan для индексации
             def _bg_index(_mn=mn):
