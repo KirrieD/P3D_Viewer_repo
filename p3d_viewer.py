@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.38'
+VERSION    = 'v0.1.39'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8896,6 +8896,21 @@ class App:
         T = self._T()
         # v0.1.0: "Загружено" строится в правой панели, а не в sidebar
         loaded_parent = getattr(self, '_loaded_outer', parent)
+        # v0.1.39: очистить loaded_parent ПЕРЕД созданием — иначе дублируется при _enable_mod/_enable_item
+        try:
+            for w in list(loaded_parent.winfo_children()):
+                w.destroy()
+        except Exception:
+            pass
+        # v0.1.39: почистить orphan keys (без `/`) из disabled_items — legacy от v3.1
+        try:
+            di = self._app_settings.get('disabled_items', [])
+            if any('/' not in k for k in di):
+                di = [k for k in di if '/' in k]
+                self._app_settings['disabled_items'] = di
+                _save_app_settings(self._app_settings)
+        except Exception:
+            pass
 
         if not hasattr(self, '_models_search_var'):
             self._models_search_var = tk.StringVar()
@@ -9258,6 +9273,24 @@ class App:
             _th.Thread(target=_eager_load, daemon=True).start()
 
         for mod_name in active_mods:
+            # v0.1.39: если ВСЕ файлы мода disabled — добавляем мод в disabled_mods и пропускаем
+            try:
+                _mn_files = _get_mod_p3d_files(unpacked, mod_name)
+                if _mn_files:
+                    _all_disabled = all(
+                        f'{mod_name}/{os.path.basename(f)}' in
+                        self._app_settings.get('disabled_items', [])
+                        for f in _mn_files
+                    )
+                    if _all_disabled:
+                        dm = self._app_settings.get('disabled_mods', [])
+                        if mod_name not in dm:
+                            dm.append(mod_name)
+                            self._app_settings['disabled_mods'] = dm
+                            _save_app_settings(self._app_settings)
+                        continue
+            except Exception:
+                pass
             _add_mod_row(mod_name, None)
             # v0.1.20: spacer (теперь не нужен — Treeview имеет native padding)
 
