@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.31'
+VERSION    = 'v0.1.31b'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8891,7 +8891,7 @@ class App:
 
     def _build_mods_panel(self, parent):
         """Объединённая панель: список модов + загруженные модели + кнопки."""
-        _dbg(f'_build_mods_panel START: parent={parent}')
+        dbg(f'_build_mods_panel START: parent={parent}')
         T = self._T()
         # v0.1.0: "Загружено" строится в правой панели, а не в sidebar
         loaded_parent = getattr(self, '_loaded_outer', parent)
@@ -9021,7 +9021,7 @@ class App:
         # ── Строим список модов (lazy loading) ───────────────────────────────
         self._mods_data = {}
         mods = _get_all_mods(unpacked)
-        _dbg(f'_build_mods_panel: unpacked={unpacked} mods_count={len(mods)}')
+        dbg(f'_build_mods_panel: unpacked={unpacked} mods_count={len(mods)}')
 
         MAX_CHILDREN = 300  # v0.1.26: limit files per mod (Treeview не имеет hard limit)
 
@@ -9194,14 +9194,14 @@ class App:
             # v0.1.29: eager load — сразу сканируем и вставляем файлы в Treeview
             # (lazy через <<TreeviewOpen>> ненадёжен — событие не всегда срабатывает)
             def _eager_load(_mn=mn):
-                _dbg(f'_eager_load start: mod={_mn} unpacked={unpacked}')
+                dbg(f'_eager_load start: mod={_mn} unpacked={unpacked}')
                 try:
                     _files = _get_mod_p3d_files(unpacked, _mn)
                     self._mods_file_index[_mn] = [os.path.basename(f).lower() for f in _files]
                 except Exception as _e:
-                    _dbg(f'_eager_load error: {_e}')
+                    dbg(f'_eager_load error: {_e}')
                     _files = []
-                _dbg(f'_eager_load scanned: mod={_mn} files_count={len(_files)}')
+                dbg(f'_eager_load scanned: mod={_mn} files_count={len(_files)}')
                 def _update():
                     # удаляем placeholder если есть
                     for c in list(self._mods_tree.get_children(_mn)):
@@ -9394,8 +9394,16 @@ class App:
         btn_frame.pack(fill=tk.X, padx=8, pady=(2, 4))
 
         def _load_selected():
-            paths = self._mods_collect_selected()
-            _dbg(f'_load_selected: paths count={len(paths)} sample={paths[:2]}')
+            dbg('_load_selected: CLICKED')
+            try:
+                paths = self._mods_collect_selected()
+            except Exception as _e:
+                import traceback as _tb
+                dbg(f'_load_selected EXCEPTION: {_e}')
+                dbg(_tb.format_exc())
+                self._status(f'Ошибка сбора: {_e}', '#f38ba8')
+                return
+            dbg(f'_load_selected: paths count={len(paths)} sample={paths[:2]}')
             if not paths:
                 self._status('Выберите модели для загрузки', '#f9e2af')
                 return
