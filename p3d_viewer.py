@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.30'
+VERSION    = 'v0.1.31'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8891,6 +8891,7 @@ class App:
 
     def _build_mods_panel(self, parent):
         """Объединённая панель: список модов + загруженные модели + кнопки."""
+        _dbg(f'_build_mods_panel START: parent={parent}')
         T = self._T()
         # v0.1.0: "Загружено" строится в правой панели, а не в sidebar
         loaded_parent = getattr(self, '_loaded_outer', parent)
@@ -9003,13 +9004,11 @@ class App:
             background=T.get('bg_side', '#131520'),
             foreground=T.get('fg_text', '#e8eaf0'),
             fieldbackground=T.get('bg_side', '#131520'),
-            borderwidth=0, highlightthickness=0, rowheight=22)
+            rowheight=22)
         tree_style.configure('Treeview.Heading',
             background=T.get('bg_widget', '#1d1f2e'),
             foreground=T.get('fg_label', '#9ca0b0'),
-            borderwidth=0, relief='flat', highlightthickness=0)
-        tree_style.configure('Treeview.Item',
-            borderwidth=0, highlightthickness=0)
+            relief='flat')
         tree_style.map('Treeview',
             background=[('selected', T.get('accent_bg', '#3b82f6'))],
             foreground=[('selected', '#ffffff')])
@@ -9022,6 +9021,7 @@ class App:
         # ── Строим список модов (lazy loading) ───────────────────────────────
         self._mods_data = {}
         mods = _get_all_mods(unpacked)
+        _dbg(f'_build_mods_panel: unpacked={unpacked} mods_count={len(mods)}')
 
         MAX_CHILDREN = 300  # v0.1.26: limit files per mod (Treeview не имеет hard limit)
 
