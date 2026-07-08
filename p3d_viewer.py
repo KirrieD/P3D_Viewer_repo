@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.34'
+VERSION    = 'v0.1.35'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8995,7 +8995,7 @@ class App:
         self._mods_tree.column('#0', width=240, anchor='w', stretch=True)
         self._mods_tree.column('load', width=24, anchor='center', stretch=False)
         self._mods_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        # v0.1.33: убрать focus ring (синяя обводка вокруг списка при фокусе)
+        # v0.1.34: убрать focus ring + border (серая обводка вокруг Treeview)
         try:
             self._mods_tree.configure(borderwidth=0, highlightthickness=0,
                                        highlightbackground=T.get('bg_side', '#131520'),
@@ -9012,6 +9012,7 @@ class App:
             background=T.get('bg_side', '#131520'),
             foreground=T.get('fg_text', '#e8eaf0'),
             fieldbackground=T.get('bg_side', '#131520'),
+            borderwidth=0,
             rowheight=22)
         tree_style.configure('Treeview.Heading',
             background=T.get('bg_widget', '#1d1f2e'),
