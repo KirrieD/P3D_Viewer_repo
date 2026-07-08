@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.35'
+VERSION    = 'v0.1.36'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8995,11 +8995,15 @@ class App:
         self._mods_tree.column('#0', width=240, anchor='w', stretch=True)
         self._mods_tree.column('load', width=24, anchor='center', stretch=False)
         self._mods_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        # v0.1.34: убрать focus ring + border (серая обводка вокруг Treeview)
+        # v0.1.34-36: убрать focus ring + border (серая обводка вокруг Treeview/selected row)
         try:
-            self._mods_tree.configure(borderwidth=0, highlightthickness=0,
+            self._mods_tree.configure(borderwidth=0, highlightthickness=0, relief='flat',
                                        highlightbackground=T.get('bg_side', '#131520'),
                                        highlightcolor=T.get('bg_side', '#131520'))
+            # v0.1.36: tk option_add на уровне интерпретатора (style игнорирует clam focus)
+            self._mods_tree.tk.call('option', 'add', '*Treeview.highlightThickness', '0')
+            self._mods_tree.tk.call('option', 'add', '*Treeview.borderWidth', '0')
+            self._mods_tree.tk.call('option', 'add', '*TCombobox*Listbox.highlightThickness', '0')
         except Exception:
             pass
         # v0.1.27: убрать белый focus border вокруг Treeview
@@ -9018,6 +9022,17 @@ class App:
             background=T.get('bg_widget', '#1d1f2e'),
             foreground=T.get('fg_label', '#9ca0b0'),
             relief='flat')
+        # v0.1.36: убрать Treeitem.focus из layout (рисует серую обводку вокруг selected row)
+        try:
+            tree_style.layout('Treeview.Item', [
+                ('Treeitem.padding', {'sticky': 'nswe', 'children': [
+                    ('Treeitem.image', {'side': 'left', 'sticky': ''}),
+                    ('Treeitem.indicator', {'side': 'left', 'sticky': ''}),
+                    ('Treeitem.text', {'side': 'left', 'sticky': ''})
+                ]})
+            ])
+        except Exception:
+            pass
         tree_style.map('Treeview',
             background=[('selected', T.get('accent_bg', '#3b82f6'))],
             foreground=[('selected', '#ffffff')])
