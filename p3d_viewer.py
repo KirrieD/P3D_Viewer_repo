@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.33'  # stable (load category toggle добавлен в DevTools)
+VERSION    = 'v0.1.34'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8995,6 +8995,13 @@ class App:
         self._mods_tree.column('#0', width=240, anchor='w', stretch=True)
         self._mods_tree.column('load', width=24, anchor='center', stretch=False)
         self._mods_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        # v0.1.33: убрать focus ring (синяя обводка вокруг списка при фокусе)
+        try:
+            self._mods_tree.configure(borderwidth=0, highlightthickness=0,
+                                       highlightbackground=T.get('bg_side', '#131520'),
+                                       highlightcolor=T.get('bg_side', '#131520'))
+        except Exception:
+            pass
         # v0.1.27: убрать белый focus border вокруг Treeview
         tree_style = ttk.Style()
         try:
