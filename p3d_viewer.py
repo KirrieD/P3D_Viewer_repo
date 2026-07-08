@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.36'
+VERSION    = 'v0.1.37'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8986,14 +8986,18 @@ class App:
         # v0.1.26: ttk.Treeview с нативным виртуальным рендерингом
         # Вместо 500-1000 виджетов tk рендерит только ~15 видимых строк
         import tkinter.ttk as ttk
-        tree_cols = ('load',)
+        # v0.1.37: takefocus=0 — Treeview не получает фокус, обводка (focus ring) не рисуется
+        # Также добавили column 'off' для toggle disabled (⊘)
+        tree_cols = ('load', 'off')
         self._mods_tree = ttk.Treeview(
             list_outer, columns=tree_cols, show='tree headings',
-            selectmode='extended', height=15)
+            selectmode='extended', height=15, takefocus=0)
         self._mods_tree.heading('#0', text='Мод / Файл', anchor='w')
         self._mods_tree.heading('load', text='✓')
-        self._mods_tree.column('#0', width=240, anchor='w', stretch=True)
+        self._mods_tree.heading('off', text='⊘')
+        self._mods_tree.column('#0', width=220, anchor='w', stretch=True)
         self._mods_tree.column('load', width=24, anchor='center', stretch=False)
+        self._mods_tree.column('off', width=24, anchor='center', stretch=False)
         self._mods_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         # v0.1.34-36: убрать focus ring + border (серая обводка вокруг Treeview/selected row)
         try:
@@ -9036,6 +9040,8 @@ class App:
         tree_style.map('Treeview',
             background=[('selected', T.get('accent_bg', '#3b82f6'))],
             foreground=[('selected', '#ffffff')])
+        # v0.1.37: tag для disabled items (приглушённый текст)
+        self._mods_tree.tag_configure('disabled', foreground=T.get('fg_muted', '#6b7280'))
         # ttk.Treeview использует style для border — widget-level borderwidth не поддерживается
         # backward-compat alias для _mods_collect_selected
         self._mods_scroll_frame = None  # больше не используется
@@ -9057,13 +9063,14 @@ class App:
             for fpath in files[:MAX_CHILDREN]:
                 fname = os.path.basename(fpath)
                 item_key = f'{mod_name}/{fname}'
-                if item_key in disabled_set:
-                    continue
+                is_disabled = item_key in disabled_set
                 child_var = tk.BooleanVar(value=False)
                 iid = item_key
+                # v0.1.37: disabled файлы показываем с ⊘ (чтобы можно было включить обратно)
                 tree.insert(mod_name, 'end', iid=iid,
                             text=f'      {fname}',
-                            values=('☐', ''))
+                            values=('☐', '⊘' if is_disabled else ''),
+                            tags=('disabled',) if is_disabled else ())
                 self._mods_data['files'][iid] = {
                     'var': child_var, 'path': fpath, 'mod': mod_name, 'fname': fname
                 }
@@ -9177,10 +9184,13 @@ class App:
             mod_var = tk.BooleanVar(value=False)
             child_var_list = []
             tree = self._mods_tree
+            # v0.1.37: показать ⊘ если мод уже disabled
+            is_mod_disabled = mn in self._app_settings.get('disabled_mods', [])
             # v0.1.27: вставляем parent row + placeholder child чтобы Treeview показал chevron ▶
             tree.insert('', 'end', iid=mn,
                         text=f'  {mn}  (…)',
-                        values=('☐',))
+                        values=('☐', '⊘' if is_mod_disabled else ''),
+                        tags=('disabled',) if is_mod_disabled else ())
             tree.insert(mn, 'end', iid=f'__loading_{mn}', text='  ⏳ загрузка...', values=(' ',))
             _mod_row_refs.append([mn, None, None, None])
             self._mods_data[mn] = {'var': mod_var, 'files': [], 'children': [], 'iid': mn}
@@ -9214,6 +9224,8 @@ class App:
                             new_val = not file_data['var'].get()
                             file_data['var'].set(new_val)
                             tree.set(item, 'load', '☑' if new_val else '☐')
+                elif col == '#2':  # v0.1.37: off — toggle disabled
+                    self._toggle_disabled_item(item, tree)
             tree.bind('<Button-1>', _on_click)
             # v0.1.29: eager load — сразу сканируем и вставляем файлы в Treeview
             # (lazy через <<TreeviewOpen>> ненадёжен — событие не всегда срабатывает)
@@ -9412,6 +9424,8 @@ class App:
                                         lambda e, _mn=mn, _fn=fn: _enable_item(_mn, _fn))
 
         _rebuild_disabled_section()
+        # v0.1.37: сохранить ссылку для toggle через клик по ⊘ столбцу
+        self._rebuild_disabled_section_ref = _rebuild_disabled_section
 
         # ── Кнопки действий ──────────────────────────────────────────────────
         btn_frame = tk.Frame(getattr(self, '_footer_frame', parent), bg=T['bg_side'])
@@ -9521,6 +9535,75 @@ class App:
             if var.get():
                 paths.append(fpath)
         return paths
+
+    def _toggle_disabled_item(self, item_iid, tree):
+        """v0.1.37: toggle disabled из Treeview по клику на ⊘ столбец.
+        item_iid = mod_name (parent) ИЛИ 'mod_name/file_name' (file row).
+        Toggle disabled_items / disabled_mods, обновить визуал (⊘/пусто), пересобрать _disabled_frame.
+        """
+        disabled_set = set(self._app_settings.get('disabled_items', []))
+        disabled_mods_set = set(self._app_settings.get('disabled_mods', []))
+
+        def _set_visual(iid, disabled):
+            try:
+                tree.set(iid, 'off', '⊘' if disabled else '')
+                tag = 'disabled' if disabled else ''
+                existing = tree.item(iid, 'tags')
+                if isinstance(existing, (list, tuple)):
+                    existing = list(existing)
+                else:
+                    existing = [existing] if existing else []
+                if tag and tag not in existing:
+                    existing.append(tag)
+                if not tag and 'disabled' in existing:
+                    existing.remove('disabled')
+                tree.item(iid, tags=tuple(existing))
+            except Exception:
+                pass
+
+        if item_iid in self._mods_data:
+            # parent mod row — toggle all files of this mod
+            mn = item_iid
+            children = [c for c in tree.get_children(mn)
+                        if not c.startswith('__loading_') and not c.startswith('__empty_')]
+            if mn in disabled_mods_set:
+                # включить обратно
+                disabled_mods_set.discard(mn)
+                new_disabled = False
+            else:
+                # выключить: добавляем mod + все его файлы
+                disabled_mods_set.add(mn)
+                new_disabled = True
+                for c in children:
+                    fname = c.split('/', 1)[1] if '/' in c else c
+                    disabled_set.add(f'{mn}/{fname}')
+            self._app_settings['disabled_mods'] = list(disabled_mods_set)
+            self._app_settings['disabled_items'] = list(disabled_set)
+            _save_app_settings(self._app_settings)
+            _set_visual(mn, new_disabled)
+            for c in children:
+                _set_visual(c, new_disabled)
+        else:
+            # file row
+            file_data = self._mods_data.get('files', {}).get(item_iid, {})
+            if not file_data:
+                return
+            if item_iid in disabled_set:
+                disabled_set.discard(item_iid)
+                new_disabled = False
+            else:
+                disabled_set.add(item_iid)
+                new_disabled = True
+            self._app_settings['disabled_items'] = list(disabled_set)
+            _save_app_settings(self._app_settings)
+            _set_visual(item_iid, new_disabled)
+
+        # Пересобрать секцию "Выключено" в sidebar
+        try:
+            if hasattr(self, '_rebuild_disabled_section_ref') and self._rebuild_disabled_section_ref:
+                self._rebuild_disabled_section_ref()
+        except Exception as _e:
+            dbg_cat('load', f'_toggle_disabled_item rebuild error: {_e}')
 
     def _build_blender_panel(self, parent):
         """Панель выбора моделей для экспорта в Blender."""
