@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.28'
+VERSION    = 'v0.1.29'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -9191,14 +9191,34 @@ class App:
                             file_data['var'].set(new_val)
                             tree.set(item, 'load', '☑' if new_val else '☐')
             tree.bind('<Button-1>', _on_click)
-            # v3.1.6: фоновый scan для индексации
-            def _bg_index(_mn=mn):
+            # v0.1.29: eager load — сразу сканируем и вставляем файлы в Treeview
+            # (lazy через <<TreeviewOpen>> ненадёжен — событие не всегда срабатывает)
+            def _eager_load(_mn=mn):
                 try:
                     _files = _get_mod_p3d_files(unpacked, _mn)
                     self._mods_file_index[_mn] = [os.path.basename(f).lower() for f in _files]
+                except Exception:
+                    _files = []
+                def _update():
+                    # удаляем placeholder если есть
+                    for c in list(self._mods_tree.get_children(_mn)):
+                        if c.startswith('__loading_'):
+                            self._mods_tree.delete(c)
+                    if _files:
+                        _build_children(_mn, _files)
+                        n = sum(1 for c in self._mods_tree.get_children(_mn)
+                                if not c.startswith('__loading_') and not c.startswith('__empty_'))
+                        self._mods_tree.item(_mn, text=f'  {_mn}  ({n})')
+                    else:
+                        # нет файлов — пустой placeholder
+                        if not self._mods_tree.get_children(_mn):
+                            self._mods_tree.insert(_mn, 'end', iid=f'__empty_{_mn}',
+                                                     text='  нет .p3d файлов',
+                                                     values=(' ',))
+                try: self.root.after(0, _update)
                 except Exception: pass
             import threading as _th
-            _th.Thread(target=_bg_index, daemon=True).start()
+            _th.Thread(target=_eager_load, daemon=True).start()
 
         for mod_name in active_mods:
             _add_mod_row(mod_name, None)
