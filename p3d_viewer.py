@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.42'
+VERSION    = 'v0.1.43'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -10404,18 +10404,28 @@ class App:
             # Сортируем: моды по имени, None в конец
             sorted_mods = sorted(mod_groups.keys(),
                                  key=lambda m: (m is None, (m or '').lower()))
+            # v0.1.43: collapsed state пер-модов (init False = развёрнуты)
+            if not hasattr(self, '_collapsed_mods'):
+                self._collapsed_mods = {}
             for mod in sorted_mods:
                 items = sorted(mod_groups[mod],
                                key=lambda x: os.path.basename(x[1]['path']).lower())
+                is_collapsed = self._collapsed_mods.get(mod, False)
 
-                # v3.1.8: заголовок мода в строке с × кнопкой для удаления всех моделей мода
+                # v0.1.43: обёртка hdr_row + content (Frame) — collapsible через pack_forget
                 if mod:
                     hdr_row = tk.Frame(inner, bg=T['bg_side'])
                     hdr_row.pack(fill=tk.X, padx=8, pady=(6, 2), anchor='w')
-                    hdr = tk.Label(hdr_row, text=f'▼ {mod}  ({len(items)})',
+                    # chevron кликабельный — клик переключает collapsed state
+                    chev = tk.Label(hdr_row, text='▶' if is_collapsed else '▼',
+                                    bg=T['bg_side'], fg=T['accent_fg'],
+                                    font=(T['font_fam'], T['font_sz'], 'bold'),
+                                    cursor='hand2', padx=4)
+                    chev.pack(side=tk.LEFT)
+                    hdr = tk.Label(hdr_row, text=f'  {mod}  ({len(items)})',
                                    bg=T['bg_side'], fg=T['accent_fg'],
                                    font=(T['font_fam'], T['font_sz'] - 1, 'bold'),
-                                   anchor='w')
+                                   anchor='w', cursor='hand2')
                     hdr.pack(side=tk.LEFT)
                     close_all = tk.Button(hdr_row, text='✕', relief='flat',
                                           bg=T['bg_side'], fg='#f38ba8',
@@ -10431,10 +10441,15 @@ class App:
                     if any(True for _ in items):  # есть модели без мода
                         hdr_row = tk.Frame(inner, bg=T['bg_side'])
                         hdr_row.pack(fill=tk.X, padx=8, pady=(6, 2), anchor='w')
-                        hdr = tk.Label(hdr_row, text=f'▼ Без мода  ({len(items)})',
+                        chev = tk.Label(hdr_row, text='▶' if is_collapsed else '▼',
+                                        bg=T['bg_side'], fg=T['fg_muted'],
+                                        font=(T['font_fam'], T['font_sz'], 'bold'),
+                                        cursor='hand2', padx=4)
+                        chev.pack(side=tk.LEFT)
+                        hdr = tk.Label(hdr_row, text=f'  Без мода  ({len(items)})',
                                        bg=T['bg_side'], fg=T['fg_muted'],
                                        font=(T['font_fam'], T['font_sz'] - 2, 'bold'),
-                                       anchor='w')
+                                       anchor='w', cursor='hand2')
                         hdr.pack(side=tk.LEFT)
                         close_all = tk.Button(hdr_row, text='✕', relief='flat',
                                               bg=T['bg_side'], fg='#f38ba8',
@@ -10447,14 +10462,31 @@ class App:
                                               command=lambda m=None: self._close_mod_all(m))
                         close_all.pack(side=tk.RIGHT)
 
-                # Рендер моделей мода (отступ слева)
+                # v0.1.43: content Frame — collapse/expand через pack_forget/pack
+                mod_content = tk.Frame(inner, bg=T['bg_side'])
+                if not is_collapsed:
+                    mod_content.pack(fill=tk.X)
+
+                def _toggle(mod_key=mod, content_ref=mod_content,
+                            hdr_row_ref=hdr_row, chev_ref=chev):
+                    """Клик на chevron → toggle collapsed state этого мода + redraw."""
+                    try:
+                        self._collapsed_mods[mod_key] = not self._collapsed_mods.get(mod_key, False)
+                        self._do_update_models_panel()
+                    except Exception as _e:
+                        _dbg(f'collapse toggle error: {_e}')
+
+                chev.bind('<Button-1>', lambda e, fn=_toggle: fn())
+                hdr.bind('<Button-1>', lambda e, fn=_toggle: fn())
+
+                # Рендер моделей мода (отступ слева) — внутри mod_content
                 for idx, state in items:
                     is_active = (idx == self._active_idx)
                     name = os.path.basename(state['path'])
                     fg = T['accent_fg'] if is_active else T['fg_text']
                     bg = T['accent_bg'] if is_active else T['bg_side']
 
-                    row = tk.Frame(inner, bg=bg)
+                    row = tk.Frame(mod_content, bg=bg)
                     row.pack(fill=tk.X, pady=1, padx=(24 if mod else 8, 8), anchor='w')
                     close_btn = tk.Button(row, text='✕', relief='flat',
                                            bg=bg, fg='#f38ba8',
