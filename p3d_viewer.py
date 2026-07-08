@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.43'
+VERSION    = 'v0.1.44'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -10406,7 +10406,10 @@ class App:
                                  key=lambda m: (m is None, (m or '').lower()))
             # v0.1.43: collapsed state пер-модов (init False = развёрнуты)
             if not hasattr(self, '_collapsed_mods'):
-                self._collapsed_mods = {}
+                # v0.1.44: загрузить из settings (между сессиями)
+                self._collapsed_mods = {
+                    m: True for m in self._app_settings.get('collapsed_mods', [])
+                }
             for mod in sorted_mods:
                 items = sorted(mod_groups[mod],
                                key=lambda x: os.path.basename(x[1]['path']).lower())
@@ -10472,6 +10475,14 @@ class App:
                     """Клик на chevron → toggle collapsed state этого мода + redraw."""
                     try:
                         self._collapsed_mods[mod_key] = not self._collapsed_mods.get(mod_key, False)
+                        # v0.1.44: сохранить в settings для persistence между сессиями
+                        try:
+                            self._app_settings['collapsed_mods'] = [
+                                m for m, c in self._collapsed_mods.items() if c
+                            ]
+                            _save_app_settings(self._app_settings)
+                        except Exception:
+                            pass
                         self._do_update_models_panel()
                     except Exception as _e:
                         _dbg(f'collapse toggle error: {_e}')
