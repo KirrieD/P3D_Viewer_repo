@@ -1,0 +1,15 @@
+_build/
+P3D_Viewer_repo/
+P3D_Viewer_repo.exe
+P3D_Viewer_repo.spec
+__pycache__/
+*.pyc
+cache/
+debuglog/
+idx/
+item_configs/
+log/
+tex/
+app_settings.json
+*.p3dcache
+*.log
