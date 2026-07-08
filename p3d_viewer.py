@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.40'
+VERSION    = 'v0.1.41'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -9081,7 +9081,9 @@ class App:
             tree = self._mods_tree
             disabled_set = set(self._app_settings.get('disabled_items', []))
             self._mods_data.setdefault('files', {})
-            for fpath in files[:MAX_CHILDREN]:
+            # v0.1.41: сортировка файлов по алфавиту (case-insensitive)
+            sorted_files = sorted(files[:MAX_CHILDREN], key=lambda f: os.path.basename(f).lower())
+            for fpath in sorted_files:
                 fname = os.path.basename(fpath)
                 item_key = f'{mod_name}/{fname}'
                 # v0.1.38: disabled файлы НЕ вставляем в основной список (появляются в "Выключено")
@@ -9144,8 +9146,9 @@ class App:
             pass  # legacy code, не вызывается после v0.1.26
 
         disabled = self._app_settings.get('disabled_mods', [])
-        active_mods   = [m for m in mods if m not in disabled]
-        disabled_mods = [m for m in mods if m in disabled]
+        # v0.1.41: сортировка по алфавиту (case-insensitive)
+        active_mods   = sorted([m for m in mods if m not in disabled], key=str.lower)
+        disabled_mods = sorted([m for m in mods if m in disabled], key=str.lower)
 
         _mod_row_refs = []  # [(mod_name, mod_container, toggle_fn)]
         self._mods_file_index = {}  # v3.1.5: mod_name → list[basename] для поиска по файлам в свёрнутых папках
@@ -9364,7 +9367,8 @@ class App:
                     mn, fn = k.split('/', 1)
                     items_by_mod.setdefault(mn, []).append(fn)
             # собираем моды: полностью disabled + частично disabled
-            all_mods = list(dis_now) + [m for m in sorted(items_by_mod.keys()) if m not in dis_now]
+            # v0.1.41: всё сортируем по алфавиту (case-insensitive)
+            all_mods = sorted(set(dis_now) | set(items_by_mod.keys()), key=str.lower)
             total_count = len(dis_now) + len(dis_items)
 
             target = getattr(self, '_disabled_frame', None)
