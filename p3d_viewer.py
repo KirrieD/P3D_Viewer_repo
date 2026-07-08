@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.45'
+VERSION    = 'v0.1.46'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -4234,10 +4234,10 @@ class App:
         self._tw_labels.append((self._ver_lbl, 'bg_side', 'accent_bg', 'normal'))
 
         self._author_lbl = tk.Label(ver_bar, text='d.x.b',
-                                     bg=T['bg_side'], fg=T['fg_muted'],
+                                     bg=T['bg_side'], fg=T.get('fg_label', T['fg_text']),  # v0.1.46: видимый на любой теме
                                      font=(T['font_fam'], T['font_sz'] - 1))
         self._author_lbl.pack(side=tk.RIGHT)
-        self._tw_labels.append((self._author_lbl, 'bg_side', 'fg_muted', 'normal'))
+        self._tw_labels.append((self._author_lbl, 'bg_side', 'fg_label', 'normal'))
 
         tk.Frame(self._side, bg=T['bg_sep'], height=1).pack(fill=tk.X, pady=(4, 0))
 
@@ -8990,7 +8990,7 @@ class App:
                      font=(T['font_fam'], T['font_sz'] - 1)).pack(anchor='w', padx=12)
             _lsf = tk.Frame(loaded_parent, bg=T['bg_side'])
             _lsf.pack(fill=tk.X, padx=8, pady=(2, 2))
-            tk.Label(_lsf, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
+            tk.Label(_lsf, text='🔍', bg=T['bg_side'], fg=T.get('fg_label', T['fg_text']),  # v0.1.46
                      font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
             tk.Entry(_lsf, textvariable=self._models_search_var,
                      bg=T['bg_widget'], fg=T['fg_text'],
@@ -9030,7 +9030,7 @@ class App:
         mods_search_var = tk.StringVar()
         _msf = tk.Frame(parent, bg=T['bg_side'])
         _msf.pack(fill=tk.X, padx=8, pady=(0, 2))
-        tk.Label(_msf, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
+        tk.Label(_msf, text='🔍', bg=T['bg_side'], fg=T.get('fg_label', T['fg_text']),  # v0.1.46
                  font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
         tk.Entry(_msf, textvariable=mods_search_var,
                  bg=T['bg_widget'], fg=T['fg_text'],
@@ -9440,7 +9440,7 @@ class App:
             _dis_search_var = tk.StringVar(value='')
             srch = tk.Frame(target, bg=T['bg_side'])
             srch.pack(side=tk.TOP, fill=tk.X, padx=8, pady=(0, 4))
-            tk.Label(srch, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
+            tk.Label(srch, text='🔍', bg=T['bg_side'], fg=T.get('fg_label', T['fg_text']),  # v0.1.46
                      font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
             tk.Entry(srch, textvariable=_dis_search_var,
                      bg=T.get('bg_widget', '#1f2235'), fg=T['fg_text'],
@@ -9583,7 +9583,7 @@ class App:
                  font=(T['font_fam'], T['font_sz'] - 1)).pack(anchor='w', padx=12, pady=(4, 2))
         _lsf2 = tk.Frame(loaded_parent, bg=T['bg_side'])
         _lsf2.pack(fill=tk.X, padx=8, pady=(0, 2))
-        tk.Label(_lsf2, text='🔍', bg=T['bg_side'], fg=T['fg_muted'],
+        tk.Label(_lsf2, text='🔍', bg=T['bg_side'], fg=T.get('fg_label', T['fg_text']),  # v0.1.46
                  font=(T['font_fam'], T['font_sz'])).pack(side=tk.LEFT)
         tk.Entry(_lsf2, textvariable=self._models_search_var,
                  bg=T['bg_widget'], fg=T['fg_text'],
