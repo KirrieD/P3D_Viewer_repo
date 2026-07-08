@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.23'
+VERSION    = 'v0.1.26'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8975,98 +8975,107 @@ class App:
                  insertbackground=T['fg_text'], relief='flat',
                  font=(T['font_fam'], T['font_sz'] - 1)).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=(4, 0))
 
-        # ── Прокручиваемый список ─────────────────────────────────────────────
+        # ── Прокручиваемый список (v0.1.26: ttk.Treeview — native virtual list) ───────
         list_outer = tk.Frame(parent, bg=T['bg_side'])
         # v3.1.4: expand=True → растягивается на всё свободное место (50/50 с загружено)
         list_outer.pack(fill=tk.BOTH, expand=True, padx=8, pady=(0, 4))
         list_outer.pack_propagate(False)
 
-        canvas = tk.Canvas(list_outer, bg=T['bg_side'], highlightthickness=0)
-        # v3.1.9: scrollbar widget убран ВООБЩЕ (KirrieD: быть не должно).
-        # Скролл мышью через <MouseWheel> bind ниже.
-        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-        # Mousewheel scroll (без видимого scrollbar)
-        canvas.bind('<MouseWheel>',
-            lambda e: canvas.yview_scroll(-1 * (e.delta // 120) if e.delta else -1, 'units'))
-
-        scroll_frame = tk.Frame(canvas, bg=T['bg_side'])
-        cw = canvas.create_window((0, 0), window=scroll_frame, anchor='nw')
-        scroll_frame.bind('<Configure>',
-                          lambda e: canvas.configure(scrollregion=canvas.bbox('all')))
-        canvas.bind('<Configure>',
-                    lambda e: canvas.itemconfig(cw, width=e.width))
-
-        # Mouse wheel scroll — bind_all при входе, unbind при выходе
-        def _on_wheel(event):
-            canvas.yview_scroll(int(-1 * (event.delta / 120)), 'units')
-
-        def _bind_wheel(e=None):
-            canvas.bind_all('<MouseWheel>', _on_wheel)
-
-        def _unbind_wheel(e=None):
-            canvas.unbind_all('<MouseWheel>')
-
-        canvas.bind('<Enter>', _bind_wheel)
-        canvas.bind('<Leave>', _unbind_wheel)
-        scroll_frame.bind('<Enter>', _bind_wheel)
-        scroll_frame.bind('<Leave>', _unbind_wheel)
-        list_outer.bind('<Enter>', _bind_wheel)
-        list_outer.bind('<Leave>', _unbind_wheel)
+        # v0.1.26: ttk.Treeview с нативным виртуальным рендерингом
+        # Вместо 500-1000 виджетов tk рендерит только ~15 видимых строк
+        import tkinter.ttk as ttk
+        tree_cols = ('load', 'count')
+        self._mods_tree = ttk.Treeview(
+            list_outer, columns=tree_cols, show='tree headings',
+            selectmode='extended', height=15)
+        self._mods_tree.heading('#0', text='Мод / Файл', anchor='w')
+        self._mods_tree.heading('load', text='☐')
+        self._mods_tree.heading('count', text='#')
+        self._mods_tree.column('#0', width=200, anchor='w', stretch=True)
+        self._mods_tree.column('load', width=24, anchor='center', stretch=False)
+        self._mods_tree.column('count', width=40, anchor='e', stretch=False)
+        self._mods_tree.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        # style — тёмная тема
+        tree_style = ttk.Style()
+        try:
+            tree_style.theme_use('clam')
+        except Exception:
+            pass
+        tree_style.configure('Treeview',
+            background=T.get('bg_side', '#131520'),
+            foreground=T.get('fg_text', '#e8eaf0'),
+            fieldbackground=T.get('bg_side', '#131520'),
+            borderwidth=0, rowheight=24)
+        tree_style.configure('Treeview.Heading',
+            background=T.get('bg_widget', '#1d1f2e'),
+            foreground=T.get('fg_label', '#9ca0b0'),
+            borderwidth=0, relief='flat')
+        tree_style.map('Treeview',
+            background=[('selected', T.get('accent_bg', '#3b82f6'))],
+            foreground=[('selected', '#ffffff')])
+        # backward-compat alias для _mods_collect_selected
+        self._mods_scroll_frame = None  # больше не используется
+        canvas = None
+        scroll_frame = None
 
         # ── Строим список модов (lazy loading) ───────────────────────────────
         self._mods_data = {}
         mods = _get_all_mods(unpacked)
 
-        MAX_CHILDREN = 300  # limit widgets per mod
+        MAX_CHILDREN = 300  # v0.1.26: limit files per mod (Treeview не имеет hard limit)
 
-        def _build_children(children_frame, files, mod_name, mod_var, child_var_list, mod_cb_ref):
-            """Populate children_frame with file checkboxes (max MAX_CHILDREN)."""
+        def _build_children(mod_name, files):
+            """v0.1.26: вставить файлы как child rows в Treeview."""
+            tree = self._mods_tree
             disabled_set = set(self._app_settings.get('disabled_items', []))
-            # v3.1.7: сохраняем refs на строки файлов для фильтрации поиском
-            if not hasattr(self, '_mods_file_rows'):
-                self._mods_file_rows = {}
-            file_rows = self._mods_file_rows.setdefault(mod_name, [])
-            shown = 0
+            self._mods_data.setdefault('files', {})
             for fpath in files[:MAX_CHILDREN]:
                 fname = os.path.basename(fpath)
                 item_key = f'{mod_name}/{fname}'
                 if item_key in disabled_set:
                     continue
                 child_var = tk.BooleanVar(value=False)
-                child_var_list.append(child_var)
-                child_row = tk.Frame(children_frame, bg=T['bg_side'])
-                child_row.pack(fill=tk.X)
-                tk.Label(child_row, text='    ', bg=T['bg_side'],
-                         font=(T['font_fam'], T['font_sz'] - 2)).pack(side=tk.LEFT)
-                def _cv_cmd(mv=mod_var, cvl=child_var_list):
-                    mv.set(all(cv.get() for cv in cvl))
-                tk.Checkbutton(child_row, text=fname, variable=child_var,
-                               bg=T['bg_side'], fg=T['fg_text'],
-                               selectcolor=T['bg_widget'],
-                               activebackground=T['bg_side'],
-                               font=(T['font_fam'], T['font_sz'] - 2),
-                               anchor='w', command=_cv_cmd
-                               ).pack(side=tk.LEFT, fill=tk.X, expand=True)
-                # v3.1: крестик для отключения отдельного файла (без удаления с диска)
-                del_btn = tk.Label(child_row, text='×', bg=T['bg_side'], fg=T['fg_muted'],
-                                   font=(T['font_fam'], T['font_sz']), cursor='hand2',
-                                   padx=4)
-                del_btn.pack(side=tk.RIGHT, padx=(0, 4))
-                del_btn.bind('<Button-1>',
-                             lambda e, _mn=mod_name, _fp=fpath, _row=child_row:
-                                 _disable_item(_mn, _fp, _row))
-                file_rows.append((fname, child_row))  # v3.1.7: для фильтрации
-                shown += 1
-            if len(files) > MAX_CHILDREN:
-                tk.Label(children_frame,
-                         text=f'  ... ещё {len(files)-MAX_CHILDREN} файлов',
-                         bg=T['bg_side'], fg=T['fg_muted'],
-                         font=(T['font_fam'], T['font_sz'] - 2)).pack(anchor='w', padx=8)
-            # update mod checkbox command now that child_var_list is full
-            def _mod_cmd(mv=mod_var, cvl=child_var_list):
-                val = mv.get()
-                for cv in cvl: cv.set(val)
-            mod_cb_ref[0].config(command=_mod_cmd)
+                iid = item_key
+                tree.insert(mod_name, 'end', iid=iid,
+                            text=f'      {fname}',
+                            values=('☐', ''))
+                self._mods_data['files'][iid] = {
+                    'var': child_var, 'path': fpath, 'mod': mod_name, 'fname': fname
+                }
+            self._mods_data[mod_name]['files'] = files
+            self._mods_data[mod_name]['children'] = [
+                (f, self._mods_data['files'][f'{mod_name}/{os.path.basename(f)}']['var'])
+                for f in files[:MAX_CHILDREN]
+                if f'{mod_name}/{os.path.basename(f)}' in self._mods_data['files']
+            ]
+            # update parent count
+            n = len(self._mods_data[mod_name]['children'])
+            tree.set(mod_name, 'count', str(n))
+
+        # v0.1.26: lazy expand — при <<TreeviewOpen>> сканируем файлы
+        def _on_tree_open(event):
+            iid = self._mods_tree.focus()
+            if not iid or iid not in self._mods_data:
+                return
+            mn = iid
+            # уже загружено?
+            children = self._mods_tree.get_children(mn)
+            if children:
+                return  # уже загружены
+            def _load():
+                files = _get_mod_p3d_files(unpacked, mn)
+                def _update():
+                    if files:
+                        _build_children(mn, files)
+                try: self.root.after(0, _update)
+                except Exception: pass
+            import threading as _th
+            _th.Thread(target=_load, daemon=True).start()
+        self._mods_tree.bind('<<TreeviewOpen>>', _on_tree_open)
+
+        def _legacy_build_children(children_frame, files, mod_name, mod_var, child_var_list, mod_cb_ref):
+            """v0.1.26: deprecated — Treeview uses _build_children(mod_name, files) instead."""
+            pass  # legacy code, не вызывается после v0.1.26
 
         disabled = self._app_settings.get('disabled_mods', [])
         active_mods   = [m for m in mods if m not in disabled]
@@ -9126,102 +9135,59 @@ class App:
             self._build_mods_panel(parent)
 
         def _add_mod_row(mn, target_frame):
-            """Build one active mod row with lazy-load expand + disable button."""
+            """v0.1.26: Treeview-based mod row — native virtual rendering."""
             mod_var = tk.BooleanVar(value=False)
             child_var_list = []
-
-            # v0.1.10: компактный плоский список — убрали card border и padding,
-            # чтобы больше модов помещалось на экране
-            mod_container = tk.Frame(target_frame, bg=T['bg_side'])
-            mod_container.pack(fill=tk.X, padx=2, pady=0)
-            _mod_row_refs.append([mn, mod_container, None, None])
-
-            mod_row = tk.Frame(mod_container, bg=T['bg_side'])
-            mod_row.pack(fill=tk.X)
-
-            expand_lbl = tk.Label(mod_row, text='▶',
-                                  bg=T['bg_side'], fg=T['fg_muted'],
-                                  font=(T['font_fam'], T['font_sz'] - 2),
-                                  cursor='hand2', width=2)
-            expand_lbl.pack(side=tk.LEFT, padx=(2, 0))
-
-            mod_cb_ref = [None]
-            mod_cb = tk.Checkbutton(mod_row,
-                                    text=f'{mn}  (...)',
-                                    variable=mod_var,
-                                    bg=T['bg_side'], fg=T['fg_text'],
-                                    selectcolor=T.get('bg_widget', '#1f2235'),
-                                    activebackground=T['bg_side'],
-                                    font=(T['font_fam'], T['font_sz'] - 1),
-                                    anchor='w')
-            mod_cb.pack(side=tk.LEFT, fill=tk.X, expand=True)
-            mod_cb_ref[0] = mod_cb
-
-            # Disable button (×)
-            dis_btn = tk.Label(mod_row, text='×', bg=T['bg_side'], fg=T['fg_muted'],
-                               font=(T['font_fam'], T['font_sz'] - 1), cursor='hand2',
-                               padx=4)
-            dis_btn.pack(side=tk.RIGHT, padx=(0, 4))
-            dis_btn.bind('<Button-1>', lambda e, _mn=mn, _mc=mod_container: _disable_mod(_mn, _mc))
-
-            children_frame = tk.Frame(mod_container, bg=T['bg_side'])
-            expand_state = [False]
-            scan_done    = [False]
-            files_ref    = [[]]
-
-            def _make_expand(cf, el, state, sd, fr, _mn, mv, cvl, mcr):
-                def toggle(event=None):
-                    if state[0]:
-                        cf.pack_forget(); el.config(text='▶'); state[0] = False
+            tree = self._mods_tree
+            # вставляем parent row с чекбоксом-текстом
+            tree.insert('', 'end', iid=mn,
+                        text=f'  {mn}',
+                        values=('☐', ''))
+            _mod_row_refs.append([mn, None, None, None])
+            self._mods_data[mn] = {'var': mod_var, 'files': [], 'children': [], 'iid': mn}
+            # клик на колонке 'load' → toggle
+            def _on_click(event):
+                region = tree.identify('region', event.x, event.y)
+                if region != 'cell':
+                    return
+                col = tree.identify_column(event.x)
+                item = tree.identify_row(event.y)
+                if not item:
+                    return
+                if col == '#1':  # load
+                    if item in self._mods_data:
+                        # parent mod row
+                        d = self._mods_data[item]
+                        new_val = not d['var'].get()
+                        d['var'].set(new_val)
+                        tree.set(item, 'load', '☑' if new_val else '☐')
+                        # каскад на детей
+                        for c in tree.get_children(item):
+                            if c in self._mods_data.get('files', {}):
+                                cv = self._mods_data['files'][c]['var']
+                                cv.set(new_val)
+                                tree.set(c, 'load', '☑' if new_val else '☐')
                     else:
-                        if not sd[0]:
-                            sd[0] = True; el.config(text='⟳')
-                            def _scan():
-                                files = _get_mod_p3d_files(unpacked, _mn)
-                                fr[0] = files
-                                def _update():
-                                    mcr[0].config(text=f'{_mn}  ({len(files)})')
-                                    if files:
-                                        _build_children(cf, files, _mn, mv, cvl, mcr)
-                                        self._mods_data[_mn]['files']    = files
-                                        self._mods_data[_mn]['children'] = list(zip(files[:MAX_CHILDREN], cvl))
-                                        # v3.1.5: индексируем имена файлов для поиска в свёрнутых папках
-                                        self._mods_file_index[_mn] = [os.path.basename(f).lower() for f in files]
-                                        # v3.1: если чекбокс мода уже отмечен (галку поставили когда папка была свёрнута) —
-                                        # применяем состояние мода ко всем файлам при первом раскрытии
-                                        if mv.get():
-                                            for _cv in cvl:
-                                                _cv.set(True)
-                                    else:
-                                        tk.Label(cf, text='  нет .p3d файлов',
-                                                 bg=T['bg_side'], fg=T['fg_muted'],
-                                                 font=(T['font_fam'], T['font_sz'] - 2)
-                                                 ).pack(anchor='w', padx=8)
-                                    cf.pack(fill=tk.X); el.config(text='▼'); state[0] = True
-                                try: scroll_frame.after(0, _update)
-                                except Exception: pass
-                            import threading as _th
-                            _th.Thread(target=_scan, daemon=True).start()
-                        else:
-                            cf.pack(fill=tk.X); el.config(text='▼'); state[0] = True
-                return toggle
-
-            toggle_fn = _make_expand(children_frame, expand_lbl, expand_state,
-                                     scan_done, files_ref, mn,
-                                     mod_var, child_var_list, mod_cb_ref)
-            expand_lbl.bind('<Button-1>', toggle_fn)
-            # v3.1.6: сохранить refs для force-expand из поиска (без сворачивания развёрнутых)
-            try:
-                _mod_row_refs[-1][2] = toggle_fn
-                _mod_row_refs[-1][3] = expand_lbl
-            except Exception: pass
-            # Клик на чекбокс мода — автоматически запустить скан если ещё не было
-            def _cb_check(mv=mod_var, sd=scan_done, tf=toggle_fn):
-                if not sd[0]:
-                    tf()
-            mod_cb.config(command=_cb_check)
-            self._mods_data[mn] = {'var': mod_var, 'files': [], 'children': []}
-            # v3.1.6: фоновый scan для индексации (поиск работает ДО ручного раскрытия)
+                        # file row: iid format 'mod/file'
+                        mn2, fn2 = item.rsplit('/', 1)
+                        file_data = self._mods_data.get('files', {}).get(item, {})
+                        if file_data:
+                            new_val = not file_data['var'].get()
+                            file_data['var'].set(new_val)
+                            tree.set(item, 'load', '☑' if new_val else '☐')
+                elif col == '#3':  # count (× delete button area)
+                    if item in self._mods_data:
+                        # parent — disable whole mod
+                        _disable_mod(item, None)
+                    else:
+                        # file — disable single file
+                        mn3, fn3 = item.rsplit('/', 1)
+                        file_path = self._mods_data.get('files', {}).get(item, {}).get('path')
+                        if file_path:
+                            _disable_item(mn3, file_path, None)
+                            tree.delete(item)
+            tree.bind('<Button-1>', _on_click)
+            # v3.1.6: фоновый scan для индексации
             def _bg_index(_mn=mn):
                 try:
                     _files = _get_mod_p3d_files(unpacked, _mn)
@@ -9231,11 +9197,8 @@ class App:
             _th.Thread(target=_bg_index, daemon=True).start()
 
         for mod_name in active_mods:
-            _add_mod_row(mod_name, scroll_frame)
-            # v0.1.20: spacer в конец списка модов, чтобы sash не наезжал
-            # на последний мод при перетягивании
-        spacer = tk.Frame(scroll_frame, bg=T['bg_side'], height=24)
-        spacer.pack(fill=tk.X)
+            _add_mod_row(mod_name, None)
+            # v0.1.20: spacer (теперь не нужен — Treeview имеет native padding)
 
         def _on_mods_search(*_):
             term = mods_search_var.get().lower().strip()
