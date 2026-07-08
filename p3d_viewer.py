@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.29'
+VERSION    = 'v0.1.30'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -9194,11 +9194,14 @@ class App:
             # v0.1.29: eager load — сразу сканируем и вставляем файлы в Treeview
             # (lazy через <<TreeviewOpen>> ненадёжен — событие не всегда срабатывает)
             def _eager_load(_mn=mn):
+                _dbg(f'_eager_load start: mod={_mn} unpacked={unpacked}')
                 try:
                     _files = _get_mod_p3d_files(unpacked, _mn)
                     self._mods_file_index[_mn] = [os.path.basename(f).lower() for f in _files]
-                except Exception:
+                except Exception as _e:
+                    _dbg(f'_eager_load error: {_e}')
                     _files = []
+                _dbg(f'_eager_load scanned: mod={_mn} files_count={len(_files)}')
                 def _update():
                     # удаляем placeholder если есть
                     for c in list(self._mods_tree.get_children(_mn)):
@@ -9209,6 +9212,7 @@ class App:
                         n = sum(1 for c in self._mods_tree.get_children(_mn)
                                 if not c.startswith('__loading_') and not c.startswith('__empty_'))
                         self._mods_tree.item(_mn, text=f'  {_mn}  ({n})')
+                        _dbg(f'_eager_load inserted: mod={_mn} n={n}')
                     else:
                         # нет файлов — пустой placeholder
                         if not self._mods_tree.get_children(_mn):
@@ -9391,6 +9395,7 @@ class App:
 
         def _load_selected():
             paths = self._mods_collect_selected()
+            _dbg(f'_load_selected: paths count={len(paths)} sample={paths[:2]}')
             if not paths:
                 self._status('Выберите модели для загрузки', '#f9e2af')
                 return
