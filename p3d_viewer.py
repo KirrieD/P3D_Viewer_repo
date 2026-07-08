@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.39'
+VERSION    = 'v0.1.40'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8902,6 +8902,12 @@ class App:
                 w.destroy()
         except Exception:
             pass
+        # v0.1.40: очистить _footer_frame (иначе дублируются кнопки "Загрузить" / "Blender")
+        try:
+            for w in list(getattr(self, '_footer_frame').winfo_children()):
+                w.destroy()
+        except Exception:
+            pass
         # v0.1.39: почистить orphan keys (без `/`) из disabled_items — legacy от v3.1
         try:
             di = self._app_settings.get('disabled_items', [])
@@ -9434,10 +9440,12 @@ class App:
                     # file row: iid = '__file__mod/file'
                     parts = item.replace('__file__', '', 1).split('/', 1)
                     if len(parts) == 2:
-                        _enable_item(parts[0], parts[1])
+                        # v0.1.40: чистый enable (без полного rebuild → нет дублей)
+                        self._enable_item_clean(parts[0], parts[1])
                 else:
                     # mod row: iid = mod_name
-                    _enable_mod(item, None)
+                    # v0.1.40: чистый enable (без полного rebuild → нет дублей)
+                    self._enable_mod_clean(item)
 
             dis_tree.bind('<Button-1>', _dis_click)
 
@@ -9583,6 +9591,102 @@ class App:
                 paths.append(fpath)
         return paths
 
+    def _enable_mod_clean(self, mn):
+        """v0.1.40: чистый enable мода (без полного rebuild → нет дублей кнопок/секций)."""
+        try:
+            d = self._app_settings.get('disabled_mods', [])
+            if mn in d:
+                d.remove(mn)
+            self._app_settings['disabled_mods'] = d
+            di = self._app_settings.get('disabled_items', [])
+            di = [k for k in di if not k.startswith(f'{mn}/')]
+            self._app_settings['disabled_items'] = di
+            _save_app_settings(self._app_settings)
+            # восстановить parent row если его нет
+            if mn not in self._mods_data or mn not in self._mods_tree.get_children(''):
+                self._add_mod_row_recover(mn, self._mods_tree)
+            # rebuild disabled section
+            if hasattr(self, '_rebuild_disabled_section_ref') and self._rebuild_disabled_section_ref:
+                self._rebuild_disabled_section_ref()
+        except Exception as _e:
+            dbg_cat('load', f'_enable_mod_clean error: {_e}')
+
+    def _enable_item_clean(self, mod_name, file_name):
+        """v0.1.40: чистый enable отдельного файла (без полного rebuild)."""
+        try:
+            item_key = f'{mod_name}/{file_name}'
+            di = self._app_settings.get('disabled_items', [])
+            if item_key in di:
+                di.remove(item_key)
+            self._app_settings['disabled_items'] = di
+            _save_app_settings(self._app_settings)
+            # если mod row ещё не в Treeview (был полностью disabled) — восстановить
+            if mod_name not in self._mods_data or mod_name not in self._mods_tree.get_children(''):
+                self._add_mod_row_recover(mod_name, self._mods_tree)
+            else:
+                # иначе просто добавить файл row обратно
+                try:
+                    if not self._mods_tree.exists(item_key):
+                        unpacked = getattr(self, '_mods_unpacked', None)
+                        if unpacked:
+                            fpath = os.path.join(unpacked, mod_name, file_name)
+                            child_var = tk.BooleanVar(value=False)
+                            self._mods_tree.insert(mod_name, 'end', iid=item_key,
+                                text=f'      {file_name}', values=('☐', ''))
+                            self._mods_data.setdefault('files', {})
+                            self._mods_data['files'][item_key] = {
+                                'var': child_var, 'path': fpath, 'mod': mod_name, 'fname': file_name
+                            }
+                except Exception as _ie:
+                    dbg_cat('load', f'_enable_item_clean reinsert error: {_ie}')
+            # rebuild disabled section
+            if hasattr(self, '_rebuild_disabled_section_ref') and self._rebuild_disabled_section_ref:
+                self._rebuild_disabled_section_ref()
+        except Exception as _e:
+            dbg_cat('load', f'_enable_item_clean error: {_e}')
+
+    def _add_mod_row_recover(self, mn, tree):
+        """v0.1.40: восстановить parent row при enable (после disable через ⛔ клик)."""
+        try:
+            mod_var = tk.BooleanVar(value=False)
+            self._mods_data[mn] = {'var': mod_var, 'files': [], 'children': [], 'iid': mn}
+            tree.insert('', 'end', iid=mn,
+                        text=f'  {mn}  (…)',
+                        values=('☐', ''))
+            tree.insert(mn, 'end', iid=f'__loading_{mn}',
+                        text='  ⏳ загрузка...', values=(' ',))
+            # запустить eager_load для восстановления файлов
+            unpacked = getattr(self, '_mods_unpacked', None)
+            if unpacked:
+                import threading as _th
+                def _recover_files():
+                    try:
+                        _files = _get_mod_p3d_files(unpacked, mn)
+                        self._mods_file_index[mn] = [os.path.basename(f).lower() for f in _files]
+                        disabled_set = set(self._app_settings.get('disabled_items', []))
+                        # вставить только НЕ disabled файлы
+                        for fpath in _files[:300]:
+                            fname = os.path.basename(fpath)
+                            item_key = f'{mn}/{fname}'
+                            if item_key in disabled_set:
+                                continue
+                            def _do_insert(_mn=mn, _fp=fpath, _fn=fname, _ik=item_key):
+                                if _mn not in self._mods_tree.get_children(''):
+                                    return  # пользователь успел выключить обратно
+                                child_var = tk.BooleanVar(value=False)
+                                self._mods_tree.insert(_mn, 'end', iid=_ik,
+                                    text=f'      {_fn}', values=('☐', ''))
+                                self._mods_data.setdefault('files', {})
+                                self._mods_data['files'][_ik] = {
+                                    'var': child_var, 'path': _fp, 'mod': _mn, 'fname': _fn
+                                }
+                            self.root.after(0, _do_insert)
+                    except Exception as _e:
+                        dbg_cat('load', f'_add_mod_row_recover error: {_e}')
+                _th.Thread(target=_recover_files, daemon=True).start()
+        except Exception as _e:
+            dbg_cat('load', f'_add_mod_row_recover top error: {_e}')
+
     def _toggle_disabled_item(self, item_iid, tree):
         """v0.1.37: toggle disabled из Treeview по клику на ⊘ столбец.
         item_iid = mod_name (parent) ИЛИ 'mod_name/file_name' (file row).
@@ -9630,6 +9734,16 @@ class App:
             _set_visual(mn, new_disabled)
             for c in children:
                 _set_visual(c, new_disabled)
+            # v0.1.40: удалить/восстановить parent row из основного Treeview
+            try:
+                if new_disabled:
+                    tree.delete(mn)
+                    if mn in self._mods_data:
+                        del self._mods_data[mn]
+                else:
+                    self._add_mod_row_recover(mn, tree)  # восстановить parent row
+            except Exception as _e:
+                dbg_cat('load', f'_toggle_disabled_item parent row delete error: {_e}')
         else:
             # file row
             file_data = self._mods_data.get('files', {}).get(item_iid, {})
@@ -9644,6 +9758,12 @@ class App:
             self._app_settings['disabled_items'] = list(disabled_set)
             _save_app_settings(self._app_settings)
             _set_visual(item_iid, new_disabled)
+            # v0.1.40: если отключили файл — удалить его row из основного Treeview
+            if new_disabled:
+                try:
+                    tree.detach(item_iid)
+                except Exception:
+                    pass
 
         # Пересобрать секцию "Выключено" в sidebar
         try:
