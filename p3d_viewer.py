@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.41'
+VERSION    = 'v0.1.42'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -9204,12 +9204,22 @@ class App:
             self._build_mods_panel(parent)
 
         def _add_mod_row(mn, target_frame):
-            """v0.1.26/27: Treeview-based mod row — native virtual rendering."""
+            """v0.1.26/27: Treeview-based mod row — native virtual rendering.
+            v0.1.41: вставляет на правильное алфавитное место.
+            """
             mod_var = tk.BooleanVar(value=False)
             child_var_list = []
             tree = self._mods_tree
+            # v0.1.41: найти индекс для вставки по алфавиту
+            existing = [tree.item(i, 'text').strip().split('  ')[0].strip()
+                        for i in tree.get_children('')]
+            insert_idx = 'end'
+            for i, existing_mn in enumerate(existing):
+                if mn.lower() < existing_mn.lower():
+                    insert_idx = i
+                    break
             # v0.1.27: вставляем parent row + placeholder child чтобы Treeview показал chevron ▶
-            tree.insert('', 'end', iid=mn,
+            tree.insert('', insert_idx, iid=mn,
                         text=f'  {mn}  (…)',
                         values=('☐', ''))
             tree.insert(mn, 'end', iid=f'__loading_{mn}', text='  ⏳ загрузка...', values=(' ',))
@@ -9650,11 +9660,21 @@ class App:
             dbg_cat('load', f'_enable_item_clean error: {_e}')
 
     def _add_mod_row_recover(self, mn, tree):
-        """v0.1.40: восстановить parent row при enable (после disable через ⛔ клик)."""
+        """v0.1.40: восстановить parent row при enable (после disable через ⛔ клик).
+        v0.1.41: вставляет на правильное алфавитное место (НЕ в конец).
+        """
         try:
             mod_var = tk.BooleanVar(value=False)
             self._mods_data[mn] = {'var': mod_var, 'files': [], 'children': [], 'iid': mn}
-            tree.insert('', 'end', iid=mn,
+            # v0.1.41: найти индекс для вставки по алфавиту
+            existing = [tree.item(i, 'text').strip().split('  ')[0].strip()
+                        for i in tree.get_children('')]
+            insert_idx = 'end'
+            for i, existing_mn in enumerate(existing):
+                if mn.lower() < existing_mn.lower():
+                    insert_idx = i
+                    break
+            tree.insert('', insert_idx, iid=mn,
                         text=f'  {mn}  (…)',
                         values=('☐', ''))
             tree.insert(mn, 'end', iid=f'__loading_{mn}',
