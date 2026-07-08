@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.44'
+VERSION    = 'v0.1.45'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -4129,9 +4129,9 @@ class App:
             """Создаёт иконку-кнопку в icon_strip."""
             btn_outer = tk.Frame(icon_strip, bg=T['bg_main'])
             btn_outer.pack(fill=tk.X, pady=1)
-
+            # v0.1.45: fg_label вместо fg_muted — на Amber Dark fg_muted=#3a2c0a невидим на bg_main=#111008
             btn = tk.Label(btn_outer, text=symbol, bg=T['bg_main'],
-                           fg=T['fg_muted'],
+                           fg=T.get('fg_label', T['fg_text']),
                            font=(T['font_fam'], 14),
                            width=3, pady=7, cursor='hand2')
             btn.pack(fill=tk.X)
@@ -4149,7 +4149,7 @@ class App:
             btn.bind('<Enter>', lambda e, b=btn, k=key: b.config(
                 fg=self._T()['fg_text']) if self._active_icon[0] != k else None)
             btn.bind('<Leave>', lambda e, b=btn, k=key: b.config(
-                fg=self._T()['accent_bg'] if self._active_icon[0] == k else self._T()['fg_muted']))
+                fg=self._T()['accent_bg'] if self._active_icon[0] == k else self._T().get('fg_label', self._T()['fg_text'])))
 
             # Tooltip
             def _show_tip(e):
@@ -4205,13 +4205,13 @@ class App:
         tk.Frame(icon_strip, bg=T['bg_sep'], height=1).pack(fill=tk.X, padx=4)
 
         settings_btn = tk.Label(icon_strip, text='⚙', bg=T['bg_main'],
-                                fg=T['fg_muted'],
+                                fg=T.get('fg_label', T['fg_text']),  # v0.1.45: видимый на любой теме
                                 font=(T['font_fam'], 13),
                                 width=3, pady=8, cursor='hand2')
         settings_btn.pack(fill=tk.X)
         settings_btn.bind('<Button-1>', lambda e: self._open_theme_editor())
         settings_btn.bind('<Enter>', lambda e: settings_btn.config(fg=T['fg_text']))
-        settings_btn.bind('<Leave>', lambda e: settings_btn.config(fg=T['fg_muted']))
+        settings_btn.bind('<Leave>', lambda e: settings_btn.config(fg=T.get('fg_label', T['fg_text'])))
 
         # ── Панели контента (по одной на каждую иконку) ───────────────────────
 
@@ -7802,6 +7802,43 @@ class App:
 
     # ── Применение темы ──────────────────────────────────────────────────────
 
+    def _refresh_treeview_styles(self):
+        """v0.1.45: обновить ttk.Treeview styles под текущую тему.
+        Применяется при _apply_theme чтобы heading/row/tag colors матчили новую тему.
+        """
+        try:
+            import tkinter.ttk as _ttk
+            T = self._T()
+            ts = _ttk.Style()
+            try: ts.theme_use('clam')
+            except Exception: pass
+            # основные стили
+            ts.configure('Treeview',
+                background=T.get('bg_side', '#131520'),
+                foreground=T.get('fg_text', '#e8eaf0'),
+                fieldbackground=T.get('bg_side', '#131520'),
+                rowheight=22)
+            ts.configure('Treeview.Heading',
+                background=T.get('bg_widget', '#1d1f2e'),
+                foreground=T.get('fg_label', '#9ca0b0'),
+                relief='flat')
+            # map (selected row)
+            ts.map('Treeview',
+                background=[('selected', T.get('accent_bg', '#3b82f6'))],
+                foreground=[('selected', T.get('accent_fg', '#ffffff'))])
+            # tag для disabled (для всех существующих Treeview)
+            for tree in [getattr(self, '_mods_tree', None),
+                         getattr(self, '_disabled_tree', None)]:
+                if tree is None:
+                    continue
+                try:
+                    tree.tag_configure('disabled',
+                        foreground=T.get('fg_muted', '#6b7280'))
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
     def _full_repaint(self, old_theme):
         """Рекурсивно заменяет все цвета старой темы на новую во всех виджетах."""
         T = self._T()
@@ -7972,6 +8009,8 @@ class App:
         except Exception: pass
         try: self._vp_frame.configure(bg=T['gl_bg'])
         except Exception: pass
+        # v0.1.45: обновить Treeview styles при смене темы (heading/row/tag)
+        self._refresh_treeview_styles()
 
         # Рамки
         for w, key in self._tw_frames:
@@ -9491,6 +9530,8 @@ class App:
             _dis_search_var.trace_add('write', _on_dis_search)
 
             dis_section_ref[0] = dis_tree
+            # v0.1.45: сохранить reference для _refresh_treeview_styles
+            self._disabled_tree = dis_tree
 
         _rebuild_disabled_section()
         # v0.1.37: сохранить ссылку для toggle через клик по ⊘ столбцу
