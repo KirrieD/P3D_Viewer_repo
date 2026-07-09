@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.52'
+VERSION    = 'v0.1.53'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -3862,11 +3862,16 @@ class App:
 
     def _btn(self, parent, text, cmd, accent=False):
         T = self._T()
-        # v0.1.51: ttk.Button с named style (CSS-подход) — обновляется через style.configure
-        import tkinter.ttk as _ttk
-        w = _ttk.Button(parent, text=text, command=cmd, cursor='hand2',
-                        style='SidebarAccent.TButton' if accent else 'Sidebar.TButton')
-        # дублируем в registry для совместимости со старым кодом (но не обязательно)
+        relief = T.get('btn_relief', 'flat')
+        # v0.1.53: откат к tk.Button (CSS-подход не покрыл все labels/buttons)
+        w = tk.Button(parent, text=text, command=cmd,
+                      bg=T['accent_bg'] if accent else T['btn_bg'],
+                      fg=T['accent_fg'] if accent else T['btn_fg'],
+                      relief=relief, font=(T['font_fam'], T['font_sz']),
+                      padx=8, pady=7, cursor='hand2',
+                      activebackground=T['accent_hov'] if accent else T['btn_hover'],
+                      activeforeground=T['accent_fg']  if accent else T['btn_fg'],
+                      bd=0, anchor='w')
         self._tw_buttons.append((w, 'accent' if accent else 'normal'))
         return w
 
@@ -7920,12 +7925,36 @@ class App:
                         else:
                             w.configure(bg=bg_side)
                     elif cls == 'Label':
-                        # special: _ver_lbl (accent), _author_lbl (fg_label), hints (fg_muted)
+                        # v0.1.53: role-based detection — определяем fg по тексту
                         text = w.cget('text') if 'text' in w.keys() else ''
-                        if text == 'd.x.b':
+                        text_stripped = text.strip()
+                        # 1. Версия v0.1.x — accent
+                        if text_stripped.startswith('v0.1.') or text_stripped.startswith('v1.'):
+                            w.configure(fg=accent_bg)
+                        # 2. d.x.b — author
+                        elif text_stripped == 'd.x.b':
                             w.configure(fg=fg_label)
-                        elif text in ('P3D', 'v0.1.45', 'v0.1.46'):
-                            # logo + version — обновляются через _apply_theme
+                        # 3. P3D logo — accent
+                        elif text_stripped == 'P3D':
+                            w.configure(fg=accent_bg)
+                        # 4. Search иконки 🔍
+                        elif text_stripped == '🔍':
+                            w.configure(fg=fg_label)
+                        # 5. Toolbar toggles (◀/▶) — обычно в toolbar
+                        elif text_stripped in ('◀', '▶'):
+                            w.configure(fg=fg_label)
+                        # 6. Settings ⚙
+                        elif text_stripped == '⚙':
+                            w.configure(fg=fg_label)
+                        # 7. Treeview иконки (☐/☑/⛔/↩)
+                        elif text_stripped in ('☐', '☑', '⛔', '↩'):
+                            w.configure(fg=fg_text)
+                        # 8. Treeview chevron (▶/▼)
+                        elif text_stripped in ('▶', '▼'):
+                            w.configure(fg=fg_text)
+                        # 9. Module icon symbols (⊞/◈/▦/⊡/⊕) в icon_strip
+                        elif text_stripped in ('⊞', '◈', '▦', '⊡', '⊕'):
+                            # icon_strip handled separately
                             pass
                         else:
                             w.configure(fg=fg_text)
