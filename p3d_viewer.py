@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.51'
+VERSION    = 'v0.1.52'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -9174,8 +9174,8 @@ class App:
             # Создаём секцию "Загружено" и выходим
             tk.Frame(loaded_parent, bg=T['bg_sep'], height=1).pack(fill=tk.X, padx=8, pady=(4, 2))
             tk.Label(loaded_parent, text='Загружено:',
-                     bg=T['bg_side'], fg=T['fg_label'],
-                     font=(T['font_fam'], T['font_sz'] - 1)).pack(anchor='w', padx=12)
+                     bg=T['bg_side'], fg=T['accent_bg'],  # v0.1.52
+                     font=(T['font_fam'], T['font_sz'] - 1, 'bold')).pack(anchor='w', padx=12)
             _lsf = tk.Frame(loaded_parent, bg=T['bg_side'])
             _lsf.pack(fill=tk.X, padx=8, pady=(2, 2))
             tk.Label(_lsf, text='🔍', bg=T['bg_side'], fg=T.get('fg_label', T['fg_text']),  # v0.1.46
@@ -9214,8 +9214,8 @@ class App:
             return
 
         tk.Label(parent, text='Доступные моды:',
-                 bg=T['bg_side'], fg=T['fg_label'],
-                 font=(T['font_fam'], T['font_sz'] - 1)).pack(anchor='w', padx=12, pady=(6, 2))
+                 bg=T['bg_side'], fg=T['accent_bg'],  # v0.1.52: accent (виден на любой теме)
+                 font=(T['font_fam'], T['font_sz'] - 1, 'bold')).pack(anchor='w', padx=12, pady=(6, 2))
 
         mods_search_var = tk.StringVar()
         _msf = tk.Frame(parent, bg=T['bg_side'])
@@ -9622,7 +9622,7 @@ class App:
             hdr_frame.pack(side=tk.TOP, fill=tk.X, padx=8, pady=(6, 2))
             hdr_lbl = tk.Label(hdr_frame,
                                text=f'Выключено ({total_count})',
-                               bg=T['bg_side'], fg=T['fg_label'],
+                               bg=T['bg_side'], fg=T['accent_bg'],  # v0.1.52
                                font=(T['font_fam'], T['font_sz'] - 1, 'bold'))
             hdr_lbl.pack(side=tk.LEFT)
 
