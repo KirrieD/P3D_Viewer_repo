@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.50'
+VERSION    = 'v0.1.49'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -7852,13 +7852,10 @@ class App:
                     continue
                 try:
                     if cls == 'Frame':
-                        # v0.1.50: Frame внутри icon_strip = bg_main, в _side = bg_side
-                        # Иначе bg_main фреймы в icon_strip получат bg_side (осветление)
+                        # Frame в icon_strip = bg_main, в _side = bg_side
                         cur = w.cget('bg') if 'bg' in w.keys() else ''
                         if cur and cur.lower() in (bg_sep.lower(),):
                             w.configure(bg=bg_sep)
-                        elif cur and cur.lower() in (bg_main.lower(),):
-                            w.configure(bg=bg_main)
                         else:
                             w.configure(bg=bg_side)
                     elif cls == 'Label':
