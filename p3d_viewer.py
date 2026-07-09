@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.46'
+VERSION    = 'v0.1.47'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -4377,6 +4377,7 @@ class App:
 
         # GL вьюпорт
         self._vp_frame = tk.Frame(self._main_frame, bg=T.get('gl_bg', '#1c1c24'))
+        self._vp_frame._palette_role = 'viewport'  # v0.1.47: не трогать recursive palette
         self._vp_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self._tw_frames.append((self._vp_frame, 'gl_bg'))
 
@@ -7802,6 +7803,106 @@ class App:
 
     # ── Применение темы ──────────────────────────────────────────────────────
 
+    def _apply_palette_recursive(self, parent):
+        """v0.1.47: системный apply theme — рекурсивно обходит ВСЕ tk widgets
+        и применяет цвета текущей темы. Вызывается из _apply_theme.
+        Игнорирует: ttk widgets (Treeview/Heading), Canvas swatches (через _role).
+        """
+        T = self._T()
+        bg_main = T.get('bg_main', '#0f1019')
+        bg_side = T.get('bg_side', '#131520')
+        bg_widget = T.get('bg_widget', '#1d1f2e')
+        bg_sep = T.get('bg_sep', '#2a2d3e')
+        fg_text = T.get('fg_text', '#e8eaf0')
+        fg_label = T.get('fg_label', '#9ca0b0')
+        fg_muted = T.get('fg_muted', '#5a5e72')
+        btn_bg = T.get('btn_bg', bg_widget)
+        btn_fg = T.get('btn_fg', fg_text)
+        btn_hover = T.get('btn_hover', bg_sep)
+        accent_bg = T.get('accent_bg', '#3b82f6')
+        accent_fg = T.get('accent_fg', '#ffffff')
+        try:
+            for w in list(parent.winfo_children()):
+                # пропустить destroyed widgets
+                try:
+                    if not w.winfo_exists():
+                        continue
+                except Exception:
+                    continue
+                # пропустить Toplevel окна (Settings, Dev Tools) — у них своя тематизация
+                if isinstance(w, tk.Toplevel):
+                    continue
+                cls = w.winfo_class()
+                # пропустить ttk widgets (Treeview handled separately)
+                if cls.startswith('T') and cls not in ('Toplevel',):
+                    continue
+                # пропустить widgets с явной ролью (swatches, custom, viewport)
+                role = getattr(w, '_palette_role', None)
+                if role in ('theme_swatch', 'viewport', 'models_canvas'):
+                    # рекурсия в детей, но не трогаем сам
+                    self._apply_palette_recursive(w)
+                    continue
+                try:
+                    if cls == 'Frame':
+                        # Frame в icon_strip = bg_main, в _side = bg_side
+                        cur = w.cget('bg') if 'bg' in w.keys() else ''
+                        if cur and cur.lower() in (bg_sep.lower(),):
+                            w.configure(bg=bg_sep)
+                        else:
+                            w.configure(bg=bg_side)
+                    elif cls == 'Label':
+                        # special: _ver_lbl (accent), _author_lbl (fg_label), hints (fg_muted)
+                        text = w.cget('text') if 'text' in w.keys() else ''
+                        if text == 'd.x.b':
+                            w.configure(fg=fg_label)
+                        elif text in ('P3D', 'v0.1.45', 'v0.1.46'):
+                            # logo + version — обновляются через _apply_theme
+                            pass
+                        else:
+                            w.configure(fg=fg_text)
+                    elif cls == 'Button':
+                        # Check if button has _role attribute
+                        if role == 'icon_strip':
+                            w.configure(bg=bg_main, activebackground=bg_sep)
+                        else:
+                            w.configure(bg=btn_bg, fg=btn_fg,
+                                        activebackground=btn_hover,
+                                        activeforeground=btn_fg)
+                    elif cls == 'Entry':
+                        w.configure(bg=bg_widget, fg=fg_text,
+                                    insertbackground=fg_text,
+                                    selectbackground=accent_bg,
+                                    selectforeground=accent_fg,
+                                    highlightbackground=bg_sep,
+                                    highlightcolor=accent_bg)
+                    elif cls == 'Canvas':
+                        # Canvas — обычно bg_side, кроме viewport
+                        if role == 'viewport':
+                            w.configure(bg=T.get('gl_bg', bg_main))
+                        else:
+                            w.configure(bg=bg_side)
+                    elif cls == 'Text':
+                        w.configure(bg=bg_widget, fg=fg_text,
+                                    insertbackground=fg_text,
+                                    selectbackground=accent_bg,
+                                    selectforeground=accent_fg)
+                    elif cls == 'Checkbutton':
+                        w.configure(bg=bg_side, fg=fg_text,
+                                    selectcolor=bg_widget,
+                                    activebackground=bg_side,
+                                    activeforeground=fg_text)
+                    elif cls == 'Radiobutton':
+                        w.configure(bg=bg_side, fg=fg_text,
+                                    selectcolor=bg_widget,
+                                    activebackground=bg_side,
+                                    activeforeground=fg_text)
+                except Exception:
+                    pass
+                # рекурсия
+                self._apply_palette_recursive(w)
+        except Exception:
+            pass
+
     def _refresh_treeview_styles(self):
         """v0.1.45: обновить ttk.Treeview styles под текущую тему.
         Применяется при _apply_theme чтобы heading/row/tag colors матчили новую тему.
@@ -8011,6 +8112,8 @@ class App:
         except Exception: pass
         # v0.1.45: обновить Treeview styles при смене темы (heading/row/tag)
         self._refresh_treeview_styles()
+        # v0.1.47: рекурсивно обновить ВСЕ tk widgets под новую тему
+        self._apply_palette_recursive(self.root)
 
         # Рамки
         for w, key in self._tw_frames:
@@ -8203,6 +8306,7 @@ class App:
             fg = theme_data.get('fg_text', '#cdd6f4')
 
             swatch_outer = tk.Frame(themes_inner, bg=T['bg_side'], padx=2, pady=2)
+            swatch_outer._palette_role = 'theme_swatch'  # v0.1.47: не трогать recursive palette
             swatch_outer.grid(row=row, column=col, padx=4, pady=4, sticky='w')
             swatch_frames[theme_name] = swatch_outer
 
@@ -9006,6 +9110,8 @@ class App:
             # Скролл мышью через <MouseWheel> bind ниже.
             self._models_canvas = tk.Canvas(_ml_container, bg=T['bg_side'], bd=0, highlightthickness=0,
                                               height=400)
+            # v0.1.47: mark чтобы recursive palette не трогал
+            self._models_canvas._palette_role = 'models_canvas'
             self._models_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
             self._models_canvas.bind('<MouseWheel>',
                 lambda e: self._models_canvas.yview_scroll(int(-1 * (e.delta / 120)), 'units'))
