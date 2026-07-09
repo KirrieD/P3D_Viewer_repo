@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.47'
+VERSION    = 'v0.1.48'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -8780,7 +8780,11 @@ class App:
             except Exception:
                 pass
             _save_app_settings(self._app_settings)
-            self._full_repaint(old_theme)   # рекурсивная замена цветов
+            # v0.1.48: вызываем _apply_theme (включает _apply_palette_recursive) вместо _full_repaint
+            # _full_repaint заменял только widgets с старыми цветами из color_map — не покрывал всё
+            self._apply_theme()
+            self._refresh_treeview_styles()
+            self._apply_palette_recursive(self.root)
             win.destroy()
 
         def cancel():
