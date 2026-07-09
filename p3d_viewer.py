@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.53'
+VERSION    = 'v0.1.54'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -7946,6 +7946,9 @@ class App:
                         # 6. Settings ⚙
                         elif text_stripped == '⚙':
                             w.configure(fg=fg_label)
+                        # 6.5 Section headers (dynamic, e.g. 'Выключено (N)')
+                        elif text_stripped.startswith('Выключено'):
+                            w.configure(fg=accent_bg)
                         # 7. Treeview иконки (☐/☑/⛔/↩)
                         elif text_stripped in ('☐', '☑', '⛔', '↩'):
                             w.configure(fg=fg_text)
@@ -9798,8 +9801,8 @@ class App:
         # ── Список загруженных моделей (скроллируемый холст) ─────────────────────
         tk.Frame(loaded_parent, bg=T['bg_sep'], height=1).pack(fill=tk.X, padx=8, pady=(4, 0))
         tk.Label(loaded_parent, text='Загружено:',
-                 bg=T['bg_side'], fg=T['fg_label'],
-                 font=(T['font_fam'], T['font_sz'] - 1)).pack(anchor='w', padx=12, pady=(4, 2))
+                 bg=T['bg_side'], fg=T['accent_bg'],  # v0.1.54
+                 font=(T['font_fam'], T['font_sz'] - 1, 'bold')).pack(anchor='w', padx=12, pady=(4, 2))
         _lsf2 = tk.Frame(loaded_parent, bg=T['bg_side'])
         _lsf2.pack(fill=tk.X, padx=8, pady=(0, 2))
         tk.Label(_lsf2, text='🔍', bg=T['bg_side'], fg=T.get('fg_label', T['fg_text']),  # v0.1.46
