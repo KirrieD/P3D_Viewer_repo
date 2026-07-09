@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.48'
+VERSION    = 'v0.1.49'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -3731,11 +3731,11 @@ def _show_splash(root):
                        fill=accent, font=('Segoe UI', 48, 'bold'), anchor='center')
     # Акцентная линия по центру
     canvas.create_line(W//2 - 50, H//2 + 6, W//2 + 50, H//2 + 6, fill=accent, width=1)
-    # Подписи
+    # Подписи — v0.1.49: используем text_col (fg_text) вместо muted (на Solarized muted=#073642 = bg_side)
     canvas.create_text(W//2, H//2 + 26, text='P3D Viewer',
-                       fill=muted, font=('Segoe UI', 13), anchor='center')
+                       fill=text_col, font=('Segoe UI', 13), anchor='center')
     canvas.create_text(W//2, H//2 + 46, text=VERSION,
-                       fill=muted, font=('Segoe UI', 9), anchor='center')
+                       fill=text_col, font=('Segoe UI', 9), anchor='center')
     return splash
 
 
@@ -3952,6 +3952,7 @@ class App:
         # v0.1.4: icon_strip выносим в _main_frame (теперь не внутри side_outer),
         # чтобы toggle мог скрывать только side_outer (моды), оставляя иконки видимыми
         icon_strip = tk.Frame(self._main_frame, bg=T['bg_main'], width=44)
+        icon_strip._palette_role = 'icon_strip'  # v0.1.49: не трогать recursive palette
         icon_strip.pack(side=tk.LEFT, fill=tk.Y, before=side_outer)
         icon_strip.pack_propagate(False)
         self._tw_frames.append((icon_strip, 'bg_main'))
@@ -4128,12 +4129,14 @@ class App:
         def _make_icon_btn(key, symbol, tooltip_text):
             """Создаёт иконку-кнопку в icon_strip."""
             btn_outer = tk.Frame(icon_strip, bg=T['bg_main'])
+            btn_outer._palette_role = 'icon_strip'  # v0.1.49: bg_main
             btn_outer.pack(fill=tk.X, pady=1)
             # v0.1.45: fg_label вместо fg_muted — на Amber Dark fg_muted=#3a2c0a невидим на bg_main=#111008
+            # v0.1.49: 14→18 font size (Кирилл: иконки маленькие)
             btn = tk.Label(btn_outer, text=symbol, bg=T['bg_main'],
                            fg=T.get('fg_label', T['fg_text']),
-                           font=(T['font_fam'], 14),
-                           width=3, pady=7, cursor='hand2')
+                           font=(T['font_fam'], 18),
+                           width=3, pady=9, cursor='hand2')
             btn.pack(fill=tk.X)
 
             self._icon_btns[key] = btn
@@ -7842,6 +7845,11 @@ class App:
                     # рекурсия в детей, но не трогаем сам
                     self._apply_palette_recursive(w)
                     continue
+                if role == 'icon_strip':
+                    # icon_strip использует bg_main (не bg_side)
+                    w.configure(bg=bg_main)
+                    self._apply_palette_recursive(w)
+                    continue
                 try:
                     if cls == 'Frame':
                         # Frame в icon_strip = bg_main, в _side = bg_side
@@ -8336,6 +8344,15 @@ class App:
                                 pass
                 # Highlight selected
                 outer.configure(bg=T['accent_bg'])
+                # v0.1.49: live preview — обновить color swatches под выбранную тему
+                preview_theme = PRESET_THEMES.get(name, DEFAULT_THEME)
+                for k, v in preview_theme.items():
+                    if k in custom_colors:
+                        custom_colors[k] = v
+                        for child in colors_inner.winfo_children():
+                            for c2 in child.winfo_children():
+                                if isinstance(c2, tk.Frame) and c2.cget('bg').lower() == v.lower():
+                                    c2.configure(bg=v)
 
             swatch.bind('<Button-1>', lambda e, n=theme_name, o=swatch_outer: _select_theme(n, o))
             for child in swatch.winfo_children():
