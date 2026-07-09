@@ -28,7 +28,7 @@ try:
 except Exception:
     EMBEDDED_CONFIGS = {}
 
-VERSION    = 'v0.1.49'
+VERSION    = 'v0.1.51'
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 MIKERO     = r'C:\Program Files (x86)\Mikero\DePboTools\bin'
 DERAP_EXE  = os.path.join(MIKERO, 'DeRap.exe')
@@ -3862,15 +3862,11 @@ class App:
 
     def _btn(self, parent, text, cmd, accent=False):
         T = self._T()
-        relief = T.get('btn_relief', 'flat')
-        w = tk.Button(parent, text=text, command=cmd,
-                      bg=T['accent_bg'] if accent else T['btn_bg'],
-                      fg=T['accent_fg'] if accent else T['btn_fg'],
-                      relief=relief, font=(T['font_fam'], T['font_sz']),
-                      padx=8, pady=7, cursor='hand2',
-                      activebackground=T['accent_hov'] if accent else T['btn_hover'],
-                      activeforeground=T['accent_fg']  if accent else T['btn_fg'],
-                      bd=0, anchor='w')
+        # v0.1.51: ttk.Button с named style (CSS-подход) — обновляется через style.configure
+        import tkinter.ttk as _ttk
+        w = _ttk.Button(parent, text=text, command=cmd, cursor='hand2',
+                        style='SidebarAccent.TButton' if accent else 'Sidebar.TButton')
+        # дублируем в registry для совместимости со старым кодом (но не обязательно)
         self._tw_buttons.append((w, 'accent' if accent else 'normal'))
         return w
 
@@ -7806,6 +7802,71 @@ class App:
 
     # ── Применение темы ──────────────────────────────────────────────────────
 
+    def _register_ttk_styles(self, T=None):
+        """v0.1.51: CSS-подход через ttk.Style named styles.
+        Регистрирует именованные стили для основных UI элементов.
+        При смене темы — style.configure('Sidebar.TButton', background=new_color)
+        мгновенно обновляет ВСЕ ttk widgets с этим стилем.
+        """
+        if T is None:
+            T = self._T()
+        import tkinter.ttk as _ttk
+        ts = _ttk.Style()
+        try: ts.theme_use('clam')
+        except Exception: pass
+        bg_main = T.get('bg_main', '#0f1019')
+        bg_side = T.get('bg_side', '#131520')
+        bg_widget = T.get('bg_widget', '#1d1f2e')
+        bg_sep = T.get('bg_sep', '#2a2d3e')
+        fg_text = T.get('fg_text', '#e8eaf0')
+        fg_label = T.get('fg_label', '#9ca0b0')
+        fg_muted = T.get('fg_muted', '#5a5e72')
+        btn_bg = T.get('btn_bg', bg_widget)
+        btn_fg = T.get('btn_fg', fg_text)
+        btn_hover = T.get('btn_hover', bg_sep)
+        accent_bg = T.get('accent_bg', '#3b82f6')
+        accent_fg = T.get('accent_fg', '#ffffff')
+        accent_hov = T.get('accent_hov', '#2563eb')
+        font_fam = T.get('font_fam', 'Segoe UI')
+        font_sz = T.get('font_sz', 10)
+        # v0.1.51: именованные стили — обновляются через style.configure() при смене темы
+        ts.configure('Sidebar.TFrame', background=bg_side)
+        ts.configure('Sidebar.TLabel', background=bg_side, foreground=fg_text,
+                     font=(font_fam, font_sz))
+        ts.configure('SidebarMuted.TLabel', background=bg_side, foreground=fg_muted,
+                     font=(font_fam, font_sz - 1))
+        ts.configure('SidebarHeader.TLabel', background=bg_side, foreground=fg_label,
+                     font=(font_fam, font_sz - 1))
+        ts.configure('SidebarVersion.TLabel', background=bg_side, foreground=accent_bg,
+                     font=(font_fam, font_sz - 1))
+        ts.configure('SidebarAuthor.TLabel', background=bg_side, foreground=fg_label,
+                     font=(font_fam, font_sz - 1))
+        ts.configure('SidebarSearch.TEntry', fieldbackground=bg_widget,
+                     foreground=fg_text, insertcolor=fg_text,
+                     bordercolor=bg_sep, lightcolor=bg_sep, darkcolor=bg_sep)
+        ts.configure('Sidebar.TButton', background=btn_bg, foreground=btn_fg,
+                     bordercolor=bg_sep, lightcolor=btn_bg, darkcolor=btn_bg,
+                     font=(font_fam, font_sz), padding=(8, 6))
+        ts.map('Sidebar.TButton',
+               background=[('active', btn_hover), ('pressed', btn_hover)],
+               foreground=[('active', btn_fg), ('pressed', btn_fg)])
+        ts.configure('SidebarAccent.TButton', background=accent_bg, foreground=accent_fg,
+                     bordercolor=accent_hov, lightcolor=accent_bg, darkcolor=accent_bg,
+                     font=(font_fam, font_sz, 'bold'), padding=(8, 6))
+        ts.map('SidebarAccent.TButton',
+               background=[('active', accent_hov), ('pressed', accent_hov)],
+               foreground=[('active', accent_fg), ('pressed', accent_fg)])
+        # icon_strip styles
+        ts.configure('IconStrip.TFrame', background=bg_main)
+        ts.configure('IconStrip.TLabel', background=bg_main, foreground=fg_label,
+                     font=(font_fam, 18))
+        ts.configure('IconStrip.TButton', background=bg_main, foreground=fg_label,
+                     bordercolor=bg_main, lightcolor=bg_main, darkcolor=bg_main,
+                     font=(font_fam, T.get('font_sz', 10) - 1), padding=(6, 0))
+        ts.map('IconStrip.TButton',
+               background=[('active', bg_sep), ('pressed', bg_sep)],
+               foreground=[('active', fg_text), ('pressed', accent_bg)])
+
     def _apply_palette_recursive(self, parent):
         """v0.1.47: системный apply theme — рекурсивно обходит ВСЕ tk widgets
         и применяет цвета текущей темы. Вызывается из _apply_theme.
@@ -8120,6 +8181,8 @@ class App:
         except Exception: pass
         # v0.1.45: обновить Treeview styles при смене темы (heading/row/tag)
         self._refresh_treeview_styles()
+        # v0.1.51: ttk named styles — мгновенно обновляет ВСЕ ttk widgets
+        self._register_ttk_styles()
         # v0.1.47: рекурсивно обновить ВСЕ tk widgets под новую тему
         self._apply_palette_recursive(self.root)
 
